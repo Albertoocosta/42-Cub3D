@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/22 11:43:46 by alberto          ###   ########.fr       */
+/*   Updated: 2025/08/22 19:20:48 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cud3D.h"
+#include "../inc/cub3D.h"
 
 int main (int ac, char **av)
 {
