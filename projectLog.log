@@ -1,0 +1,6 @@
+20:18 22/08/25 - Sexta-feira:
+- Alteração do nome do ".h" de "cud3d" para "cub3d" (não sei se foi intencionao ou não, se sim, avisa que mudo denovo).
+- Criação dos ficheiros "parse.h & parse.c"
+- Criação do ficheiro log "projectLog.log"
+
+OBS: Este modelo de log não precisa ser assim, apenas estou escrevendo caso eu não consiga responder na hora, já tem aqui um resumo do que foi mechido/criado/alterado.

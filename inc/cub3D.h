@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/22 19:21:12 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/08/22 19:59:35 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 
 // Libft
 # include "./libft/libft.h"
+
+// Project
+# include "parse.h"
 
 
 typedef struct s_mlx_data

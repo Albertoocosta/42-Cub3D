@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/22 20:17:43 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/08/22 20:04:47 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/08/22 20:15:58 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	main(int ac, char **av)
-{
-	t_error		error_code;
 
-	error_code = verify_arguments(ac, av);
-	if (error_code != SUCCESS)
-	{
-		error_handler(error_code);
-		return (EXIT_FAILURE);
-	}
-	printf("Verificar arquivo log na root do repositório. Programa compilando e rodando sem erros!");
-	return (EXIT_SUCCESS);
+t_error	verify_arguments(int ac, char **av)
+{
+	if (ac != 1)
+		return (INVALID_ARG_COUNT);
+	(void)av;
+	return (SUCCESS);
+}
+
+void	error_handler(t_error error)
+{
+	const char	*messages[] = {
+	[SUCCESS] = "",
+	[INVALID_ARG_COUNT] = "Invalid number of arguments!" 
+	};
+
+	if (error != SUCCESS)
+		printf("%s", messages[error]);
 }

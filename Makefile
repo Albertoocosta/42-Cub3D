@@ -13,13 +13,13 @@ OBJS				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
 #===================================================================================| Colors |
 
-RED					= "\033[31m"
-GREEN				= "\033[32m"
-ORANGE				= "\033[38;5;208m"
-PURPLE				= "\033[35m"
-YELLOW				= "\033[33m"
-CYAN				= "\033[36m"
-RESET				= "\033[0m"
+RED					= \033[31m
+GREEN				= \033[32m
+ORANGE				= \033[38;5;208m
+PURPLE				= \033[35m
+YELLOW				= \033[33m
+CYAN				= \033[36m
+RESET				= \033[0m
 
 #===================================================================================| Commands |
 
@@ -29,13 +29,14 @@ $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
 
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
-					@printf "🔧 Compiling %s %b[OK]%b\n" "$<" "$(GREEN)" "$(RESET)"
+					@printf "🔧 Compiling %s ${GREEN}[OK]${RESET}\n" "$<"
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 
 $(LIBFT):
-					@make -C ./inc/libft/
+	@make fclean -C ./inc/libft/
+	@make -C ./inc/libft/
 
 clean:
 					@$(RM) $(OBJ_DIR)
@@ -50,7 +51,8 @@ clean:
 					@clear
 
 fclean: 			clean
-					@$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@$(RM) $(LIBFT)
 
 re: 				fclean all
 

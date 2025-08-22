@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/22 20:17:43 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/08/22 20:07:34 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#ifndef PARSE_H
+# define PARSE_H
 
-int	main(int ac, char **av)
+# include "cub3D.h"
+
+// Errors (More errors will be added, depending on the need.)
+typedef enum e_error
 {
-	t_error		error_code;
+	SUCCESS = 0,
+	INVALID_ARG_COUNT
+}	t_error;
 
-	error_code = verify_arguments(ac, av);
-	if (error_code != SUCCESS)
-	{
-		error_handler(error_code);
-		return (EXIT_FAILURE);
-	}
-	printf("Verificar arquivo log na root do repositório. Programa compilando e rodando sem erros!");
-	return (EXIT_SUCCESS);
-}
+// Function declaration
+void	error_handler(t_error error);
+t_error	verify_arguments(int ac, char **av);
+
+#endif
