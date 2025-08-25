@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/08/22 20:07:34 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/08/25 01:49:07 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 typedef enum e_error
 {
 	SUCCESS = 0,
-	INVALID_ARG_COUNT
+	INVALID_USAGE,
 }	t_error;
 
-// Function declaration
-void	error_handler(t_error error);
-t_error	verify_arguments(int ac, char **av);
+// Function declarationvoid	errorHandler(t_error error)
+void	errorHandler(t_error error);
+
 
 #endif

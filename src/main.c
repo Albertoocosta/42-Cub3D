@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/22 20:17:43 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/08/25 01:49:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 int	main(int ac, char **av)
 {
-	t_error		error_code;
-
-	error_code = verify_arguments(ac, av);
-	if (error_code != SUCCESS)
+	if (ac != 2)
 	{
-		error_handler(error_code);
-		return (EXIT_FAILURE);
+		errorHandler(INVALID_USAGE);
+		return (1);
 	}
-	printf("Verificar arquivo log na root do repositório. Programa compilando e rodando sem erros!");
-	return (EXIT_SUCCESS);
+	(void)av;
+	printf("all clcear and running!");
+	return (0);
 }
