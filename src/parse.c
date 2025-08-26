@@ -6,26 +6,17 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 20:04:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/08/22 20:15:58 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/08/25 01:48:55 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-
-t_error	verify_arguments(int ac, char **av)
-{
-	if (ac != 1)
-		return (INVALID_ARG_COUNT);
-	(void)av;
-	return (SUCCESS);
-}
-
-void	error_handler(t_error error)
+void	errorHandler(t_error error)
 {
 	const char	*messages[] = {
 	[SUCCESS] = "",
-	[INVALID_ARG_COUNT] = "Invalid number of arguments!" 
+	[INVALID_USAGE] = "Invalid program usage. Try './cub3D PATH_TO_MAP'"
 	};
 
 	if (error != SUCCESS)
