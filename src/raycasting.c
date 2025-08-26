@@ -6,7 +6,7 @@
 /*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:52:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/26 02:23:06 by alberto          ###   ########.fr       */
+/*   Updated: 2025/08/26 16:27:28 by alberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fill_ray(int x, t_ray *ray, t_player *player)
 {
-	//init_ray(ray);
+	init_ray(ray);
 	ray->camera_x = 2 * x / (double)WIDTH - 1;
 	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
 	ray->dir_x = player->dir_y + player->plane_y * ray->camera_x;

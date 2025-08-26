@@ -6,7 +6,7 @@
 /*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/26 02:11:52 by alberto          ###   ########.fr       */
+/*   Updated: 2025/08/26 16:25:31 by alberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@
 // Libft
 # include "./libft/libft.h"
 
-// Project
-# include "parse.h"
-# include "raycasting.h"
-
 typedef struct s_player t_player;
 typedef struct s_ray t_ray;
 typedef struct s_mlx t_mlx;
+typedef struct s_cub t_cub;
+
+// Project
+# include "parse.h"
+# include "raycasting.h"
 
 #define WIDTH 800
 #define HEIGHT 600

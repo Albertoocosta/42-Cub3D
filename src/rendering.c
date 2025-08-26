@@ -6,11 +6,11 @@
 /*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:00 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/26 02:21:58 by alberto          ###   ########.fr       */
+/*   Updated: 2025/08/26 16:27:23 by alberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../inc/cub3D.h"
 
 void	init_ray(t_ray *ray)
 {
@@ -36,7 +36,7 @@ void	init_ray(t_ray *ray)
 void	rendering_ray(t_cub *cub)
 {
 	init_ray(&cub->ray);
-	//raycasting(&cub->player, cub);
+	raycasting(&cub->player, cub);
 }
 
 int	rendering (t_cub *cub)
