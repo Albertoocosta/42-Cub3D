@@ -3,6 +3,9 @@ NAME				= cub3D
 LIBFT				= ./inc/libft/libft.a
 INC					= inc/
 SRC_DIR				= src/
+MLXFLAGS 			= -lXext -lX11 -lm -lbsd
+MLX_DIR				= ./inc/Minilibx
+MLX 				= $(MLX_DIR)/libmlx.a
 OBJ_DIR				= obj/
 CC					= cc
 SANITIZE_FALGS		= -fsanitize=address -fsanitize=leak -fsanitize=undefined -fno-omit-frame-pointer
@@ -25,8 +28,17 @@ RESET				= \033[0m
 
 all:				$(NAME)
 
-$(NAME): 			$(OBJS) $(LIBFT)
-					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+$(MLX):
+					@cd $(MLX_DIR) && make >/dev/null 2>&1 || make
+					@if [ ! -f $(MLX) ]; then \
+						echo "❌ MiniLibX library not found at $(MLX)"; \
+						exit 1; \
+					else \
+						echo "✅ MiniLibX built successfully"; \
+					fi
+
+$(NAME): 			$(OBJS) $(LIBFT) $(MLX)
+					@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
 					@printf "🔧 Compiling %s ${GREEN}[OK]${RESET}\n" "$<"
@@ -41,6 +53,7 @@ $(LIBFT):
 clean:
 					@$(RM) $(OBJ_DIR)
 					@make clean -C ./inc/libft/
+					@make clean -C $(MLX_DIR)
 					@clear
 					@echo " "
 					@echo " "
@@ -53,6 +66,7 @@ clean:
 fclean: 			clean
 	@$(RM) $(NAME)
 	@$(RM) $(LIBFT)
+	@make clean -C $(MLX_DIR)
 
 re: 				fclean all
 

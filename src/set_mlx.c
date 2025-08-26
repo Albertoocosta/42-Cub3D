@@ -6,16 +6,15 @@
 /*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:34:50 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/26 02:25:36 by alberto          ###   ########.fr       */
+/*   Updated: 2025/08/26 16:51:21 by alberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../inc/cub3D.h"
 
 int	set_mlx(t_cub *cub)
 {
-	(void)cub;
-/* 	cub->mlx.mlx_ptr = mlx_init();
+ 	cub->mlx.mlx_ptr = mlx_init();
 	if (cub->mlx.mlx_ptr == NULL)
 		return (ft_putstr_fd("Mlx error\n", 2), 1);
 	cub->mlx.win_ptr = mlx_new_window(cub->mlx.mlx_ptr, WIDTH, HEIGHT, 
@@ -28,6 +27,6 @@ int	set_mlx(t_cub *cub)
 	cub->mlx.img_addr = mlx_get_data_addr(cub->mlx.img_ptr, 
 		&cub->mlx.bits_per_pixel, &cub->mlx.size_line, &cub->mlx.endian);
 	if (cub->mlx.img_addr == NULL)
-		return (ft_putstr_fd("Mlx error\n", 2), 1); */
+		return (ft_putstr_fd("Mlx error\n", 2), 1);
 	return (0);	
 }
