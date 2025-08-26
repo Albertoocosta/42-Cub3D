@@ -26,7 +26,7 @@ RESET				= \033[0m
 all:				$(NAME)
 
 $(NAME): 			$(OBJS) $(LIBFT)
-					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
+					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
 					@printf "🔧 Compiling %s ${GREEN}[OK]${RESET}\n" "$<"
