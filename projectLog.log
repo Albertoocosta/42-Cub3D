@@ -4,3 +4,10 @@
 - Criação do ficheiro log "projectLog.log"
 
 OBS: Este modelo de log não precisa ser assim, apenas estou escrevendo caso eu não consiga responder na hora, já tem aqui um resumo do que foi mechido/criado/alterado.
+
+
+02:36 26/08/25 - Terça-feira:
+- Inicio da implementação do raycasting (incompleto);
+- Criação de mais structs para auxiliar no raycasting/movimentos;
+- Como combinado, merge com a branch 'main' para termos ideia das estruturas e funções que já existem.
+- A comunicação entre os .h ainda precisa ser melhorada, ainda returna erro de 'implicit declaration' das structs.
