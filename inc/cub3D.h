@@ -6,7 +6,7 @@
 /*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/26 16:25:31 by alberto          ###   ########.fr       */
+/*   Updated: 2025/08/28 11:39:37 by alberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,23 @@ typedef struct s_cub t_cub;
 # include "parse.h"
 # include "raycasting.h"
 
+
+#define MOVESPEED 0.0125
+#define ROTSPEED 0.015
 #define WIDTH 800
 #define HEIGHT 600
 #define WIN_TITLE "Fucking Hellcife CUB3D"
+
+enum orientation
+{
+    NO = 0,
+    SO = 1,
+    WE = 2,
+    EA = 3,
+    F = 4, // Floor
+    C = 5, // Ceiling
+    OTHER = 100
+};
 
 typedef struct s_player
 {
@@ -55,9 +69,11 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	char	direction;
 	int		move_x;
 	int		move_y;
 	int		rotate;
+	int		moved;
 }	t_player;
 
 typedef struct s_ray
