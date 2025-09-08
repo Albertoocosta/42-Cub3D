@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/08 15:55:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:31:55 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 
 int parser(int ac, char **av, t_game *game)
 {
-	if (ac != 2)
+	if (ac != 2 || !check_extension(av[1]))
 	{
-		printf("Error\nUsage: ./cub3D <map.cub>\n");
-		return (1);
-	}
-	if (!check_extension(av[1]))
-	{
-		printf("Error\nInvalid file extension\n");
+		printf("Error\nInvalid program usage.\n");
 		return (1);
 	}
 	init_game(game);
 	if (parse_input(av[1], game))
 		return (1);
-	if (validate_config(&game->config))
-		return (1);
-	if (validate_map(&game->map))
-		return (1);
+	// if (validate_config(&game->config))
+	// 	return (1);
+	// if (validate_map(&game->map))
+	// 	return (1);
 	return (0);
 }
 
@@ -44,7 +39,37 @@ int check_extension(const char *file)
 
 int parse_input(const char *file, t_game *game)
 {
-	
+	int fd;
+	int size;
+
+	fd = 0;
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (printf("Erro\nUnable to open map file"), 1);
+	size = map_size(file, game);
+	printf("Map size = %d\n", size);
+	close(fd);
+	return (0);
+}
+
+int map_size(const char *file, t_game *game)
+{
+	int fd;
+	int size;
+	char *line;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (printf("Erro\nUnable to open map file"), 1);
+	size = 0;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		size++;
+		free(line);
+	}
+	close(fd);
+	(void)game;
+	return (size);
 }
 
 int parse_config_line(char *line, t_config *cfg)
@@ -68,10 +93,8 @@ int parse_config_line(char *line, t_config *cfg)
 
 int validate_config(t_config *cfg)
 {
-
 }
 
 int validate_map(t_map *map)
 {
-
 }

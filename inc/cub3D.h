@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/27 20:53:30 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:26:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@
 // Libft
 # include "./libft/libft.h"
 
-typedef struct s_player t_player;
-typedef struct s_ray t_ray;
-typedef struct s_mlx t_mlx;
-typedef struct s_cub t_cub;
+// typedef struct s_player t_player;
+// typedef struct s_ray t_ray;
+// typedef struct s_mlx t_mlx;
+// typedef struct s_cub t_cub;
 
 // Project
 # include "parse.h"

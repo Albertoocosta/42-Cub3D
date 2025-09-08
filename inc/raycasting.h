@@ -6,12 +6,14 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:53:47 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/27 20:58:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:26:59 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
+
+# include "cub3D.h"
 
 // raycasting.c
 void	fill_ray(int x, t_ray *ray, t_player *player);
