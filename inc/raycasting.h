@@ -3,18 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:53:47 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/26 16:07:05 by alberto          ###   ########.fr       */
+/*   Updated: 2025/08/27 20:58:52 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
 
+// raycasting.c
+void	fill_ray(int x, t_ray *ray, t_player *player);
+void	set_dda(t_ray *ray, t_player *player);
+void	run_dda(t_cub *cub, t_ray *ray);
+void	line_height_calc(t_ray *ray, t_player *player);
 int		raycasting(t_player *player, t_cub *cub);
+
+// rendering.c
+void	init_ray(t_ray *ray);
+void	rendering_ray(t_cub *cub);
 int		rendering (t_cub *cub);
-void		init_ray(t_ray *ray);
+
+//set_mlx.c
+int		set_mlx(t_cub *cub);
 
 #endif

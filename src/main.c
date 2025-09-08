@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/26 17:51:32 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:51:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,17 @@
 
 int	main(int ac, char **av)
 {
-	t_cub		cub;
+	// t_cub		cub;
+	t_game		game;
 
-	//error_code = verify_arguments(ac, av);
-	if (ac != 2)
-	{
-		errorHandler(INVALID_USAGE);
+	if (parser(ac, av, &game) != 0)
 		return (1);
-	}
-	(void)av;
 	printf("all clear and running!");
-	//inicia tudo a 0.
-	ft_bzero(&cub, sizeof(cub));
-	
-	/* ***** DEIXEI TUDO COMENTADO PARA AJUSTAR DEPOIS ****** */
-	
-	
-	if (set_mlx(&cub))
-		return (1);
-	//falta criar as funcoes para os hooks
-	mlx_loop_hook (cub.mlx.mlx_ptr, rendering, &cub);
-	mlx_loop(cub.mlx.mlx_ptr);
+
+	// ft_bzero(&cub, sizeof(cub));
+	// if (set_mlx(&cub))
+	// 	return (1);
+	// mlx_loop_hook (cub.mlx.mlx_ptr, rendering, &cub);
+	// mlx_loop(cub.mlx.mlx_ptr);
 	return (0);
 }

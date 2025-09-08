@@ -54,14 +54,14 @@ clean:
 					@$(RM) $(OBJ_DIR)
 					@make clean -C ./inc/libft/
 					@make clean -C $(MLX_DIR)
-					@clear
+#					@clear
 					@echo " "
 					@echo " "
 					@echo "🗑️ - Program has been cleaned!"
 					@echo " "
 					@echo " "
 					@sleep 1
-					@clear
+#					@clear
 
 fclean: 			clean
 	@$(RM) $(NAME)
@@ -79,3 +79,5 @@ val:
 						--show-leak-kinds=all \
 						--track-origins=yes \
 						--suppressions=readline_supressor ./$(NAME)
+# Na execução do valgrind, falta colocar um mapa válido/inválido para teste, caso contrário
+# não vai funcionar.

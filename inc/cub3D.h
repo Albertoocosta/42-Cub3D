@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/26 16:25:31 by alberto          ###   ########.fr       */
+/*   Updated: 2025/08/27 20:53:30 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,12 @@ typedef struct s_cub t_cub;
 # include "parse.h"
 # include "raycasting.h"
 
+// Macros
 #define WIDTH 800
 #define HEIGHT 600
 #define WIN_TITLE "Fucking Hellcife CUB3D"
 
+// Structures
 typedef struct s_player
 {
 	double	pos_x;
