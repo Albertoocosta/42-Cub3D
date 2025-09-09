@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/09 13:32:56 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:54:47 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,35 @@ int parse_input(const char *file, t_game *game)
 	if (fd == -1)
 		return (printf("Erro\nUnable to open map file"), 1);
 	parse_config(game, fd);
-	parse_map(game, fd);
+	// parse_map(game, fd);
 	close(fd);
 	return (0);
 }
 
-// int	parse_config(t_game *game, int fd)
-// {
-	
-// }
+void parse_config(t_game *game, int fd)
+{
+	char *line;
+	int config = 0;
+	int mapl = 0;
+
+	line = NULL;
+	while ((line = get_next_line(fd)))
+	{
+		if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "SO ", 3) == 0 || ft_strncmp(line, "WE ", 3) == 0 || ft_strncmp(line, "EA ", 3) == 0 || ft_strncmp(line, "C ", 2) == 0 || ft_strncmp(line, "F ", 2) == 0)
+			config++;
+		// parse_config_line(line, &game->config);
+		else if (line[0] == '1' || line[0] == '0' || line[0] == ' ')
+			mapl++;
+		free(line);
+	}
+	printf("CONFIG LINES: %d.\nMAP LINES: %d.\n", config, mapl);
+	(void)game;
+}
 
 // int	parse_map(t_game *game, int fd)
 // {
-	
-// }
 
+// }
 
 // int parse_config_line(char *line, t_config *cfg)
 // {
@@ -80,3 +94,25 @@ int parse_input(const char *file, t_game *game)
 // 		return parse_color(line + 1, cfg->ceil_rgb, &cfg->has_ceil);
 // 	return (0);
 // }
+
+// Função para processar linhas de textura (ex: NO ./textures/north.xpm)
+int parse_texture(char *line, char **path, bool *has_flag)
+{
+	// Pula espaços em branco
+	while (*line == ' ' || *line == '\t')
+		line++;
+	if (*has_flag)
+	{
+		printf("Erro: textura já definida.\n");
+		return (1);
+	}
+	free(*path);
+	*path = ft_strdup(line);
+	if (!*path)
+	{
+		printf("Erro: falha ao alocar memória para o caminho da textura.\n");
+		return (1);
+	}
+	*has_flag = true;
+	return (0);
+}
