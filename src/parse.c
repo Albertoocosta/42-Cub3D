@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/08 18:31:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:32:56 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,61 +40,43 @@ int check_extension(const char *file)
 int parse_input(const char *file, t_game *game)
 {
 	int fd;
-	int size;
 
 	fd = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (printf("Erro\nUnable to open map file"), 1);
-	size = map_size(file, game);
-	printf("Map size = %d\n", size);
+	parse_config(game, fd);
+	parse_map(game, fd);
 	close(fd);
 	return (0);
 }
 
-int map_size(const char *file, t_game *game)
-{
-	int fd;
-	int size;
-	char *line;
+// int	parse_config(t_game *game, int fd)
+// {
+	
+// }
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (printf("Erro\nUnable to open map file"), 1);
-	size = 0;
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		size++;
-		free(line);
-	}
-	close(fd);
-	(void)game;
-	return (size);
-}
+// int	parse_map(t_game *game, int fd)
+// {
+	
+// }
 
-int parse_config_line(char *line, t_config *cfg)
-{
-	while (*line == ' ' || *line == '\t')
-		line++;
-	if (ft_strncmp(line, "NO ", 3) == 0)
-		return parse_texture(line + 2, &cfg->no_path, &cfg->has_no);
-	if (ft_strncmp(line, "SO ", 3) == 0)
-		return parse_texture(line + 2, &cfg->so_path, &cfg->has_so);
-	if (ft_strncmp(line, "WE ", 3) == 0)
-		return parse_texture(line + 2, &cfg->we_path, &cfg->has_we);
-	if (ft_strncmp(line, "EA ", 3) == 0)
-		return parse_texture(line + 2, &cfg->ea_path, &cfg->has_ea);
-	if (ft_strncmp(line, "F ", 2) == 0)
-		return parse_color(line + 1, cfg->floor_rgb, &cfg->has_floor);
-	if (ft_strncmp(line, "C ", 2) == 0)
-		return parse_color(line + 1, cfg->ceil_rgb, &cfg->has_ceil);
-	return (0);
-}
 
-int validate_config(t_config *cfg)
-{
-}
-
-int validate_map(t_map *map)
-{
-}
+// int parse_config_line(char *line, t_config *cfg)
+// {
+// 	while (*line == ' ' || *line == '\t')
+// 		line++;
+// 	if (ft_strncmp(line, "NO ", 3) == 0)
+// 		return parse_texture(line + 2, &cfg->no_path, &cfg->has_no);
+// 	if (ft_strncmp(line, "SO ", 3) == 0)
+// 		return parse_texture(line + 2, &cfg->so_path, &cfg->has_so);
+// 	if (ft_strncmp(line, "WE ", 3) == 0)
+// 		return parse_texture(line + 2, &cfg->we_path, &cfg->has_we);
+// 	if (ft_strncmp(line, "EA ", 3) == 0)
+// 		return parse_texture(line + 2, &cfg->ea_path, &cfg->has_ea);
+// 	if (ft_strncmp(line, "F ", 2) == 0)
+// 		return parse_color(line + 1, cfg->floor_rgb, &cfg->has_floor);
+// 	if (ft_strncmp(line, "C ", 2) == 0)
+// 		return parse_color(line + 1, cfg->ceil_rgb, &cfg->has_ceil);
+// 	return (0);
+// }

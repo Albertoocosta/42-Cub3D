@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/08 18:31:48 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:32:19 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,8 @@ void init_map(t_map *map);
 void init_game(t_game *game);
 
 int parse_input(const char *file, t_game *game);
-int validate_config(t_config *cfg);
-int validate_map(t_map *map);
-
-int map_size(const char *file, t_game *game);
+int	parse_config(t_game *game, int fd);
+int	parse_map(t_game *game, int fd);
 
 int parse_config_line(char *line, t_config *cfg);
 

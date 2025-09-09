@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:53:47 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/08 18:26:59 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:07:52 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		raycasting(t_player *player, t_cub *cub);
 // rendering.c
 void	init_ray(t_ray *ray);
 void	rendering_ray(t_cub *cub);
-int		rendering (t_cub *cub);
+int		rendering(t_cub *cub);
 
 //set_mlx.c
 int		set_mlx(t_cub *cub);
