@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 16:19:06 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:47:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ typedef struct s_config
 	char	*ea_path;
 	int		floor_rgb[3];
 	int		ceil_rgb[3];
-	bool	has_no, has_so, has_we, has_ea;
+	bool	has_no;
+	bool	has_so;
+	bool	has_we;
+	bool	has_ea;
 	bool	has_floor, has_ceil;
 }	t_config;
 

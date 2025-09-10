@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 16:22:20 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 18:08:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int parser(int ac, char **av, t_game *game)
+int	parser(int ac, char **av, t_game *game)
 {
 	if (ac != 2 || !check_extension(av[1], ".cub"))
 	{
@@ -29,9 +29,9 @@ int parser(int ac, char **av, t_game *game)
 	return (0);
 }
 
-int check_extension(const char *path, char *extension)
+int	check_extension(const char *path, char *extension)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(path);
 	if (len < 4)
@@ -39,22 +39,22 @@ int check_extension(const char *path, char *extension)
 	return (ft_strncmp(path + len - 4, extension, 4) == 0);
 }
 
-int parse_input(const char *file, t_game *game)
+int	parse_input(const char *file, t_game *game)
 {
-	int fd;
+	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (printf("Erro\nUnable to open map file"), 1);
-	if (parse_config(game, fd) || validate_config(game)) // Futuramente adicionar ao if o "parse_map(game, fd)"
+		return (printf("Erro!\nUnable to open map file"), 1);
+	if (parse_config(game, fd) || validate_config(game))
 		return (1);
 	close(fd);
 	return (0);
 }
 
-int parse_config(t_game *game, int fd)
+int	parse_config(t_game *game, int fd)
 {
-	char *line;
+	char	*line;
 
 	line = NULL;
 	while ((line = get_next_line(fd)))
@@ -66,7 +66,7 @@ int parse_config(t_game *game, int fd)
 	return (0);
 }
 
-int parse_config_line(char *line, t_config *cfg)
+int	parse_config_line(char *line, t_config *cfg)
 {
 	while (*line == ' ' || *line == '\t')
 		line++;
@@ -85,7 +85,7 @@ int parse_config_line(char *line, t_config *cfg)
 	return (0);
 }
 
-int parse_texture(char *line, char **path, bool *has_flag)
+int	parse_texture(char *line, char **path, bool *has_flag)
 {
 	char	*trimmed;
 	int		len;
@@ -93,32 +93,51 @@ int parse_texture(char *line, char **path, bool *has_flag)
 	while (*line == ' ' || *line == '\t')
 		line++;
 	if (*has_flag)
-		return (printf("Erro\nDuplicated texture.\n"), 1);
+		return (printf("Erro!\nDuplicated texture.\n"), 1);
 	free(*path);
 	len = ft_strlen(line);
-	while (len > 0 && (line[len - 1] == ' '
-		|| line[len - 1] == '\t' || line[len - 1] == '\n'
-		|| line[len - 1] == '\r'))
+	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'
+			|| line[len - 1] == '\n' || line[len - 1] == '\r'))
 		len--;
 	trimmed = malloc(len + 1);
 	if (!trimmed)
-		return (printf("Erro\nFailed to allocate memory for texture.\n"), 1);
+		return (printf("Erro!\nFailed to allocate memory for texture.\n"), 1);
 	ft_strncpy(trimmed, line, len);
 	trimmed[len] = '\0';
 	*path = trimmed;
 	if (!check_extension(*path, ".xpm"))
-		return (printf("Erro\nTexture must be a '.xpm' file."), 1);
+		return (printf("Erro!\nTexture must be a '.xpm' file."), 1);
 	*has_flag = true;
 	return (0);
 }
 
 int	validate_config(t_game *game)
 {
+	int	fd;
+
+	fd = 0;
 	if (!game->config.has_no || !game->config.has_so
 		|| !game->config.has_we || !game->config.has_ea)
-		return(printf("Erro\nMissing configuration."), 1);
+		return (printf("Erro!\nMissing configuration."), 1);
+	fd = open(game->config.no_path, O_RDONLY);
+	if (fd < 0)
+		return (printf("Erro!\nInvalid or missing North texture file."), 1);
+	close(fd);
+	fd = open(game->config.so_path, O_RDONLY);
+	if (fd < 0)
+		return (printf("Erro!\nInvalid or missing South texture file."), 1);
+	close(fd);
+	fd = open(game->config.we_path, O_RDONLY);
+	if (fd < 0)
+		return (printf("Erro!\nInvalid or missing West texture file."), 1);
+	close(fd);
+	fd = open(game->config.ea_path, O_RDONLY);
+	if (fd < 0)
+		return (printf("Erro!\nInvalid or missing East texture file."), 1);
+	close(fd);
 	return (0);
 }
+
 // Resumo da lógica: parse_color (const char *str, int rgb[3])
 
 // Recebe uma string no formato "R,G,B" (pode ter espaços).
@@ -131,6 +150,6 @@ int	validate_config(t_game *game)
 // No final, verifica se não sobrou nada inesperado na string.
 // Retorna 0 em caso de sucesso, 1 em caso de erro.
 // Assim, a função é robusta para espaços e garante que só aceita valores válidos para cor RGB.
-	// if (!game->config.has_no || !!game->config.has_so
-	// 	|| !game->config.has_we || !game->config.has_ea
-	// 	|| !!game->config.has_ceil || !game->config.has_floor)
+// if (!game->config.has_no || !!game->config.has_so
+// 	|| !game->config.has_we || !game->config.has_ea
+// 	|| !!game->config.has_ceil || !game->config.has_floor)

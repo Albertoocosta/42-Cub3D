@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/10 12:47:21 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:48:29 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdint.h>
 # include <errno.h>
 # include <sys/time.h>
+# include <assert.h>
 
 // MINILIBX
 # include <X11/keysym.h>
