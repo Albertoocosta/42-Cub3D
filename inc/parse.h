@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 15:41:47 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:19:06 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,19 @@ typedef struct s_game
 	// Esta é a parte em que vamos ter que sincronizar com a estrutura que já existe no ficheiro 'cub3d.h'.
 } t_game;
 
+void	init_config(t_config *cfg);
+void	init_game(t_game *game);
+void	init_map(t_map *map);
+
 int		parser(int ac, char **av, t_game *game);
 int		check_extension(const char *file, char *extension);
-void	init_config(t_config *cfg);
-void	init_map(t_map *map);
-void	init_game(t_game *game);
-
 int		parse_input(const char *file, t_game *game);
 int		parse_config(t_game *game, int fd);
-int		parse_map(t_game *game, int fd);
-
+int		validate_config(t_game *game);
 int		parse_config_line(char *line, t_config *cfg);
 int		parse_texture(char *line, char **path, bool *has_flag);
-int		parse_color(const char *str, int rgb[3]);
 
+int		parse_color(const char *str, int rgb[3]);
+int		parse_map(t_game *game, int fd);
 
 #endif

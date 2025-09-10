@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 16:11:53 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:22:20 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int parse_input(const char *file, t_game *game)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (printf("Erro\nUnable to open map file"), 1);
-	if (parse_config(game, fd)) // Futuramente adicionar ao if o "parse_map(game, fd)"
+	if (parse_config(game, fd) || validate_config(game)) // Futuramente adicionar ao if o "parse_map(game, fd)"
 		return (1);
 	close(fd);
 	return (0);
@@ -112,6 +112,13 @@ int parse_texture(char *line, char **path, bool *has_flag)
 	return (0);
 }
 
+int	validate_config(t_game *game)
+{
+	if (!game->config.has_no || !game->config.has_so
+		|| !game->config.has_we || !game->config.has_ea)
+		return(printf("Erro\nMissing configuration."), 1);
+	return (0);
+}
 // Resumo da lógica: parse_color (const char *str, int rgb[3])
 
 // Recebe uma string no formato "R,G,B" (pode ter espaços).
@@ -124,3 +131,6 @@ int parse_texture(char *line, char **path, bool *has_flag)
 // No final, verifica se não sobrou nada inesperado na string.
 // Retorna 0 em caso de sucesso, 1 em caso de erro.
 // Assim, a função é robusta para espaços e garante que só aceita valores válidos para cor RGB.
+	// if (!game->config.has_no || !!game->config.has_so
+	// 	|| !game->config.has_we || !game->config.has_ea
+	// 	|| !!game->config.has_ceil || !game->config.has_floor)
