@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/09 14:54:47 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 12:50:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int parser(int ac, char **av, t_game *game)
+int	parser(int ac, char **av, t_game *game)
 {
 	if (ac != 2 || !check_extension(av[1]))
 	{
@@ -29,7 +29,7 @@ int parser(int ac, char **av, t_game *game)
 	return (0);
 }
 
-int check_extension(const char *file)
+int	check_extension(const char *file)
 {
 	int len = ft_strlen(file);
 	if (len < 4)
@@ -37,7 +37,7 @@ int check_extension(const char *file)
 	return (ft_strncmp(file + len - 4, ".cub", 4) == 0);
 }
 
-int parse_input(const char *file, t_game *game)
+int	parse_input(const char *file, t_game *game)
 {
 	int fd;
 
@@ -51,7 +51,7 @@ int parse_input(const char *file, t_game *game)
 	return (0);
 }
 
-void parse_config(t_game *game, int fd)
+void	parse_config(t_game *game, int fd)
 {
 	char *line;
 	int config = 0;
@@ -71,12 +71,12 @@ void parse_config(t_game *game, int fd)
 	(void)game;
 }
 
-// int	parse_map(t_game *game, int fd)
+// int	parse_map(t_game *game, int	fd)
 // {
 
 // }
 
-// int parse_config_line(char *line, t_config *cfg)
+// int	parse_config_line(char *line, t_config *cfg)
 // {
 // 	while (*line == ' ' || *line == '\t')
 // 		line++;
@@ -95,17 +95,13 @@ void parse_config(t_game *game, int fd)
 // 	return (0);
 // }
 
-// Função para processar linhas de textura (ex: NO ./textures/north.xpm)
-int parse_texture(char *line, char **path, bool *has_flag)
+int	parse_texture(char *line, char **path, bool *has_flag)
 {
 	// Pula espaços em branco
 	while (*line == ' ' || *line == '\t')
 		line++;
 	if (*has_flag)
-	{
-		printf("Erro: textura já definida.\n");
-		return (1);
-	}
+		return (printf("Erro: textura já definida.\n"), 1);
 	free(*path);
 	*path = ft_strdup(line);
 	if (!*path)

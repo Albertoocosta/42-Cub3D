@@ -1,11 +1,11 @@
-MAKEFLAGS += -s
+MAKEFLAGS			+= -s
 NAME				= cub3D
 LIBFT				= ./inc/libft/libft.a
 INC					= inc/
 SRC_DIR				= src/
 MLXFLAGS 			= -lXext -lX11 -lm -lbsd
 MLX_DIR				= ./inc/Minilibx
-MLX 				= $(MLX_DIR)/libmlx.a
+MLX					= $(MLX_DIR)/libmlx.a
 OBJ_DIR				= obj/
 CC					= cc
 SANITIZE_FALGS		= -fsanitize=address -fsanitize=leak -fsanitize=undefined -fno-omit-frame-pointer
@@ -28,6 +28,9 @@ RESET				= \033[0m
 
 all:				$(NAME)
 
+$(NAME): 			$(OBJS) $(LIBFT) $(MLX)
+					@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+
 $(MLX):
 					@cd $(MLX_DIR) && make >/dev/null 2>&1 || make
 					@if [ ! -f $(MLX) ]; then \
@@ -36,9 +39,6 @@ $(MLX):
 					else \
 						echo "✅ MiniLibX built successfully"; \
 					fi
-
-$(NAME): 			$(OBJS) $(LIBFT) $(MLX)
-					@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
 					@printf "🔧 Compiling %s ${GREEN}[OK]${RESET}\n" "$<"

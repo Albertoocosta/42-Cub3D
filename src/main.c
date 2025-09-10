@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/08 15:51:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 12:49:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int ac, char **av)
 {
 	// t_cub		cub;
-	t_game		game;
+	t_game game;
 
 	if (parser(ac, av, &game) != 0)
 		return (1);

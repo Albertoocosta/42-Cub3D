@@ -6,14 +6,14 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:53:47 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/09 13:07:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 12:49:17 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTING_H
-# define RAYCASTING_H
+#define RAYCASTING_H
 
-# include "cub3D.h"
+#include "cub3D.h"
 
 // raycasting.c
 void	fill_ray(int x, t_ray *ray, t_player *player);
@@ -27,7 +27,7 @@ void	init_ray(t_ray *ray);
 void	rendering_ray(t_cub *cub);
 int		rendering(t_cub *cub);
 
-//set_mlx.c
+// set_mlx.c
 int		set_mlx(t_cub *cub);
 
 #endif

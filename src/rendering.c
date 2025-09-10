@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:00 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/09 13:07:41 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 12:50:26 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	rendering_ray(t_cub *cub)
 	raycasting(&cub->player, cub);
 }
 
-int	rendering (t_cub *cub)
+int	rendering(t_cub *cub)
 {
 	rendering_ray(cub);
 	return (0);
