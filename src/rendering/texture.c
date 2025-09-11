@@ -6,7 +6,7 @@
 /*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:16:57 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 10:51:30 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/11 11:12:19 by alberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_pixels_texture(t_cub *cub)
 {
 	int	i;
 
-	if (cub->pixels_text)
+	//if (cub->pixels_text)
 		//free_tab();
 }
 
