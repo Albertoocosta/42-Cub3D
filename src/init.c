@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 01:33:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 15:14:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:04:29 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	init_struct(t_cub *cub)
 
 static void	init_player_variables(t_cub *cub)
 {
-	cub->player.pos_x = -1;
-	cub->player.pos_y = -1;
-	cub->player.dir_x = -1;
-	cub->player.dir_y = -1;
-	cub->player.plane_x = -1;
-	cub->player.plane_y = -1;
+	cub->player.pos_x = 0;
+	cub->player.pos_y = 0;
+	cub->player.dir_x = 0;
+	cub->player.dir_y = 0;
+	cub->player.plane_x = 0;
+	cub->player.plane_y = 0;
 	cub->player.direction = '\0';
-	cub->player.move_x = -1;
-	cub->player.move_y = -1;
-	cub->player.rotate = -1;
-	cub->player.moved = -1;
+	cub->player.move_x = 0;
+	cub->player.move_y = 0;
+	cub->player.rotate = 0;
+	cub->player.moved = 0;
 }
 
 static void init_cub(t_cub *cub)

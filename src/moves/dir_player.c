@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   dir_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:09:58 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 15:14:57 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:24:16 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 void initial_NO_SO(t_player *player)
 {

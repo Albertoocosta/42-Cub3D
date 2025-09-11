@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 13:44:07 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:24:59 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int main(int ac, char **av)
 		return (1);
 	printf("all clear and running!");
 
-	// if (set_mlx(&cub))
-	// 	return (1);
-	// mlx_loop_hook (cub.mlx.mlx_ptr, rendering, &cub);
-	// mlx_loop(cub.mlx.mlx_ptr);
+	if (set_mlx(&cub))
+		return (1);
+	mlx_loop_hook (cub.mlx.mlx_ptr, rendering, &cub);
+	mlx_loop(cub.mlx.mlx_ptr);
 	return (0);
 }

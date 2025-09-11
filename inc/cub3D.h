@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 15:14:02 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:49:53 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,14 +132,14 @@ typedef struct s_mlx
 typedef struct s_cub
 {
 	t_mlx mlx;
-	char **map;	  // grid do mapa
-	int map_w;	  // largura do mapa
-	int map_h;	  // altura do mapa
-	int player_x; // posição inicial do player (opcional)
+	char **map;
+	int map_w;
+	int map_h;
+	int player_x;
 	int player_y;
 	t_player player;
 	t_ray ray;
-	t_texture texture; // inclui paths e cores
+	t_texture texture;
 	int **pixels_text;
 } t_cub;
 

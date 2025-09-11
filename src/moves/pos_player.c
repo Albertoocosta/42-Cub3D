@@ -3,18 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   pos_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:10:51 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 15:14:57 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:02:34 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 bool wall_collision(t_cub *cub, double x, double y)
 {
-	if (cub->map[(int)x][(int)y] == '0')
+	int new_x;
+	int new_y;
+
+	new_x = (int)x;	 
+	new_y = (int)y;
+	if (new_y < 0 || new_y >= cub->map_h
+		|| new_x < 0 || new_x >= cub->map_w)
+        return (true);
+	if (cub->map[new_x][new_y] == '1')
 		return (true);
 	return (false);
 }
