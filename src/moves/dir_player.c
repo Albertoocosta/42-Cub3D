@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dir_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:09:58 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/28 11:32:35 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/11 15:14:57 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3D.h"
+#include "cub3d.h"
 
-void	initial_NO_SO(t_player *player)
+void initial_NO_SO(t_player *player)
 {
 	if (player->direction == SO)
 	{
@@ -29,10 +29,10 @@ void	initial_NO_SO(t_player *player)
 		player->plane_y = 0;
 	}
 	else
-		return ;
+		return;
 }
 
-void	initial_EA_WE(t_player *player)
+void initial_EA_WE(t_player *player)
 {
 	if (player->direction == WE)
 	{
@@ -49,10 +49,10 @@ void	initial_EA_WE(t_player *player)
 		player->plane_y = 0.66;
 	}
 	else
-		return ;
+		return;
 }
 
-void	initial_player_direction(t_cub *cub)
+void initial_player_direction(t_cub *cub)
 {
 	initial_NO_SO(&cub->player);
 	initial_EA_WE(&cub->player);

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 14:34:22 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:10:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int parse_config_line(char *line, t_texture *texture)
 		return parse_texture(line + 2, &texture->we_path, &texture->has_we);
 	if (ft_strncmp(line, "EA ", 3) == 0)
 		return parse_texture(line + 2, &texture->ea_path, &texture->has_ea);
-	// if (ft_strncmp(line, "F ", 2) == 0)
-	// 	return parse_color(line + 1, texture->floor, NULL);
-	// if (ft_strncmp(line, "C ", 2) == 0)
-	// 	return parse_color(line + 1, texture->ceiling, NULL);
+	if (ft_strncmp(line, "F ", 2) == 0)
+		return (printf("Floor parse:"), parse_color(line + 1, texture->floor_rgb, &texture->has_floor));
+	if (ft_strncmp(line, "C ", 2) == 0)
+		return (printf("Ceil parse:"), parse_color(line + 1, texture->ceil_rgb, &texture->has_ceil));
 	return (0);
 }
 
@@ -113,11 +113,12 @@ int parse_texture(char *line, char **path, bool *has_flag)
 
 int validate_config(t_cub *cub)
 {
-	int fd;
+	int	fd;
 
 	fd = 0;
 	if (!cub->texture.has_no || !cub->texture.has_so
-		|| !cub->texture.has_we || !cub->texture.has_ea)
+		|| !cub->texture.has_we || !cub->texture.has_ea
+		|| !cub->texture.has_ceil || !cub->texture.has_floor)
 		return (printf("Erro!\nMissing configuration."), 1);
 	fd = open(cub->texture.no_path, O_RDONLY);
 	if (fd < 0)
@@ -153,3 +154,11 @@ int validate_config(t_cub *cub)
 // if (!game->config.has_no || !!game->config.has_so
 // 	|| !game->config.has_we || !game->config.has_ea
 // 	|| !!game->config.has_ceil || !game->config.has_floor)
+
+int		parse_color(const char *str, int rgb[3], bool *has_flag)
+{
+	(void)rgb;
+	*has_flag = true;
+	printf("VALOR PARSE COLOR: %s\n", str);
+	return (0);
+}
