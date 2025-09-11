@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:00 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 13:34:19 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:33:43 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	set_frame(t_cub *cub, int x, int y)
 {
 	if (cub->pixels_text[y][x] > 0)
 		set_image_pixel(cub, x, y, cub->pixels_text[y][x]);
-	else if(y < cub->map_h / 2)
-		set_image_pixel(cub, x, y, cub->texture.hex_ceiling);
-	else if (y < cub->map_h - 1)
-		set_image_pixel(cub, x, y, cub->texture.hex_floor);
+	// else if(y < cub->map_h / 2)
+	// 	set_image_pixel(cub, x, y, cub->texture.hex_ceiling);
+	// else if (y < cub->map_h - 1)
+	// 	set_image_pixel(cub, x, y, cub->texture.hex_floor);
 }
 
 void	render_frame(t_cub *cub)

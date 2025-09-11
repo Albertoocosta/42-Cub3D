@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 13:43:49 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:34:22 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int parser(int ac, char **av, t_cub *cub)
 	init_struct(cub);
 	if (parse_input(av[1], cub))
 		return (1);
-	// if (validate_config(cub))
-	// 	return (1);
+	if (validate_config(cub))
+		return (1);
 	// if (validate_map(cub))
 	// 	return (1);
 	return (0);
@@ -71,13 +71,13 @@ int parse_config_line(char *line, t_texture *texture)
 	while (*line == ' ' || *line == '\t')
 		line++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		return parse_texture(line + 2, &texture->north, NULL);
+		return parse_texture(line + 2, &texture->no_path, &texture->has_no);
 	if (ft_strncmp(line, "SO ", 3) == 0)
-		return parse_texture(line + 2, &texture->south, NULL);
+		return parse_texture(line + 2, &texture->so_path, &texture->has_so);
 	if (ft_strncmp(line, "WE ", 3) == 0)
-		return parse_texture(line + 2, &texture->west, NULL);
+		return parse_texture(line + 2, &texture->we_path, &texture->has_we);
 	if (ft_strncmp(line, "EA ", 3) == 0)
-		return parse_texture(line + 2, &texture->east, NULL);
+		return parse_texture(line + 2, &texture->ea_path, &texture->has_ea);
 	// if (ft_strncmp(line, "F ", 2) == 0)
 	// 	return parse_color(line + 1, texture->floor, NULL);
 	// if (ft_strncmp(line, "C ", 2) == 0)
@@ -96,7 +96,8 @@ int parse_texture(char *line, char **path, bool *has_flag)
 		return (printf("Erro!\nDuplicated texture.\n"), 1);
 	free(*path);
 	len = ft_strlen(line);
-	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t' || line[len - 1] == '\n' || line[len - 1] == '\r'))
+	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'
+			|| line[len - 1] == '\n' || line[len - 1] == '\r'))
 		len--;
 	trimmed = malloc(len + 1);
 	if (!trimmed)
@@ -115,21 +116,22 @@ int validate_config(t_cub *cub)
 	int fd;
 
 	fd = 0;
-	if (!cub->texture.north || !cub->texture.south || !cub->texture.west || !cub->texture.east)
+	if (!cub->texture.has_no || !cub->texture.has_so
+		|| !cub->texture.has_we || !cub->texture.has_ea)
 		return (printf("Erro!\nMissing configuration."), 1);
-	fd = open(cub->texture.north, O_RDONLY);
+	fd = open(cub->texture.no_path, O_RDONLY);
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing North texture file."), 1);
 	close(fd);
-	fd = open(cub->texture.south, O_RDONLY);
+	fd = open(cub->texture.so_path, O_RDONLY);
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing South texture file."), 1);
 	close(fd);
-	fd = open(cub->texture.west, O_RDONLY);
+	fd = open(cub->texture.we_path, O_RDONLY);
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing West texture file."), 1);
 	close(fd);
-	fd = open(cub->texture.east, O_RDONLY);
+	fd = open(cub->texture.ea_path, O_RDONLY);
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing East texture file."), 1);
 	close(fd);
