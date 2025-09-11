@@ -6,32 +6,32 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 11:05:23 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:13:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	parser(int ac, char **av, t_game *game)
+int parser(int ac, char **av, t_cub *cub)
 {
 	if (ac != 2 || !check_extension(av[1], ".cub"))
 	{
 		printf("Error\nInvalid program usage.\n");
 		return (1);
 	}
-	init_game(game);
-	if (parse_input(av[1], game))
+	init_cub(cub);
+	if (parse_input(av[1], cub))
 		return (1);
-	// if (validate_config(&game->config))
+	// if (validate_config(cub))
 	// 	return (1);
-	// if (validate_map(&game->map))
+	// if (validate_map(cub))
 	// 	return (1);
 	return (0);
 }
 
-int	check_extension(const char *path, char *extension)
+int check_extension(const char *path, char *extension)
 {
-	int	len;
+	int len;
 
 	len = ft_strlen(path);
 	if (len < 4)
@@ -39,56 +39,56 @@ int	check_extension(const char *path, char *extension)
 	return (ft_strncmp(path + len - 4, extension, 4) == 0);
 }
 
-int	parse_input(const char *file, t_game *game)
+int parse_input(const char *file, t_cub *cub)
 {
-	int	fd;
+	int fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (printf("Erro!\nUnable to open map file."), 1);
-	if (parse_config(game, fd) || validate_config(game))
+	if (parse_config(cub, fd) || validate_config(cub))
 		return (1);
 	close(fd);
 	return (0);
 }
 
-int	parse_config(t_game *game, int fd)
+int parse_config(t_cub *cub, int fd)
 {
-	char	*line;
+	char *line;
 
 	line = NULL;
 	while ((line = get_next_line(fd)))
 	{
-		if (parse_config_line(line, &game->config))
+		if (parse_config_line(line, &cub->texture))
 			return (1);
 		free(line);
 	}
 	return (0);
 }
 
-int	parse_config_line(char *line, t_config *cfg)
+int parse_config_line(char *line, t_texture *texture)
 {
 	while (*line == ' ' || *line == '\t')
 		line++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		return parse_texture(line + 2, &cfg->no_path, &cfg->has_no);
+		return parse_texture(line + 2, &texture->north, NULL);
 	if (ft_strncmp(line, "SO ", 3) == 0)
-		return parse_texture(line + 2, &cfg->so_path, &cfg->has_so);
+		return parse_texture(line + 2, &texture->south, NULL);
 	if (ft_strncmp(line, "WE ", 3) == 0)
-		return parse_texture(line + 2, &cfg->we_path, &cfg->has_we);
+		return parse_texture(line + 2, &texture->west, NULL);
 	if (ft_strncmp(line, "EA ", 3) == 0)
-		return parse_texture(line + 2, &cfg->ea_path, &cfg->has_ea);
+		return parse_texture(line + 2, &texture->east, NULL);
 	// if (ft_strncmp(line, "F ", 2) == 0)
-	// 	return parse_color(line + 1, cfg->floor_rgb, &cfg->has_floor);
+	// 	return parse_color(line + 1, texture->floor, NULL);
 	// if (ft_strncmp(line, "C ", 2) == 0)
-	// 	return parse_color(line + 1, cfg->ceil_rgb, &cfg->has_ceil);
+	// 	return parse_color(line + 1, texture->ceiling, NULL);
 	return (0);
 }
 
-int	parse_texture(char *line, char **path, bool *has_flag)
+int parse_texture(char *line, char **path, bool *has_flag)
 {
-	char	*trimmed;
-	int		len;
+	char *trimmed;
+	int len;
 
 	while (*line == ' ' || *line == '\t')
 		line++;
@@ -96,8 +96,7 @@ int	parse_texture(char *line, char **path, bool *has_flag)
 		return (printf("Erro!\nDuplicated texture.\n"), 1);
 	free(*path);
 	len = ft_strlen(line);
-	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'
-			|| line[len - 1] == '\n' || line[len - 1] == '\r'))
+	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t' || line[len - 1] == '\n' || line[len - 1] == '\r'))
 		len--;
 	trimmed = malloc(len + 1);
 	if (!trimmed)
@@ -111,27 +110,26 @@ int	parse_texture(char *line, char **path, bool *has_flag)
 	return (0);
 }
 
-int	validate_config(t_game *game)
+int validate_config(t_cub *cub)
 {
-	int	fd;
+	int fd;
 
 	fd = 0;
-	if (!game->config.has_no || !game->config.has_so
-		|| !game->config.has_we || !game->config.has_ea)
+	if (!cub->texture.north || !cub->texture.south || !cub->texture.west || !cub->texture.east)
 		return (printf("Erro!\nMissing configuration."), 1);
-	fd = open(game->config.no_path, O_RDONLY);
+	fd = open(cub->texture.north, O_RDONLY);
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing North texture file."), 1);
 	close(fd);
-	fd = open(game->config.so_path, O_RDONLY);
+	fd = open(cub->texture.south, O_RDONLY);
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing South texture file."), 1);
 	close(fd);
-	fd = open(game->config.we_path, O_RDONLY);
+	fd = open(cub->texture.west, O_RDONLY);
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing West texture file."), 1);
 	close(fd);
-	fd = open(game->config.ea_path, O_RDONLY);
+	fd = open(cub->texture.east, O_RDONLY);
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing East texture file."), 1);
 	close(fd);

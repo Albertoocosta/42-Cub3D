@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:53:47 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/10 12:49:17 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:20:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,10 @@ int		rendering(t_cub *cub);
 
 // set_mlx.c
 int		set_mlx(t_cub *cub);
+
+int	validate_move(t_cub *cub, double new_x, double new_y);
+int	rotate_player(t_cub *cub, double rotdir);
+void	set_image_pixel(t_cub *cub, int x, int y, int color);
+int	move_player(t_cub *cub);
 
 #endif

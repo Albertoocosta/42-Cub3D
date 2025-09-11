@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:00 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 11:32:53 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:19:48 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	render_frame(t_cub *cub)
 	int	x;
 	int	y;
 
-	init_img(cub, cub->map_w, cub->map_h);
+	// init_img(cub, cub->map_w, cub->map_h);
 	y = 0;
 	while (y < cub->map_h)
 	{
@@ -67,7 +67,7 @@ void	render_frame(t_cub *cub)
 
 void	rendering_ray(t_cub *cub)
 {
-	init_texture(cub);
+	// init_texture(cub);
 	init_ray(&cub->ray);
 	raycasting(&cub->player, cub);
 	render_frame(cub);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:18:23 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/27 11:33:50 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/11 13:16:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	key_press_handler(int key, t_cub *cub)
 {
-	if (key == XK_Escape)
-		exit_cub3d(cub);
+	// if (key == XK_Escape)
+	// 	exit_cub3d(cub);
 	if (key == XK_Left)
 		cub->player.rotate -= 1;
 	if (key == XK_Right)
@@ -33,8 +33,8 @@ int	key_press_handler(int key, t_cub *cub)
 
 int	key_release_handler(int key, t_cub *cub)
 {
-	if (key == XK_Escape)
-		exit_cub3d();
+	// if (key == XK_Escape)
+	// 	exit_cub3d();
 	if (key == XK_w && cub->player.move_y == 1)
 		cub->player.move_y = 0;
 	if (key == XK_s && cub->player.move_y == -1)

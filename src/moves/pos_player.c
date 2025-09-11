@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pos_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:10:51 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/28 11:06:19 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/11 13:16:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ bool	valid_position(t_cub *cub, double x, double y)
 		return (true);
 	if (wall_collision(cub, x, y))
 		return (true);
+	return (false);
 }
 
 int	validate_move(t_cub *cub, double new_x, double new_y)
