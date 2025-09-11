@@ -6,7 +6,7 @@
 /*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/28 11:39:37 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/03 00:09:06 by alberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 // Libft
 # include "./libft/libft.h"
 
+typedef struct s_texture t_texture;
 typedef struct s_player t_player;
 typedef struct s_ray t_ray;
 typedef struct s_mlx t_mlx;
@@ -56,10 +57,28 @@ enum orientation
     SO = 1,
     WE = 2,
     EA = 3,
-    F = 4, // Floor
-    C = 5, // Ceiling
+    F = 4, 
+    C = 5,
     OTHER = 100
 };
+
+typedef struct s_texture
+{
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	int				*floor;
+	int				*ceiling;
+	unsigned long	hex_floor;
+	unsigned long	hex_ceiling;
+	int				size;
+	int				index;
+	double			step;
+	double			pos;
+	int				x;
+	int				y;
+}	t_texture;
 
 typedef struct s_player
 {
@@ -102,7 +121,7 @@ typedef struct s_mlx
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
-	void	*img_addr;
+	int		*img_addr;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
@@ -112,10 +131,13 @@ typedef struct s_cub
 {
 	t_mlx		mlx;
 	char		**map;
+	int			**texture_grid;
+	int			**pixels_text;
 	int			map_h;
 	int			map_w;
 	t_player	player;
 	t_ray		ray;
+	t_texture	texture;
 }	t_cub;
 
 #endif

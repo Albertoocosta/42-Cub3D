@@ -6,7 +6,7 @@
 /*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:34:50 by alberto           #+#    #+#             */
-/*   Updated: 2025/08/26 16:51:21 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/03 00:09:24 by alberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	set_mlx(t_cub *cub)
 	cub->mlx.img_ptr = mlx_new_image(cub->mlx.mlx_ptr, WIDTH, HEIGHT);
 	if (cub->mlx.img_ptr == NULL)
 		return (ft_putstr_fd("Mlx error\n", 2), 1);
-	cub->mlx.img_addr = mlx_get_data_addr(cub->mlx.img_ptr, 
+	cub->mlx.img_addr = (int *)mlx_get_data_addr(cub->mlx.img_ptr, 
 		&cub->mlx.bits_per_pixel, &cub->mlx.size_line, &cub->mlx.endian);
 	if (cub->mlx.img_addr == NULL)
 		return (ft_putstr_fd("Mlx error\n", 2), 1);
