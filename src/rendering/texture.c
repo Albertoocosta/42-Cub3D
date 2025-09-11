@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:16:57 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 12:31:31 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:14:57 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3D.h"
+#include "cub3d.h"
 
-void	init_pixels_texture(t_cub *cub)
+void init_pixels_texture(t_cub *cub)
 {
-	//int	i;
+	// int	i;
 	(void)cub;
 
-	//if (cub->pixels_text)
-		//free_tab();
+	// if (cub->pixels_text)
+	// free_tab();
 }
-

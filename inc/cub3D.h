@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 14:26:24 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:14:02 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,11 @@ typedef struct s_texture
 	bool	has_floor;
 	bool	has_ceil;
 	int floor_rgb[3];
-	int ceiling_rgb[3];
+	int ceil_rgb[3];
 	int size;
 	int index;
-	double step;
-	double pos;
-	int x;
-	int y;
+	int texture_x;
+	int texture_y;
 } t_texture;
 
 typedef struct s_player
@@ -139,11 +137,9 @@ typedef struct s_cub
 	int map_h;	  // altura do mapa
 	int player_x; // posição inicial do player (opcional)
 	int player_y;
-	char player_dir; // direção inicial do player (N/S/E/W)
 	t_player player;
 	t_ray ray;
 	t_texture texture; // inclui paths e cores
-	int **texture_grid;
 	int **pixels_text;
 } t_cub;
 

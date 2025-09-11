@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 01:33:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 14:28:13 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:14:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	init_player_variables(t_cub *cub)
 	cub->player.dir_y = -1;
 	cub->player.plane_x = -1;
 	cub->player.plane_y = -1;
-	cub->player.direction = -1;
+	cub->player.direction = '\0';
 	cub->player.move_x = -1;
 	cub->player.move_y = -1;
 	cub->player.rotate = -1;
@@ -43,7 +43,6 @@ static void init_cub(t_cub *cub)
 	cub->map_h = 0;
 	cub->player_x = -1;
 	cub->player_y = -1;
-	cub->player_dir = '\0';
 	cub->texture.no_path = NULL;
 	cub->texture.so_path = NULL;
 	cub->texture.we_path = NULL;
@@ -54,10 +53,7 @@ static void init_cub(t_cub *cub)
 	cub->texture.has_ea = false;
 	cub->texture.size = 0;
 	cub->texture.index = 0;
-	cub->texture.step = 0;
-	cub->texture.pos = 0;
-	cub->texture.x = 0;
-	cub->texture.y = 0;
-	cub->texture_grid = NULL;
+	cub->texture.texture_x = 0;
+	cub->texture.texture_y = 0;
 	cub->pixels_text = NULL;
 }
