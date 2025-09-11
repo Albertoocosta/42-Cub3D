@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42poto.com>     +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 04:07:10 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/08/12 20:56:56 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 12:42:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_read_from_file(char *s_buffer, int fd)
+char *ft_read_from_file(char *s_buffer, int fd)
 {
-	char	*temp_buffer;
-	int		bytes_read;
+	char *temp_buffer;
+	int bytes_read;
 
 	temp_buffer = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
 	if (!temp_buffer)
@@ -38,11 +38,11 @@ char	*ft_read_from_file(char *s_buffer, int fd)
 	return (s_buffer);
 }
 
-char	*ft_extract_line(char *s_buffer)
+char *ft_extract_line(char *s_buffer)
 {
-	int		i;
-	int		k;
-	char	*line;
+	int i;
+	int k;
+	char *line;
 
 	if (s_buffer[0] == '\0')
 		return (NULL);
@@ -59,10 +59,10 @@ char	*ft_extract_line(char *s_buffer)
 	return (line);
 }
 
-char	*ft_update_data(char *s_buffer)
+char *ft_update_data(char *s_buffer)
 {
-	char	*new_data;
-	int		start;
+	char *new_data;
+	int start;
 
 	start = 0;
 	while (s_buffer[start] && s_buffer[start] != '\n')
@@ -81,10 +81,10 @@ char	*ft_update_data(char *s_buffer)
 	return (new_data);
 }
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	char		*line;
-	static char	*s_buffer;
+	char *line;
+	static char *s_buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

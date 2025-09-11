@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:00 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/02 23:54:04 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/11 11:32:53 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3D.h"
+#include "cub3D.h"
 
 void	init_ray(t_ray *ray)
 {
@@ -73,7 +73,7 @@ void	rendering_ray(t_cub *cub)
 	render_frame(cub);
 }
 
-int	rendering (t_cub *cub)
+int	rendering(t_cub *cub)
 {
 	cub->player.moved += move_player(cub);
 	if (cub->player.moved == 0)

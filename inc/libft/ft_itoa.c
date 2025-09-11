@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42poto.com>     +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:32:30 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/04/24 18:03:45 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 12:42:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_intlen(int num)
+int ft_intlen(int num)
 {
-	int	value;
+	int value;
 
 	if (num == 0)
 		return (1);
@@ -32,7 +32,7 @@ int	ft_intlen(int num)
 	return (value);
 }
 
-char	*is_negative(char *str, int n, int malloc_size)
+char *is_negative(char *str, int n, int malloc_size)
 {
 	n *= (-1);
 	str[0] = '-';
@@ -45,10 +45,10 @@ char	*is_negative(char *str, int n, int malloc_size)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char *ft_itoa(int n)
 {
-	size_t	malloc_size;
-	char	*str;
+	size_t malloc_size;
+	char *str;
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));

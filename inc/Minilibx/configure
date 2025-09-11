@@ -19,7 +19,7 @@ log_error(){
 	logging "${LIGHT_RED}error${RESET}" "$@" >&2
 }
 
-# find and print x11 header path
+# find and print	x11 header path
 get_xlib_include_path(){
 	local result=""
 

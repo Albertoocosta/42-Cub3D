@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   set_mlx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:34:50 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/03 00:09:24 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/11 11:32:43 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3D.h"
+#include "cub3D.h"
 
 int	set_mlx(t_cub *cub)
 {
- 	cub->mlx.mlx_ptr = mlx_init();
+	cub->mlx.mlx_ptr = mlx_init();
 	if (cub->mlx.mlx_ptr == NULL)
 		return (ft_putstr_fd("Mlx error\n", 2), 1);
 	cub->mlx.win_ptr = mlx_new_window(cub->mlx.mlx_ptr, WIDTH, HEIGHT, 

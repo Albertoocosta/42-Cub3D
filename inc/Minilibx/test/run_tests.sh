@@ -37,7 +37,7 @@ at_exit() {
 	fi
 	log_error "Something went wrong. Pid [$PID] has been killed. Status code $status"
 }
-# to properly quit from ctrl+c (SIGINT Signal)
+# to properly quit from ctrl+c (SIGint	Signal)
 sigint_handler(){
 	kill -s TERM "$PID"
 	wait

@@ -16,7 +16,7 @@ MiniLibX - Handle events
 .fi
 .B mlx_key_hook
 (
-.I void *win_ptr, int (*funct_ptr)(), void *param
+.I void *win_ptr, int	(*funct_ptr)(), void *param
 );
 
 .nf
@@ -24,7 +24,7 @@ MiniLibX - Handle events
 .fi
 .B mlx_mouse_hook
 (
-.I void *win_ptr, int (*funct_ptr)(), void *param
+.I void *win_ptr, int	(*funct_ptr)(), void *param
 );
 
 .nf
@@ -32,7 +32,7 @@ MiniLibX - Handle events
 .fi
 .B mlx_expose_hook
 (
-.I void *win_ptr, int (*funct_ptr)(), void *param
+.I void *win_ptr, int	(*funct_ptr)(), void *param
 );
 
 .nf
@@ -40,7 +40,7 @@ MiniLibX - Handle events
 .fi
 .B mlx_loop_hook
 (
-.I void *mlx_ptr, int (*funct_ptr)(), void *param
+.I void *mlx_ptr, int	(*funct_ptr)(), void *param
 );
 
 .SH X-WINDOW EVENTS
@@ -100,8 +100,8 @@ with fixed parameters:
 .nf
 
   expose_hook(void *param);
-  key_hook(int keycode,void *param);
-  mouse_hook(int button,int x,int y,void *param);
+  key_hook(int	keycode,void *param);
+  mouse_hook(int	button,int	x,int	y,void *param);
   loop_hook(void *param);
 
 .fi

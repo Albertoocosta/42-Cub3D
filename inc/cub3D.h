@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alberto <alberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 11:07:09 by alberto          ###   ########.fr       */
+/*   Updated: 2025/09/11 11:32:02 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdint.h>
 # include <errno.h>
 # include <sys/time.h>
+# include <assert.h>
 
 // MINILIBX
 # include <X11/keysym.h>
@@ -97,23 +98,23 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	double	camera_x;
-	double	dir_x;
-	double	dir_y;
-	int		map_x;
-	int		map_y;
-	int		step_x;
-	int		step_y;
-	double	sidedist_x;
-	double	sidedist_y;
-	double	deltadist_x;
-	double	deltadist_y;
-	double	wall_dist;
-	double	wall_x;
-	int		side;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
+	double		camera_x;
+	double		dir_x;
+	double		dir_y;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	double		wall_dist;
+	double		wall_x;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
 }	t_ray;
 
 typedef struct s_mlx

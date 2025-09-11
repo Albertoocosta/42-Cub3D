@@ -6,17 +6,17 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 04:07:17 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/07/30 05:31:40 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/10 12:42:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc_gnl(size_t nmemb, size_t size)
+void *ft_calloc_gnl(size_t nmemb, size_t size)
 {
-	unsigned char	*ptr;
-	size_t			i;
-	size_t			total_size;
+	unsigned char *ptr;
+	size_t i;
+	size_t total_size;
 
 	total_size = nmemb * size;
 	ptr = malloc(total_size);
@@ -31,9 +31,9 @@ void	*ft_calloc_gnl(size_t nmemb, size_t size)
 	return (ptr);
 }
 
-char	*ft_strcpy_nl(char *src, char *dest, int nl_stop)
+char *ft_strcpy_nl(char *src, char *dest, int nl_stop)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (src[i])
@@ -42,7 +42,7 @@ char	*ft_strcpy_nl(char *src, char *dest, int nl_stop)
 		if (nl_stop && src[i] == '\n')
 		{
 			i++;
-			break ;
+			break;
 		}
 		i++;
 	}
@@ -50,9 +50,9 @@ char	*ft_strcpy_nl(char *src, char *dest, int nl_stop)
 	return (dest);
 }
 
-int	ft_check_character(char *str, int c)
+int ft_check_character(char *str, int c)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (!str)
@@ -66,9 +66,9 @@ int	ft_check_character(char *str, int c)
 	return (0);
 }
 
-size_t	ft_strlen_gnl(const char *str)
+size_t ft_strlen_gnl(const char *str)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (str && str[i])
@@ -76,12 +76,12 @@ size_t	ft_strlen_gnl(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin_gnl(char *str1, char *str2)
+char *ft_strjoin_gnl(char *str1, char *str2)
 {
-	size_t	len;
-	int		i;
-	int		k;
-	char	*joined;
+	size_t len;
+	int i;
+	int k;
+	char *joined;
 
 	i = 0;
 	len = ft_strlen_gnl(str1) + ft_strlen_gnl(str2);
