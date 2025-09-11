@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 15:10:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:19:22 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ int parser(int ac, char **av, t_cub *cub)
 		return (1);
 	if (validate_config(cub))
 		return (1);
+	addMapToStruct(cub);
 	// if (validate_map(cub))
 	// 	return (1);
+	printf("\n\nPassei\n\n");
 	return (0);
 }
 
@@ -96,8 +98,7 @@ int parse_texture(char *line, char **path, bool *has_flag)
 		return (printf("Erro!\nDuplicated texture.\n"), 1);
 	free(*path);
 	len = ft_strlen(line);
-	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'
-			|| line[len - 1] == '\n' || line[len - 1] == '\r'))
+	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t' || line[len - 1] == '\n' || line[len - 1] == '\r'))
 		len--;
 	trimmed = malloc(len + 1);
 	if (!trimmed)
@@ -113,12 +114,10 @@ int parse_texture(char *line, char **path, bool *has_flag)
 
 int validate_config(t_cub *cub)
 {
-	int	fd;
+	int fd;
 
 	fd = 0;
-	if (!cub->texture.has_no || !cub->texture.has_so
-		|| !cub->texture.has_we || !cub->texture.has_ea
-		|| !cub->texture.has_ceil || !cub->texture.has_floor)
+	if (!cub->texture.has_no || !cub->texture.has_so || !cub->texture.has_we || !cub->texture.has_ea || !cub->texture.has_ceil || !cub->texture.has_floor)
 		return (printf("Erro!\nMissing configuration."), 1);
 	fd = open(cub->texture.no_path, O_RDONLY);
 	if (fd < 0)
@@ -155,10 +154,10 @@ int validate_config(t_cub *cub)
 // 	|| !game->config.has_we || !game->config.has_ea
 // 	|| !!game->config.has_ceil || !game->config.has_floor)
 
-int		parse_color(const char *str, int rgb[3], bool *has_flag)
+int parse_color(const char *str, int rgb[3], bool *has_flag)
 {
-	(void)rgb;
 	*has_flag = true;
 	printf("VALOR PARSE COLOR: %s\n", str);
 	return (0);
+	(void)rgb;
 }

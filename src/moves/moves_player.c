@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:09:12 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 15:14:57 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:19:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3D.h"
 
 int move_player_front(t_cub *cub)
 {
