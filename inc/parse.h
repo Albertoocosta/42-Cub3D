@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 17:47:36 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 11:07:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,24 @@ typedef struct s_config
 	bool	has_so;
 	bool	has_we;
 	bool	has_ea;
-	bool	has_floor, has_ceil;
+	bool	has_floor;
+	bool	has_ceil;
 }	t_config;
 
 typedef struct s_map
 {
-	char **grid;
-	int width, height;
-	int player_x, player_y;
-	char player_dir;
+	char	**grid;
+	int		width;
+	int		height;
+	int		player_x;
+	int		player_y;
+	char	player_dir;
 } t_map;
 
 typedef struct s_game
 {
-	t_config config;
-	t_map map;
+	t_config	config;
+	t_map		map;
 	// mais tarde: mlx_ptr, win_ptr, etc.
 	// Esta é a parte em que vamos ter que sincronizar com a estrutura que já existe no ficheiro 'cub3d.h'.
 } t_game;

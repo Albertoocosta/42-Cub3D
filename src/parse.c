@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 18:08:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 11:05:23 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	parse_input(const char *file, t_game *game)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (printf("Erro!\nUnable to open map file"), 1);
+		return (printf("Erro!\nUnable to open map file."), 1);
 	if (parse_config(game, fd) || validate_config(game))
 		return (1);
 	close(fd);
