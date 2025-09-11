@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 13:13:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:43:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int parser(int ac, char **av, t_cub *cub)
 		printf("Error\nInvalid program usage.\n");
 		return (1);
 	}
-	init_cub(cub);
+	init_struct(cub);
 	if (parse_input(av[1], cub))
 		return (1);
 	// if (validate_config(cub))
