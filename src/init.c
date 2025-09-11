@@ -6,13 +6,28 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 01:33:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 13:13:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:41:45 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void init_cub(t_cub *cub)
+static void	init_player_variables(t_cub *cub)
+{
+	cub->player.pos_x = -1;
+	cub->player.pos_y = -1;
+	cub->player.dir_x = -1;
+	cub->player.dir_y = -1;
+	cub->player.plane_x = -1;
+	cub->player.plane_y = -1;
+	cub->player.direction = -1;
+	cub->player.move_x = -1;
+	cub->player.move_y = -1;
+	cub->player.rotate = -1;
+	cub->player.moved = -1;
+}
+
+static void init_cub(t_cub *cub)
 {
 	cub->map = NULL;
 	cub->map_w = 0;
@@ -36,34 +51,10 @@ void init_cub(t_cub *cub)
 	cub->texture.y = 0;
 	cub->texture_grid = NULL;
 	cub->pixels_text = NULL;
-	// Inicialize player e ray conforme necessário
-	cub->player.pos_x = 0;
-	cub->player.pos_y = 0;
-	cub->player.dir_x = 0;
-	cub->player.dir_y = 0;
-	cub->player.plane_x = 0;
-	cub->player.plane_y = 0;
-	cub->player.direction = 0;
-	cub->player.move_x = 0;
-	cub->player.move_y = 0;
-	cub->player.rotate = 0;
-	cub->player.moved = 0;
-	// zere ray
-	cub->ray.camera_x = 0;
-	cub->ray.dir_x = 0;
-	cub->ray.dir_y = 0;
-	cub->ray.map_x = 0;
-	cub->ray.map_y = 0;
-	cub->ray.step_x = 0;
-	cub->ray.step_y = 0;
-	cub->ray.sidedist_x = 0;
-	cub->ray.sidedist_y = 0;
-	cub->ray.deltadist_x = 0;
-	cub->ray.deltadist_y = 0;
-	cub->ray.wall_dist = 0;
-	cub->ray.wall_x = 0;
-	cub->ray.side = 0;
-	cub->ray.line_height = 0;
-	cub->ray.draw_start = 0;
-	cub->ray.draw_end = 0;
+}
+
+void	init_struct(t_cub *cub)
+{
+	init_cub(cub);
+	init_player_variables(cub);
 }
