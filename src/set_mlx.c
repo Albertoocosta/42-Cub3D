@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_mlx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:34:50 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/08 18:22:11 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 11:32:43 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	set_mlx(t_cub *cub)
 	cub->mlx.img_ptr = mlx_new_image(cub->mlx.mlx_ptr, WIDTH, HEIGHT);
 	if (cub->mlx.img_ptr == NULL)
 		return (ft_putstr_fd("Mlx error\n", 2), 1);
-	cub->mlx.img_addr = mlx_get_data_addr(cub->mlx.img_ptr, 
+	cub->mlx.img_addr = (int *)mlx_get_data_addr(cub->mlx.img_ptr, 
 		&cub->mlx.bits_per_pixel, &cub->mlx.size_line, &cub->mlx.endian);
 	if (cub->mlx.img_addr == NULL)
 		return (ft_putstr_fd("Mlx error\n", 2), 1);
