@@ -1,4 +1,4 @@
-20:18 22/08/25 - Sexta-feira:
+20:18 22/08/25 - Sexta-feira: (R)
 - Alteração do nome do ".h" de "cud3d" para "cub3d" (não sei se foi intencionao ou não, se sim, avisa que mudo denovo).
 - Criação dos ficheiros "parse.h & parse.c"
 - Criação do ficheiro log "projectLog.log"
@@ -6,8 +6,17 @@
 OBS: Este modelo de log não precisa ser assim, apenas estou escrevendo caso eu não consiga responder na hora, já tem aqui um resumo do que foi mechido/criado/alterado.
 
 
-02:36 26/08/25 - Terça-feira:
+02:36 26/08/25 - Terça-feira: (C)
 - Inicio da implementação do raycasting (incompleto);
 - Criação de mais structs para auxiliar no raycasting/movimentos;
 - Como combinado, merge com a branch 'main' para termos ideia das estruturas e funções que já existem.
 - A comunicação entre os .h ainda precisa ser melhorada, ainda returna erro de 'implicit declaration' das structs.
+
+21:10 27/08/25 - Quarta-feira: (R)
+- Adição da declaração das funções no ficheiro 'raycasting.h'. (Não tenho certeza se as 
+funções adicionadas lá pertencem de facto aquele arquivo).
+- Remoção do comando '@clear' que é executado quando 'make clean/fclean'.
+- Adicionadas estruturas no ficheiro 'parse.h'. (Possivel "conflitos" (nao literalmente) nas 
+estruturas. Deve ter alguma informação duplicada uma na minha uma na tua. Se voce estiver
+lendo isto, é porque eu ainda não arrumei.)
+- 
