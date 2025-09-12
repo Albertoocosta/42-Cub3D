@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 01:33:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/12 19:52:19 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:33:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void init_texture(t_texture *texture)
 	texture->so_path = NULL;
 	texture->we_path = NULL;
 	texture->ea_path = NULL;
+	texture->floor_hex = 0;
+	texture->ceil_hex = 0;
 	texture->has_no = false;
 	texture->has_so = false;
 	texture->has_we = false;
@@ -56,7 +58,7 @@ static void init_texture(t_texture *texture)
 	texture->index = 0;
 	texture->texture_x = 0;
 	texture->texture_y = 0;
-	//texture->pixels_text = NULL; Por ser um int **, não sei se precisa de inicialização, uma vez que o rgb também não precisou.
+	//texture->pixels_text = NULL; Por ser um int **, não sei se precisa de inicialização, uma vez que os arrays do rgb também não precisaram.
 }
 
 static void init_map(t_map *map)

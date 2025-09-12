@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/12 19:35:35 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:45:24 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int parser(int ac, char **av, t_cub *cub)
 		return (1);
 	}
 	init_cub(cub);
-	if (parse_input(av[1], cub))
-		return (1);
-	if (validate_config(cub))
+	if (parse_input(av[1], cub) || validate_config(cub))
 		return (1);
 	return (0);
 }
@@ -80,6 +78,7 @@ int parse_config_line(char *line, t_texture *texture)
 		return (parse_color(line + 1, texture->floor_rgb, &texture->has_floor));
 	if (ft_strncmp(line, "C ", 2) == 0)
 		return (parse_color(line + 1, texture->ceil_rgb, &texture->has_ceil));
+	rgb_to_hex(texture);
 	return (0);
 }
 
@@ -94,7 +93,8 @@ int parse_texture(char *line, char **path, bool *has_flag)
 		return (printf("Erro!\nDuplicated texture.\n"), 1);
 	free(*path);
 	len = ft_strlen(line);
-	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t' || line[len - 1] == '\n' || line[len - 1] == '\r'))
+	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'
+		|| line[len - 1] == '\n' || line[len - 1] == '\r'))
 		len--;
 	trimmed = malloc(len + 1);
 	if (!trimmed)
@@ -113,7 +113,9 @@ int validate_config(t_cub *cub)
 	int fd;
 
 	fd = 0;
-	if (!cub->texture.has_no || !cub->texture.has_so || !cub->texture.has_we || !cub->texture.has_ea || !cub->texture.has_ceil || !cub->texture.has_floor)
+	if (!cub->texture.has_no || !cub->texture.has_so || !cub->texture.has_we
+		|| !cub->texture.has_ea || !cub->texture.has_ceil
+		|| !cub->texture.has_floor)
 		return (printf("Erro!\nMissing configuration."), 1);
 	fd = open(cub->texture.no_path, O_RDONLY);
 	if (fd < 0)
@@ -131,7 +133,6 @@ int validate_config(t_cub *cub)
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing East texture file."), 1);
 	close(fd);
-	rgb_to_hex(cub);
 	return (0);
 }
 
@@ -156,11 +157,13 @@ int parse_color(const char *str, int rgb[3], bool *has_flag)
 	return (0);
 }
 
-void rgb_to_hex(t_cub *cub) // Adinda necessário saber qual a formatação é necessária para a função da mlx.
+void rgb_to_hex(t_texture *texture)
 {
-	unsigned int hexColor;
+	texture->floor_hex = texture->floor_rgb[0] << 16
+						| texture->floor_rgb[1] << 8
+						| texture->floor_rgb[2];
 
-	hexColor = (cub->texture.ceil_rgb[0] << 16) | (cub->texture.ceil_rgb[1] << 8) | cub->texture.ceil_rgb[2];
-	cub->texture.ceil_hex = hexColor;
-	printf("Hexadecimal color = %u\n", cub->texture.ceil_hex);
+	texture->ceil_hex = texture->ceil_rgb[0] << 16
+						| texture->ceil_rgb[1] << 8
+						| texture->ceil_rgb[2];
 }

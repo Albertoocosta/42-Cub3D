@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/12 19:48:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:32:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,29 +63,6 @@ enum orientation
 	OTHER = 100
 };
 
-typedef struct s_texture
-{
-	char *no_path;
-	char *so_path;
-	char *we_path;
-	char *ea_path;
-	bool has_no;
-	bool has_so;
-	bool has_we;
-	bool has_ea;
-	bool has_floor;
-	bool has_ceil;
-	int floor_rgb[3];
-	int ceil_rgb[3];
-	int floor_hex;
-	int ceil_hex;
-	int size;
-	int index;
-	int texture_x;
-	int texture_y;
-	int	**pixels_text;
-} t_texture;
-
 typedef struct s_player
 {
 	double pos_x;
@@ -132,13 +109,6 @@ typedef struct s_mlx
 	int size_line;
 	int endian;
 } t_mlx;
-
-typedef struct s_map
-{
-	char **map;
-	int map_w;
-	int map_h;
-} t_map;
 
 typedef struct s_cub
 {
