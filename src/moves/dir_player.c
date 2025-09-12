@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   dir_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:09:58 by alberto           #+#    #+#             */
 /*   Updated: 2025/09/12 19:31:38 by rde-fari         ###   ########.fr       */
