@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/12 19:39:16 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:48:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_texture
 	int index;
 	int texture_x;
 	int texture_y;
+	int	**pixels_text;
 } t_texture;
 
 typedef struct s_player

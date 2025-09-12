@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 01:33:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/12 19:22:44 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:52:19 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 static void init_player_variables(t_player *player);
 static void init_texture(t_texture *texture);
 static void init_map(t_map *map);
+static void init_ray(t_ray *ray);
 
 void init_cub(t_cub *cub)
 {
-	init_map(&cub->map);
 	init_player_variables(&cub->player);
 	init_texture(&cub->texture);
+	init_map(&cub->map);
+	init_ray(&cub->ray);
 }
 
 static void init_player_variables(t_player *player)
@@ -54,6 +56,7 @@ static void init_texture(t_texture *texture)
 	texture->index = 0;
 	texture->texture_x = 0;
 	texture->texture_y = 0;
+	//texture->pixels_text = NULL; Por ser um int **, não sei se precisa de inicialização, uma vez que o rgb também não precisou.
 }
 
 static void init_map(t_map *map)
@@ -61,4 +64,25 @@ static void init_map(t_map *map)
 	map->map = NULL;
 	map->map_w = 0;
 	map->map_h = 0;
+}
+
+static void init_ray(t_ray *ray)
+{
+	ray->camera_x = 0;
+	ray->dir_x = 0;
+	ray->dir_y = 0;
+	ray->map_x = 0;
+	ray->map_y = 0;
+	ray->step_x = 0;
+	ray->step_y = 0;
+	ray->sidedist_x = 0;
+	ray->sidedist_y = 0;
+	ray->deltadist_x = 0;
+	ray->deltadist_y = 0;
+	ray->wall_dist = 0;
+	ray->wall_x = 0;
+	ray->side = 0;
+	ray->line_height = 0;
+	ray->draw_start = 0;
+	ray->draw_end = 0;
 }

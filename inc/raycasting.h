@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:53:47 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 15:19:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:44:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void line_height_calc(t_ray *ray, t_player *player);
 int raycasting(t_player *player, t_cub *cub);
 
 // rendering.c
-void init_ray(t_ray *ray);
 void rendering_ray(t_cub *cub);
 int rendering(t_cub *cub);
 
