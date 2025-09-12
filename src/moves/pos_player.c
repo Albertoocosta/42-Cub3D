@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pos_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:10:51 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 15:19:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:38:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,16 @@
 
 bool wall_collision(t_cub *cub, double x, double y)
 {
-	int new_x;
-	int new_y;
-
-	new_x = (int)x;	 
-	new_y = (int)y;
-	if (new_y < 0 || new_y >= cub->map_h
-		|| new_x < 0 || new_x >= cub->map_w)
-        return (true);
-	if (cub->map[new_x][new_y] == '1')
+	if (cub->map.map[(int)x][(int)y] == '0')
 		return (true);
 	return (false);
 }
 
 bool valid_position_in_map(t_cub *cub, double x, double y)
 {
-	if (x < 0.25 || x >= cub->map_w - 1.25)
+	if (x < 0.25 || x >= cub->map.map_w - 1.25)
 		return (false);
-	if (y < 0.25 || y >= cub->map_h - 0.25)
+	if (y < 0.25 || y >= cub->map.map_h - 0.25)
 		return (false);
 	return (true);
 }

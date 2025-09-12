@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 20:05:41 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:35:35 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,11 @@ int parser(int ac, char **av, t_cub *cub)
 		printf("Error\nInvalid program usage.\n");
 		return (1);
 	}
-	init_struct(cub);
+	init_cub(cub);
 	if (parse_input(av[1], cub))
 		return (1);
 	if (validate_config(cub))
 		return (1);
-	// addMapToStruct(cub);
-	// if (validate_map(cub))
-	// 	return (1);
 	return (0);
 }
 
@@ -47,7 +44,7 @@ int parse_input(const char *file, t_cub *cub)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (printf("Erro!\nUnable to open map file."), 1);
-	if (parse_config(cub, fd) || validate_config(cub))
+	if (parse_config(cub, fd))
 		return (1);
 	close(fd);
 	return (0);
@@ -134,13 +131,14 @@ int validate_config(t_cub *cub)
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing East texture file."), 1);
 	close(fd);
+	rgb_to_hex(cub);
 	return (0);
 }
 
 int parse_color(const char *str, int rgb[3], bool *has_flag)
 {
-	char	**char_rgb;
-	int		i;
+	char **char_rgb;
+	int i;
 
 	if (*has_flag)
 		return (printf("Erro!\nDuplicated RGB.\n"), 1);
@@ -156,4 +154,13 @@ int parse_color(const char *str, int rgb[3], bool *has_flag)
 	}
 	*has_flag = true;
 	return (0);
+}
+
+void rgb_to_hex(t_cub *cub) // Adinda necessário saber qual a formatação é necessária para a função da mlx.
+{
+	unsigned int hexColor;
+
+	hexColor = (cub->texture.ceil_rgb[0] << 16) | (cub->texture.ceil_rgb[1] << 8) | cub->texture.ceil_rgb[2];
+	cub->texture.ceil_hex = hexColor;
+	printf("Hexadecimal color = %u\n", cub->texture.ceil_hex);
 }

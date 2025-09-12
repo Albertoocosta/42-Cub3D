@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 20:13:36 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:39:16 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_player t_player;
 typedef struct s_ray t_ray;
 typedef struct s_mlx t_mlx;
 typedef struct s_cub t_cub;
+typedef struct s_map t_map;
 
 // Project
 #include "parse.h"
@@ -76,8 +77,8 @@ typedef struct s_texture
 	bool has_ceil;
 	int floor_rgb[3];
 	int ceil_rgb[3];
-	double floor_hex;
-	double ceil_hex;
+	int floor_hex;
+	int ceil_hex;
 	int size;
 	int index;
 	int texture_x;
@@ -92,7 +93,7 @@ typedef struct s_player
 	double dir_y;
 	double plane_x;
 	double plane_y;
-	char direction;
+	char spawn_dir;
 	int move_x;
 	int move_y;
 	int rotate;
@@ -131,18 +132,20 @@ typedef struct s_mlx
 	int endian;
 } t_mlx;
 
-typedef struct s_cub
+typedef struct s_map
 {
-	t_mlx mlx;
 	char **map;
 	int map_w;
 	int map_h;
-	int player_x;
-	int player_y;
+} t_map;
+
+typedef struct s_cub
+{
+	t_mlx mlx;
 	t_player player;
 	t_ray ray;
 	t_texture texture;
-	int **pixels_text;
+	t_map map;
 } t_cub;
 
 #endif

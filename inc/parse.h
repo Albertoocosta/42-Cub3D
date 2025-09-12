@@ -6,7 +6,7 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/11 18:15:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:35:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ int parse_texture(char *line, char **path, bool *has_flag);
 
 int parse_color(const char *str, int rgb[3], bool *has_flag);
 int parse_map(t_cub *cub, int fd);
-void init_struct(t_cub *cub);
+void init_cub(t_cub *cub);
 
 int parse_color(const char *str, int rgb[3], bool *has_flag);
-void	addMapToStruct(t_cub *cub);
-
+void rgb_to_hex(t_cub *cub);
 
 #endif
