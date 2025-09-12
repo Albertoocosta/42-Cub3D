@@ -6,7 +6,7 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 16:49:53 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/09/11 20:13:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,16 @@ typedef struct s_texture
 	char *so_path;
 	char *we_path;
 	char *ea_path;
-	bool	has_no;
-	bool	has_so;
-	bool	has_we;
-	bool	has_ea;
-	bool	has_floor;
-	bool	has_ceil;
+	bool has_no;
+	bool has_so;
+	bool has_we;
+	bool has_ea;
+	bool has_floor;
+	bool has_ceil;
 	int floor_rgb[3];
 	int ceil_rgb[3];
+	double floor_hex;
+	double ceil_hex;
 	int size;
 	int index;
 	int texture_x;

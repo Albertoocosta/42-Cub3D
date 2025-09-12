@@ -6,13 +6,13 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:52:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 15:24:16 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:19:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	fill_ray(int x, t_ray *ray, t_player *player)
+void fill_ray(int x, t_ray *ray, t_player *player)
 {
 	init_ray(ray);
 	ray->camera_x = 2 * x / (double)WIDTH - 1;
@@ -24,7 +24,7 @@ void	fill_ray(int x, t_ray *ray, t_player *player)
 	ray->deltadist_y = fabs(1 / ray->dir_y);
 }
 
-void	set_dda(t_ray *ray, t_player *player)
+void set_dda(t_ray *ray, t_player *player)
 {
 	if (ray->dir_x < 0)
 	{
@@ -48,7 +48,7 @@ void	set_dda(t_ray *ray, t_player *player)
 	}
 }
 
-void	run_dda(t_cub *cub, t_ray *ray)
+void run_dda(t_cub *cub, t_ray *ray)
 {
 	int hit;
 
@@ -74,7 +74,7 @@ void	run_dda(t_cub *cub, t_ray *ray)
 	}
 }
 
-void	line_height_calc(t_ray *ray, t_player *player)
+void line_height_calc(t_ray *ray, t_player *player)
 {
 	if (ray->side == 0)
 		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
@@ -94,7 +94,7 @@ void	line_height_calc(t_ray *ray, t_player *player)
 	ray->wall_x -= floor(ray->wall_x);
 }
 
-int	raycasting(t_player *player, t_cub *cub)
+int raycasting(t_player *player, t_cub *cub)
 {
 	int x;
 	t_ray ray;
