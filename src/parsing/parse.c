@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/12 20:45:24 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 22:47:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,9 @@
 int parser(int ac, char **av, t_cub *cub)
 {
 	if (ac != 2 || !check_extension(av[1], ".cub"))
-	{
-		printf("Error\nInvalid program usage.\n");
-		return (1);
-	}
+		return (printf("Error\nInvalid program usage.\n"), 1);
 	init_cub(cub);
-	if (parse_input(av[1], cub) || validate_config(cub))
+	if (parse_input(av[1], cub) || validate_config(cub) || ensure_bottom_map(&cub->map, av[1]))
 		return (1);
 	return (0);
 }
@@ -93,8 +90,7 @@ int parse_texture(char *line, char **path, bool *has_flag)
 		return (printf("Erro!\nDuplicated texture.\n"), 1);
 	free(*path);
 	len = ft_strlen(line);
-	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'
-		|| line[len - 1] == '\n' || line[len - 1] == '\r'))
+	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t' || line[len - 1] == '\n' || line[len - 1] == '\r'))
 		len--;
 	trimmed = malloc(len + 1);
 	if (!trimmed)
@@ -113,9 +109,7 @@ int validate_config(t_cub *cub)
 	int fd;
 
 	fd = 0;
-	if (!cub->texture.has_no || !cub->texture.has_so || !cub->texture.has_we
-		|| !cub->texture.has_ea || !cub->texture.has_ceil
-		|| !cub->texture.has_floor)
+	if (!cub->texture.has_no || !cub->texture.has_so || !cub->texture.has_we || !cub->texture.has_ea || !cub->texture.has_ceil || !cub->texture.has_floor)
 		return (printf("Erro!\nMissing configuration."), 1);
 	fd = open(cub->texture.no_path, O_RDONLY);
 	if (fd < 0)
@@ -159,11 +153,38 @@ int parse_color(const char *str, int rgb[3], bool *has_flag)
 
 void rgb_to_hex(t_texture *texture)
 {
-	texture->floor_hex = texture->floor_rgb[0] << 16
-						| texture->floor_rgb[1] << 8
-						| texture->floor_rgb[2];
+	texture->floor_hex = texture->floor_rgb[0] << 16 | texture->floor_rgb[1] << 8 | texture->floor_rgb[2];
 
-	texture->ceil_hex = texture->ceil_rgb[0] << 16
-						| texture->ceil_rgb[1] << 8
-						| texture->ceil_rgb[2];
+	texture->ceil_hex = texture->ceil_rgb[0] << 16 | texture->ceil_rgb[1] << 8 | texture->ceil_rgb[2];
 }
+
+// static char **ft_file_to_array(char *file);
+
+// int ensure_bottom_map(t_map *map, char *file)
+// {
+
+// }
+
+// static char **ft_file_to_array(char *file)
+// {
+// 	char **ret_arr;
+// 	char *line;
+// 	int fd;
+// 	int i;
+
+// 	ret_arr = malloc(sizeof(char *) * (ft_file_size(file) + 1));
+// 	if (!ret_arr)
+// 		return (NULL);
+// 	fd = open(file, O_RDONLY);
+// 	if (fd == -1)
+// 		return (NULL);
+// 	i = 0;
+// 	while ((line = get_next_line(fd)))
+// 	{
+// 		ret_arr[i] = ft_strdup(line);
+// 		i++;
+// 		free(line);
+// 	}
+// 	close(fd);
+// 	return (ret_arr);
+// }

@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_file_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/12 20:56:31 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/09/12 21:49:12 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/09/12 22:05:55 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+int	ft_file_size(const char *path)
 {
-	t_cub cub;
+	int		fd;
+	int		total_size;
+	char	*line;
 
-	if (parser(ac, av, &cub))
-		return (1);
-		
-		// if (set_mlx(&cub))
-		// 	return (1);
-		// mlx_loop_hook (cub.mlx.mlx_ptr, rendering, &cub);
-		// mlx_loop(cub.mlx.mlx_ptr);
-	printf("all clear and running!");
-	return (0);
+	line = NULL;
+	total_size = 0;
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	while ((line = get_next_line(fd)))
+	{
+		total_size++;
+		free(line);
+	}
+	if (line)
+		free(line);
+	close(fd);
+	return (total_size);
 }

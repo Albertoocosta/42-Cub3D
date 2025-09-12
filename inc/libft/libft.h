@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 20:41:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 12:42:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 21:54:47 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int ft_atoi(const char *nptr);
 int ft_array_size(char **array);
 int ft_strnlen(char *str, int c);
 int ft_strcmp(char *s1, char *s2);
+int	ft_file_size(const char *path);
 int ft_matrix_finder(char *str, int c);
 int ft_str_chr_count(char *str, int c);
 int ft_cstrcmp(const char *s1, const char *s2);
