@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:28:48 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 19:31:45 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:42:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ int	parse_config(t_cub *cub, int fd)
 	char	*line;
 
 	line = NULL;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (parse_config_line(line, &cub->texture))
 			return (1);
 		free(line);
+		line = get_next_line(fd);
 	}
 	return (0);
 }
@@ -31,13 +33,13 @@ int	parse_config_line(char *line, t_texture *texture)
 	while (*line == ' ' || *line == '\t')
 		line++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		return parse_texture(line + 2, &texture->no_path, &texture->has_no);
+		return (parse_texture(line + 2, &texture->no_path, &texture->has_no));
 	if (ft_strncmp(line, "SO ", 3) == 0)
-		return parse_texture(line + 2, &texture->so_path, &texture->has_so);
+		return (parse_texture(line + 2, &texture->so_path, &texture->has_so));
 	if (ft_strncmp(line, "WE ", 3) == 0)
-		return parse_texture(line + 2, &texture->we_path, &texture->has_we);
+		return (parse_texture(line + 2, &texture->we_path, &texture->has_we));
 	if (ft_strncmp(line, "EA ", 3) == 0)
-		return parse_texture(line + 2, &texture->ea_path, &texture->has_ea);
+		return (parse_texture(line + 2, &texture->ea_path, &texture->has_ea));
 	if (ft_strncmp(line, "F ", 2) == 0)
 		return (parse_color(line + 1, texture->floor_rgb, &texture->has_floor));
 	if (ft_strncmp(line, "C ", 2) == 0)
@@ -57,7 +59,8 @@ int	parse_texture(char *line, char **path, bool *has_flag)
 		return (printf("Erro!\nDuplicated texture.\n"), 1);
 	free(*path);
 	len = ft_strlen(line);
-	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t' || line[len - 1] == '\n' || line[len - 1] == '\r'))
+	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'
+			|| line[len - 1] == '\n' || line[len - 1] == '\r'))
 		len--;
 	trimmed = malloc(len + 1);
 	if (!trimmed)
