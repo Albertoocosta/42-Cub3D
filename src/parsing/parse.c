@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 19:30:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:34:22 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ int	validate_config(t_cub *cub)
 	int	fd;
 
 	fd = 0;
-	if (!cub->texture.has_no || !cub->texture.has_so || !cub->texture.has_we || !cub->texture.has_ea || !cub->texture.has_ceil || !cub->texture.has_floor)
+	if (!cub->texture.has_no || !cub->texture.has_so
+		|| !cub->texture.has_we || !cub->texture.has_ea
+		|| !cub->texture.has_ceil || !cub->texture.has_floor)
 		return (printf("Erro!\nMissing configuration."), 1);
 	fd = open(cub->texture.no_path, O_RDONLY);
 	if (fd < 0)

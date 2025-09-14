@@ -6,15 +6,15 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:28:48 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 19:30:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:31:45 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int parse_config(t_cub *cub, int fd)
+int	parse_config(t_cub *cub, int fd)
 {
-	char *line;
+	char	*line;
 
 	line = NULL;
 	while ((line = get_next_line(fd)))
@@ -26,7 +26,7 @@ int parse_config(t_cub *cub, int fd)
 	return (0);
 }
 
-int parse_config_line(char *line, t_texture *texture)
+int	parse_config_line(char *line, t_texture *texture)
 {
 	while (*line == ' ' || *line == '\t')
 		line++;
@@ -46,10 +46,10 @@ int parse_config_line(char *line, t_texture *texture)
 	return (0);
 }
 
-int parse_texture(char *line, char **path, bool *has_flag)
+int	parse_texture(char *line, char **path, bool *has_flag)
 {
-	char *trimmed;
-	int len;
+	char	*trimmed;
+	int		len;
 
 	while (*line == ' ' || *line == '\t')
 		line++;
@@ -71,10 +71,10 @@ int parse_texture(char *line, char **path, bool *has_flag)
 	return (0);
 }
 
-int parse_color(const char *str, int rgb[3], bool *has_flag)
+int	parse_color(const char *str, int rgb[3], bool *has_flag)
 {
-	char **char_rgb;
-	int i;
+	char	**char_rgb;
+	int		i;
 
 	if (*has_flag)
 		return (printf("Erro!\nDuplicated RGB.\n"), 1);
