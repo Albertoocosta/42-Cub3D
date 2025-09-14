@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 15:19:33 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 17:56:41 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ int parser(int ac, char **av, t_cub *cub)
 	init_cub(cub);
 	if (parse_input(av[1], cub) || validate_config(cub))
 		return (1);
-	if (map_on_bottom(av[1]))
-		return (1);
 	return (0);
 }
-
-
 
 int parse_input(const char *file, t_cub *cub)
 {
@@ -131,6 +127,11 @@ int parse_color(const char *str, int rgb[3], bool *has_flag)
 
 	if (*has_flag)
 		return (printf("Erro!\nDuplicated RGB.\n"), 1);
+	while (*str == ' ' || *str == '\t')
+		str++;
+	printf("STRING = %s\n", str);
+	if (!ft_isrgb(str))
+		return (printf("Erro!\nInvalid RGB format.\n"), 1);
 	char_rgb = ft_split(str, ',');
 	i = 0;
 	while (i < 3)
@@ -138,9 +139,13 @@ int parse_color(const char *str, int rgb[3], bool *has_flag)
 		if (ft_atoi(char_rgb[i]) >= 0 && ft_atoi(char_rgb[i]) <= 255)
 			rgb[i + 1] = ft_atoi(char_rgb[i]);
 		else
+		{
+			free_splits(char_rgb);
 			return (printf("Erro!\nInvalid RGB color.\n"), 1);
+		}
 		i++;
 	}
 	*has_flag = true;
+	free_splits(char_rgb);
 	return (0);
 }

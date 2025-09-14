@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 15:16:44 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 15:18:50 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 17:08:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,16 @@ int check_extension(const char *path, char *extension)
 	if (len < 4)
 		return (0);
 	return (ft_strncmp(path + len - 4, extension, 4) == 0);
+}
+
+int	verify_rgb(const char *rgb)
+{
+	int		i;
+
+	i = 0;
+	while (rgb[i] != '\n')
+	{
+		
+	}
+	return (0);
 }

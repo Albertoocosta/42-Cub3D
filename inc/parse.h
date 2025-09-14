@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 15:18:29 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 15:39:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct s_texture
 	int	**pixels_text;
 } t_texture;
 
-
 int parser(int ac, char **av, t_cub *cub);
 int check_extension(const char *file, char *extension);
 int parse_input(const char *file, t_cub *cub);
@@ -62,5 +61,7 @@ void rgb_to_hex(t_texture *texture);
 
 bool is_map_line(const char *line);
 int map_on_bottom(const char *file);
+
+int	verify_rgb(const char *rgb);
 
 #endif
