@@ -6,7 +6,7 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:16:57 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/14 17:36:48 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/09/14 18:00:23 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_texture_pixel(t_cub *cub)
 	if (!cub->texture.pixels_text)
 		printf("correct exit"); //clean_exit(cub, msg_error(NULL, ERR_MALLOC, 1));
 	i = 0;
-	while (i < cub->map.map_h)
+	while (i < HEIGHT)
 	{
 		cub->texture.pixels_text[i] = ft_calloc(WIDTH + 1, 
 			sizeof * cub->texture.pixels_text);

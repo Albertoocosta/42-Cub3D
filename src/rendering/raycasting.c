@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:52:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/12 19:57:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 18:00:10 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void run_dda(t_cub *cub, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_y < 0.25 || ray->map_x < 0.25 || ray->map_y > cub->map.map_h - 0.25 || ray->map_x > cub->map.map_w - 1.25)
+		if (ray->map_y < 0.25 || ray->map_x < 0.25 || ray->map_y > HEIGHT - 0.25 || ray->map_x > WIDTH - 1.25)
 			break;
 		else if (cub->map.map[ray->map_y][ray->map_x] > '0')
 			hit = 1;
