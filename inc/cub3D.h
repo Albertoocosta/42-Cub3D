@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 13:17:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 20:32:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_player t_player;
 typedef struct s_ray t_ray;
 typedef struct s_mlx t_mlx;
 typedef struct s_cub t_cub;
+typedef struct s_map t_map;
 
 // Project
 #include "parse.h"
@@ -62,24 +63,6 @@ enum orientation
 	OTHER = 100
 };
 
-typedef struct s_texture
-{
-	char *north;
-	char *south;
-	char *west;
-	char *east;
-	int *floor;
-	int *ceiling;
-	unsigned long hex_floor;
-	unsigned long hex_ceiling;
-	int size;
-	int index;
-	double step;
-	double pos;
-	int x;
-	int y;
-} t_texture;
-
 typedef struct s_player
 {
 	double pos_x;
@@ -88,7 +71,7 @@ typedef struct s_player
 	double dir_y;
 	double plane_x;
 	double plane_y;
-	char direction;
+	char spawn_dir;
 	int move_x;
 	int move_y;
 	int rotate;
@@ -130,17 +113,10 @@ typedef struct s_mlx
 typedef struct s_cub
 {
 	t_mlx mlx;
-	char **map;	  // grid do mapa
-	int map_w;	  // largura do mapa
-	int map_h;	  // altura do mapa
-	int player_x; // posição inicial do player (opcional)
-	int player_y;
-	char player_dir; // direção inicial do player (N/S/E/W)
 	t_player player;
 	t_ray ray;
-	t_texture texture; // inclui paths e cores
-	int **texture_grid;
-	int **pixels_text;
+	t_texture texture;
+	t_map map;
 } t_cub;
 
 #endif

@@ -6,15 +6,14 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:52:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/10 12:50:20 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:57:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	fill_ray(int x, t_ray *ray, t_player *player)
+void fill_ray(int x, t_ray *ray, t_player *player)
 {
-	init_ray(ray);
 	ray->camera_x = 2 * x / (double)WIDTH - 1;
 	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
 	ray->dir_x = player->dir_y + player->plane_y * ray->camera_x;
@@ -24,7 +23,7 @@ void	fill_ray(int x, t_ray *ray, t_player *player)
 	ray->deltadist_y = fabs(1 / ray->dir_y);
 }
 
-void	set_dda(t_ray *ray, t_player *player)
+void set_dda(t_ray *ray, t_player *player)
 {
 	if (ray->dir_x < 0)
 	{
@@ -48,7 +47,7 @@ void	set_dda(t_ray *ray, t_player *player)
 	}
 }
 
-void	run_dda(t_cub *cub, t_ray *ray)
+void run_dda(t_cub *cub, t_ray *ray)
 {
 	int hit;
 
@@ -67,14 +66,14 @@ void	run_dda(t_cub *cub, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_y < 0.25 || ray->map_x < 0.25 || ray->map_y > cub->map_h - 0.25 || ray->map_x > cub->map_w - 1.25)
+		if (ray->map_y < 0.25 || ray->map_x < 0.25 || ray->map_y > cub->map.map_h - 0.25 || ray->map_x > cub->map.map_w - 1.25)
 			break;
-		else if (cub->map[ray->map_y][ray->map_x] > '0')
+		else if (cub->map.map[ray->map_y][ray->map_x] > '0')
 			hit = 1;
 	}
 }
 
-void	line_height_calc(t_ray *ray, t_player *player)
+void line_height_calc(t_ray *ray, t_player *player)
 {
 	if (ray->side == 0)
 		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
@@ -94,7 +93,7 @@ void	line_height_calc(t_ray *ray, t_player *player)
 	ray->wall_x -= floor(ray->wall_x);
 }
 
-int	raycasting(t_player *player, t_cub *cub)
+int raycasting(t_player *player, t_cub *cub)
 {
 	int x;
 	t_ray ray;

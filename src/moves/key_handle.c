@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   key_handle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:18:23 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 13:16:00 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/11 15:19:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3D.h"
+#include "cub3D.h"
 
-int	key_press_handler(int key, t_cub *cub)
+int key_press_handler(int key, t_cub *cub)
 {
 	// if (key == XK_Escape)
 	// 	exit_cub3d(cub);
@@ -31,7 +31,7 @@ int	key_press_handler(int key, t_cub *cub)
 	return (0);
 }
 
-int	key_release_handler(int key, t_cub *cub)
+int key_release_handler(int key, t_cub *cub)
 {
 	// if (key == XK_Escape)
 	// 	exit_cub3d();
@@ -49,4 +49,3 @@ int	key_release_handler(int key, t_cub *cub)
 		cub->player.rotate = 0;
 	return (0);
 }
-

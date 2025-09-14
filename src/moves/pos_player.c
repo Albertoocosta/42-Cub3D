@@ -6,29 +6,29 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:10:51 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/11 13:16:32 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 19:38:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3D.h"
+#include "cub3D.h"
 
-bool	wall_collision(t_cub *cub, double x, double y)
+bool wall_collision(t_cub *cub, double x, double y)
 {
-	if (cub->map[(int)x][(int)y] == '0')
+	if (cub->map.map[(int)x][(int)y] == '0')
 		return (true);
 	return (false);
 }
 
-bool	valid_position_in_map(t_cub *cub, double x, double y)
+bool valid_position_in_map(t_cub *cub, double x, double y)
 {
-	if (x < 0.25 || x >= cub->map_w - 1.25)
+	if (x < 0.25 || x >= cub->map.map_w - 1.25)
 		return (false);
-	if (y < 0.25 || y >= cub->map_h - 0.25)
+	if (y < 0.25 || y >= cub->map.map_h - 0.25)
 		return (false);
-	return(true);
+	return (true);
 }
 
-bool	valid_position(t_cub *cub, double x, double y)
+bool valid_position(t_cub *cub, double x, double y)
 {
 	if (valid_position_in_map(cub, x, y))
 		return (true);
@@ -37,9 +37,9 @@ bool	valid_position(t_cub *cub, double x, double y)
 	return (false);
 }
 
-int	validate_move(t_cub *cub, double new_x, double new_y)
+int validate_move(t_cub *cub, double new_x, double new_y)
 {
-	int	moved;
+	int moved;
 
 	moved = 0;
 	if (valid_position(cub, new_x, cub->player.pos_y))

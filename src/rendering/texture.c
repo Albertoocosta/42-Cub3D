@@ -6,13 +6,13 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:16:57 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/13 09:55:57 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/09/14 15:16:57 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3D.h"
+#include "cub3D.h"
 
-void	init_pixels_texture(t_cub *cub)
+void init_pixels_texture(t_cub *cub)
 {
 	int	i;
 
