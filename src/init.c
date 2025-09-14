@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 01:33:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/12 20:33:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 14:49:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 static void init_player_variables(t_player *player);
 static void init_texture(t_texture *texture);
 static void init_map(t_map *map);
-static void init_ray(t_ray *ray);
 
 void init_cub(t_cub *cub)
 {
 	init_player_variables(&cub->player);
 	init_texture(&cub->texture);
 	init_map(&cub->map);
-	init_ray(&cub->ray);
 }
 
 static void init_player_variables(t_player *player)
@@ -68,7 +66,7 @@ static void init_map(t_map *map)
 	map->map_h = 0;
 }
 
-static void init_ray(t_ray *ray)
+void init_ray(t_ray *ray)
 {
 	ray->camera_x = 0;
 	ray->dir_x = 0;
