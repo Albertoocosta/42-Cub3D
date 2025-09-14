@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 19:08:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:30:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int parser(int ac, char **av, t_cub *cub)
+int	parser(int ac, char **av, t_cub *cub)
 {
 	if (ac != 2 || !check_extension(av[1], ".cub"))
 		return (printf("Error\nInvalid program usage.\n"), 1);
@@ -24,9 +24,9 @@ int parser(int ac, char **av, t_cub *cub)
 	return (0);
 }
 
-int parse_input(const char *file, t_cub *cub)
+int	parse_input(const char *file, t_cub *cub)
 {
-	int fd;
+	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -37,68 +37,9 @@ int parse_input(const char *file, t_cub *cub)
 	return (0);
 }
 
-int parse_config(t_cub *cub, int fd)
+int	validate_config(t_cub *cub)
 {
-	char *line;
-
-	line = NULL;
-	while ((line = get_next_line(fd)))
-	{
-		if (parse_config_line(line, &cub->texture))
-			return (1);
-		free(line);
-	}
-	return (0);
-}
-
-int parse_config_line(char *line, t_texture *texture)
-{
-	while (*line == ' ' || *line == '\t')
-		line++;
-	if (ft_strncmp(line, "NO ", 3) == 0)
-		return parse_texture(line + 2, &texture->no_path, &texture->has_no);
-	if (ft_strncmp(line, "SO ", 3) == 0)
-		return parse_texture(line + 2, &texture->so_path, &texture->has_so);
-	if (ft_strncmp(line, "WE ", 3) == 0)
-		return parse_texture(line + 2, &texture->we_path, &texture->has_we);
-	if (ft_strncmp(line, "EA ", 3) == 0)
-		return parse_texture(line + 2, &texture->ea_path, &texture->has_ea);
-	if (ft_strncmp(line, "F ", 2) == 0)
-		return (parse_color(line + 1, texture->floor_rgb, &texture->has_floor));
-	if (ft_strncmp(line, "C ", 2) == 0)
-		return (parse_color(line + 1, texture->ceil_rgb, &texture->has_ceil));
-	rgb_to_hex(texture);
-	return (0);
-}
-
-int parse_texture(char *line, char **path, bool *has_flag)
-{
-	char *trimmed;
-	int len;
-
-	while (*line == ' ' || *line == '\t')
-		line++;
-	if (*has_flag)
-		return (printf("Erro!\nDuplicated texture.\n"), 1);
-	free(*path);
-	len = ft_strlen(line);
-	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t' || line[len - 1] == '\n' || line[len - 1] == '\r'))
-		len--;
-	trimmed = malloc(len + 1);
-	if (!trimmed)
-		return (printf("Erro!\nFailed to allocate memory for texture.\n"), 1);
-	ft_strncpy(trimmed, line, len);
-	trimmed[len] = '\0';
-	*path = trimmed;
-	if (!check_extension(*path, ".xpm"))
-		return (printf("Erro!\nTexture must be a '.xpm' file."), 1);
-	*has_flag = true;
-	return (0);
-}
-
-int validate_config(t_cub *cub)
-{
-	int fd;
+	int	fd;
 
 	fd = 0;
 	if (!cub->texture.has_no || !cub->texture.has_so || !cub->texture.has_we || !cub->texture.has_ea || !cub->texture.has_ceil || !cub->texture.has_floor)
@@ -119,34 +60,5 @@ int validate_config(t_cub *cub)
 	if (fd < 0)
 		return (printf("Erro!\nInvalid or missing East texture file."), 1);
 	close(fd);
-	return (0);
-}
-
-int parse_color(const char *str, int rgb[3], bool *has_flag)
-{
-	char **char_rgb;
-	int i;
-
-	if (*has_flag)
-		return (printf("Erro!\nDuplicated RGB.\n"), 1);
-	while (*str == ' ' || *str == '\t')
-		str++;
-	if (!ft_isrgb(str))
-		return (printf("Erro!\nInvalid RGB format.\n"), 1);
-	char_rgb = ft_split(str, ',');
-	i = 0;
-	while (i < 3)
-	{
-		if (ft_atoi(char_rgb[i]) >= 0 && ft_atoi(char_rgb[i]) <= 255)
-			rgb[i + 1] = ft_atoi(char_rgb[i]);
-		else
-		{
-			free_splits(char_rgb);
-			return (printf("Erro!\nInvalid RGB color.\n"), 1);
-		}
-		i++;
-	}
-	*has_flag = true;
-	free_splits(char_rgb);
 	return (0);
 }
