@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/13 17:39:23 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 15:47:22 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ static int map_on_bottom(const char *file)
 		{
 			free(line);
 			close(fd);
-			return (printf("Erro!\nInvalid map formatting."), 1);
+			return (printf("Erro!\nInvalid map formatting.\n"), 1);
 		}
 		free(line);
 	}
