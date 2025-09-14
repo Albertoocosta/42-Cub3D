@@ -6,13 +6,13 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:16:57 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/14 15:43:42 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/09/14 17:36:48 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void init_pixels_texture(t_cub *cub)
+void	init_texture_pixel(t_cub *cub)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ void init_pixels_texture(t_cub *cub)
 		i++;
 	}
 }
-void get_texture_index(t_cub *cub, t_ray *ray)
+void	get_texture_index(t_cub *cub, t_ray *ray)
 {
 	if (ray->side == 0)
 	{
@@ -49,7 +49,7 @@ void get_texture_index(t_cub *cub, t_ray *ray)
 	}
 }
 
-void update_pixel(t_cub *cub, t_texture *tex, t_ray *ray, int x)
+void	update_pixel(t_cub *cub, t_texture *tex, t_ray *ray, int x)
 {
 	int	y;
 	int	color;

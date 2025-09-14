@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:00 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/12 19:53:48 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 17:37:06 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void set_frame(t_cub *cub, int x, int y)
 {
 	if (cub->texture.pixels_text[y][x] > 0)
 		set_image_pixel(cub, x, y, cub->texture.pixels_text[y][x]);
-	// else if(y < cub->map.map_h / 2)
-	// 	set_image_pixel(cub, x, y, cub->texture.hex_ceiling);
-	// else if (y < cub->map.map_h - 1)
-	// 	set_image_pixel(cub, x, y, cub->texture.hex_floor);
+	else if(y < cub->map.map_h / 2)
+		set_image_pixel(cub, x, y, cub->texture.ceil_hex);
+	else if (y < cub->map.map_h - 1)
+		set_image_pixel(cub, x, y, cub->texture.floor_hex);
 }
 
 void render_frame(t_cub *cub)
@@ -27,7 +27,7 @@ void render_frame(t_cub *cub)
 	int x;
 	int y;
 
-	// init_img(cub, cub->map_w, cub->map_h);
+	init_img(cub, WIDTH, HEIGHT);
 	y = 0;
 	while (y < cub->map.map_h)
 	{
@@ -46,7 +46,7 @@ void render_frame(t_cub *cub)
 
 void rendering_ray(t_cub *cub)
 {
-	// init_texture(cub);
+	init_texture_pixel(cub);
 	raycasting(&cub->player, cub);
 	render_frame(cub);
 }

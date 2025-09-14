@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:53:47 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/14 14:49:20 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 17:36:41 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ int raycasting(t_player *player, t_cub *cub);
 // rendering.c
 void rendering_ray(t_cub *cub);
 int rendering(t_cub *cub);
+void init_texture_pixel(t_cub *cub);
 
 // set_mlx.c
 int set_mlx(t_cub *cub);
+void	init_img(t_cub *cub, int width, int height);
 
+//movements
 int validate_move(t_cub *cub, double new_x, double new_y);
 int rotate_player(t_cub *cub, double rotdir);
 void set_image_pixel(t_cub *cub, int x, int y, int color);
