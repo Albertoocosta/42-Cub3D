@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/12 20:35:34 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/12 21:01:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ void init_cub(t_cub *cub);
 
 int parse_color(const char *str, int rgb[3], bool *has_flag);
 void rgb_to_hex(t_texture *texture);
+
+int	ensure_bottom_map(t_map *map, char *file);
 
 #endif
