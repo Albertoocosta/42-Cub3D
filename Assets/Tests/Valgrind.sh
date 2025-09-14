@@ -5,7 +5,7 @@ val="valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes"
 bin="cub3D"
 mapsDir="Assets/Maps/Invalid/"
 logFile="log.txt"
-valgrindErrors="definitely lost|indirectly lost|possibly lost|Invalid read|invalid access|segfault|address not mapped|stack overflow|heap corruption|ERROR SUMMARY: [1-9][0-9]* errors"
+valgrinderrors="definitely lost|indirectly lost|possibly lost|Invalid read|invalid access|segfault|address not mapped|stack overflow|heap corruption|erroR SUMMARY: [1-9][0-9]* errors"
 
 # Color codes for output
 RED='\033[0;31m'
@@ -41,8 +41,8 @@ RunningValgrind() {
         # Run valgrind and capture output
         valgrindOutput=$($val ./"$bin" "$map" 2>&1)
 
-        # Check if there is any of the errors listed in valgrindErrors with regex
-        if echo "$valgrindOutput" | grep -E "$valgrindErrors" > /dev/null; then
+        # Check if there is any of the errors listed in valgrinderrors with regex
+        if echo "$valgrindOutput" | grep -E "$valgrinderrors" > /dev/null; then
             # Log the failed map details in the log file
             echo -e "${RED}$mapName FAILED${RESET}"
             echo "Logging the result into $logFile"

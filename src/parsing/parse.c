@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 17:56:41 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:08:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int parser(int ac, char **av, t_cub *cub)
 	if (ac != 2 || !check_extension(av[1], ".cub"))
 		return (printf("Error\nInvalid program usage.\n"), 1);
 	init_cub(cub);
-	if (parse_input(av[1], cub) || validate_config(cub))
+	if (parse_input(av[1], cub)
+		|| validate_config(cub)
+		|| map_on_bottom(av[1]))
 		return (1);
 	return (0);
 }
@@ -129,7 +131,6 @@ int parse_color(const char *str, int rgb[3], bool *has_flag)
 		return (printf("Erro!\nDuplicated RGB.\n"), 1);
 	while (*str == ' ' || *str == '\t')
 		str++;
-	printf("STRING = %s\n", str);
 	if (!ft_isrgb(str))
 		return (printf("Erro!\nInvalid RGB format.\n"), 1);
 	char_rgb = ft_split(str, ',');

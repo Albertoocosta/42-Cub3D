@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 15:16:44 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 17:08:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 19:26:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,58 +21,17 @@ void rgb_to_hex(t_texture *texture)
 int map_on_bottom(const char *file)
 {
 	int fd;
-	char *line;
-	bool map_found = false;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (1);
-	while ((line = get_next_line(fd)))
+	if (parse_file(fd))
 	{
-		if (!map_found)
-		{
-			if (!is_map_line(line))
-			map_found = true;
-		}
-		printf("map_found = %s\n", (map_found? "TRUE" : "FALSE"));
-		if (map_found && is_map_line(line))
-		{
-			free(line);
-			close(fd);
-			return (printf("Erro!\nInvalid map formatting."), 1);
-		}
-		free(line);
+		close(fd);
+		return (1);
 	}
 	close(fd);
 	return (0);
-}
-
-/*
-	Abre
-	file_found = false
-	Para cada linha do mapa:
-		linha = remove_spaces
-		Se ainda não encontrou o mapa:
-			Se a linha parece linha do mapa:
-				found_map = true;
-			Se não (Já encontrou o mapa)
-				se é uma linha vazia: continua
-				se não e nada do mapa: erro
-	se map_found = false: erro
-	success;
-*/
-
-bool is_map_line(const char *line)
-{
-	int i = 0;
-	
-	while (line[i])
-	{
-		if (!strchr("01NSEW ", line[i]))
-			return (false);
-		i++;
-	}
-	return (true);
 }
 
 int check_extension(const char *path, char *extension)
@@ -85,14 +44,66 @@ int check_extension(const char *path, char *extension)
 	return (ft_strncmp(path + len - 4, extension, 4) == 0);
 }
 
-int	verify_rgb(const char *rgb)
+int ft_is_map_line(char *line)
 {
-	int		i;
+	int i = 0;
 
-	i = 0;
-	while (rgb[i] != '\n')
+	while (line[i] && ft_is_space(line[i]))
+		i++;
+	if (line[i] == '\0' || line[i] == '\n')
+		return (0);
+	while (line[i] && line[i] != '\n')
 	{
-		
+		if (!(line[i] == '0'
+			|| line[i] == '1'
+			|| line[i] == 'N'
+			|| line[i] == 'S'
+			|| line[i] == 'E'
+			|| line[i] == 'W'
+			|| line[i] == ' '))
+			return (0);
+		i++;
 	}
+	return (1);
+}
+
+int ft_is_empty_line(char *line)
+{
+	int i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
+
+int parse_file(int fd)
+{
+	char *line;
+	int map_started = 0;
+
+	while ((line = get_next_line(fd)))
+{
+	if (ft_is_empty_line(line))
+	{
+		free(line);
+		continue ;
+	}
+	if (ft_is_map_line(line))
+		map_started = 1;
+	else
+	{
+		if (map_started)
+		{
+			free(line);
+			return (printf("Error!\nMap must be the last element.\n"), 1);
+		}
+	}
+	free(line);
+}
 	return (0);
 }

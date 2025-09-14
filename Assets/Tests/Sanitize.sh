@@ -4,7 +4,7 @@
 bin="cub3D"
 mapsDir="Assets/Maps/Invalid/"
 logFile="log.txt"
-sanitizeErrors="heap-use-after-free|stack-use-after-scope|global-buffer-overflow|stack-buffer-overflow|use-after-poison|double free|invalid free|address not mapped|undefined behavior|null pointer|memory leak|detected memory leaks|division by zero|alignment error|object size|shift-exponent|unsigned integer overflow|signed integer overflow|SEGV on unknown address|abort"
+sanitizeerrors="heap-use-after-free|stack-use-after-scope|global-buffer-overflow|stack-buffer-overflow|use-after-poison|double free|invalid free|address not mapped|undefined behavior|null pointer|memory leak|detected memory leaks|division by zero|alignment error|object size|shift-exponent|unsigned integer overflow|signed integer overflow|SEGV on unknown address|abort"
 
 # Color codes for output
 RED='\033[0;31m'
@@ -36,7 +36,7 @@ CheckingSanitize()
     for map in "$mapsDir"*; do
         sanitizeOutput=$(./"$bin" "$map" 2>&1)
 
-        if echo "$sanitizeOutput" | grep -E "$sanitizeErrors" > /dev/null 2>&1; then
+        if echo "$sanitizeOutput" | grep -E "$sanitizeerrors" > /dev/null 2>&1; then
             # Log failed map details in the log file
             echo -e "${RED}$mapName FAILED${RESET}"
             echo "Logging the result into $logFile"

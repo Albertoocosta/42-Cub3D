@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 15:39:50 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 18:46:56 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,27 @@ bool is_map_line(const char *line);
 int map_on_bottom(const char *file);
 
 int	verify_rgb(const char *rgb);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int parse_file(int fd);
+int ft_is_map_line(char *line);
+int ft_is_space(char c);
 
 #endif

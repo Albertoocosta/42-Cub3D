@@ -98,7 +98,7 @@ ALLOWED_FUNCTIONS=(
     "XPutBackEvent"
     "XPutImage"
     "XSetClipOrigin"
-    "XSetErrorHandler"
+    "XSeterrorHandler"
     "XSetWMNormalHints"
     "XSetWMProtocols"
     "XShmAttach"
@@ -115,7 +115,7 @@ ALLOWED_FUNCTIONS=(
 
 # Check if executable is provided
 if [ "$#" -ne 1 ]; then
-    echo -e "${RED}Error: Please provide the executable as an argument${NC}"
+    echo -e "${RED}error: Please provide the executable as an argument${NC}"
     echo "Usage: $0 <executable>"
     exit 1
 fi
@@ -124,14 +124,14 @@ EXECUTABLE=$1
 
 # Check if executable exists
 if [ ! -f "$EXECUTABLE" ]; then
-    echo -e "${RED}Error: Executable '$EXECUTABLE' not found${NC}"
+    echo -e "${RED}error: Executable '$EXECUTABLE' not found${NC}"
     exit 1
 fi
 
 # Get undefined symbols using nm
 UNDEFINED_FUNCS=$(nm -u "$EXECUTABLE")
 if [ $? -ne 0 ]; then
-    echo -e "${RED}Error: Failed to run nm on '$EXECUTABLE'${NC}"
+    echo -e "${RED}error: Failed to run nm on '$EXECUTABLE'${NC}"
     exit 1
 fi
 

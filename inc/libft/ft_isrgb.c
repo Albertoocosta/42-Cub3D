@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:19:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 18:16:03 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 18:49:01 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int nbr_of_blocks(const char *str);
 
 bool ft_isrgb(const char *str)
 {
-	printf("NOB = %d\nSTR = %s\n", nbr_of_blocks(str), str);
 	if (nbr_of_blocks(str) == 3)
 		return (true);
 	return (false);
@@ -50,7 +49,3 @@ static int nbr_of_blocks(const char *str)
 		return (blocks);
 	return (0);
 }
-// 255, 255, 255 valido
-// 255, 255, 25 5 invalido
-// 255, 255, 25a5 invalido
-// 255,255,255 valido

@@ -43,7 +43,7 @@ char *result[] = {
 {
 	N_ARGS,
 	MAP_NAME,
-	OPEN_ERROR,
+	OPEN_erroR,
 	CONFIGS,
 	MEMORY,
 	INVALID_MAP,

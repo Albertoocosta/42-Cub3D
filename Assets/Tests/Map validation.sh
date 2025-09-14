@@ -32,7 +32,7 @@ if [ -f "$EXECUTABLE" ]; then
     echo -e "${GREEN}Executable found!${NC}"
     ls -l "$EXECUTABLE"
 else
-    echo -e "${RED}Error: Executable '$EXECUTABLE' not found!${NC}"
+    echo -e "${RED}error: Executable '$EXECUTABLE' not found!${NC}"
     echo "Current directory: $(pwd)"
     echo "Content of parent directory:"
     ls -la ..
@@ -74,7 +74,7 @@ test_map() {
 
 # Verificar se o diretório Maps existe
 if [ ! -d "$MAPS_DIR" ]; then
-    echo -e "${RED}Error: Directory '$MAPS_DIR' not found!${NC}"
+    echo -e "${RED}error: Directory '$MAPS_DIR' not found!${NC}"
     echo "Current directory: $(pwd)"
     echo "Content of parent directory:"
     ls -la ..
