@@ -6,18 +6,23 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/12 22:47:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/13 17:39:23 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static bool is_map_line(const char *line);
+static int map_on_bottom(const char *file);
 
 int parser(int ac, char **av, t_cub *cub)
 {
 	if (ac != 2 || !check_extension(av[1], ".cub"))
 		return (printf("Error\nInvalid program usage.\n"), 1);
 	init_cub(cub);
-	if (parse_input(av[1], cub) || validate_config(cub) || ensure_bottom_map(&cub->map, av[1]))
+	if (parse_input(av[1], cub) || validate_config(cub))
+		return (1);
+	if (map_on_bottom(av[1]))
 		return (1);
 	return (0);
 }
@@ -158,33 +163,60 @@ void rgb_to_hex(t_texture *texture)
 	texture->ceil_hex = texture->ceil_rgb[0] << 16 | texture->ceil_rgb[1] << 8 | texture->ceil_rgb[2];
 }
 
-// static char **ft_file_to_array(char *file);
+static int map_on_bottom(const char *file)
+{
+	int fd;
+	char *line;
+	bool map_found = false;
 
-// int ensure_bottom_map(t_map *map, char *file)
-// {
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (1);
+	while ((line = get_next_line(fd)))
+	{
+		if (!map_found)
+		{
+			if (!is_map_line(line))
+			map_found = true;
+		}
+		printf("map_found = %s\n", (map_found? "TRUE" : "FALSE"));
+		if (map_found && is_map_line(line))
+		{
+			free(line);
+			close(fd);
+			return (printf("Erro!\nInvalid map formatting."), 1);
+		}
+		free(line);
+	}
+	close(fd);
+	return (0);
+}
 
-// }
+/*
+	Abre
+	file_found = false
+	Para cada linha do mapa:
+		linha = remove_spaces
+		Se ainda não encontrou o mapa:
+			Se a linha parece linha do mapa:
+				found_map = true;
+			Se não (Já encontrou o mapa)
+				se é uma linha vazia: continua
+				se não e nada do mapa: erro
+	se map_found = false: erro
+	success;
+*/
 
-// static char **ft_file_to_array(char *file)
-// {
-// 	char **ret_arr;
-// 	char *line;
-// 	int fd;
-// 	int i;
+static bool is_map_line(const char *line)
+{
+	int i = 0;
+	
+	while (line[i])
+	{
+		if (!strchr("01NSEW ", line[i]))
+			return (false);
+		i++;
+	}
+	return (true);
+}
 
-// 	ret_arr = malloc(sizeof(char *) * (ft_file_size(file) + 1));
-// 	if (!ret_arr)
-// 		return (NULL);
-// 	fd = open(file, O_RDONLY);
-// 	if (fd == -1)
-// 		return (NULL);
-// 	i = 0;
-// 	while ((line = get_next_line(fd)))
-// 	{
-// 		ret_arr[i] = ft_strdup(line);
-// 		i++;
-// 		free(line);
-// 	}
-// 	close(fd);
-// 	return (ret_arr);
-// }
