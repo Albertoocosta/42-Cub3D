@@ -6,17 +6,18 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:37:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/15 18:57:14 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/15 19:46:34 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int parse_file(int fd)
+int	parse_file(int fd)
 {
-	char *line;
-	bool map_started = false;
+	char	*line;
+	bool	map_started;
 
+	map_started = false;
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -28,7 +29,7 @@ int parse_file(int fd)
 		}
 		if (ft_is_map_line(line))
 			map_started = true;
-		if (map_started)
+		else if (map_started) /// Verifica apenas chars q nao sao do mapa!
 		{
 			free(line);
 			return (printf("Error!\nMap must be the last element.\n"), 1);
@@ -39,7 +40,7 @@ int parse_file(int fd)
 	return (0);
 }
 
-int ft_is_space(char c)
+int	ft_is_space(char c)
 {
 	if (c == ' ' || c == '\t')
 		return (1);
