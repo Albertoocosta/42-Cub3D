@@ -73,8 +73,8 @@ re: 				fclean all
 norm:
 					norminette -R CheckForbiddenSourceHeader
 
-val:				
+val:				re
 					clear
 						valgrind --leak-check=full \
 						--show-leak-kinds=all \
-						--track-origins=yes ./cub3D debug.cub
+						--track-origins=yes ./cub3D assets/maps/validMaps/basic_map.cub

@@ -1,14 +1,16 @@
-NO ../../textures/validTextures/noth.xpm
-SO ../../textures/validTextures/south.xpm
-EA ../../textures/validTextures/east.xpm
-WE ../../textures/validTextures/west.xpm
+NO ./assets/textures/validTextures/north.xpm
+SO ./assets/textures/validTextures/south.xpm
+WE ./assets/textures/validTextures/west.xpm
+EA ./assets/textures/validTextures/east.xpm
 
-C 255,255,255
+C 35,19,222
+F 115,6,40
 
-F 0,255,0
+11111
+10001
+100E1
+11111
 
-   111
-   101
-111101
-1000N1
-111111
+111
+101
+111
