@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:28:48 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 19:42:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/15 18:36:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ int	parse_config_line(char *line, t_texture *texture)
 {
 	while (*line == ' ' || *line == '\t')
 		line++;
-	if (ft_strncmp(line, "NO ", 3) == 0)
+	if (ft_strncmp(line, "NO", 2) == 0)
 		return (parse_texture(line + 2, &texture->no_path, &texture->has_no));
-	if (ft_strncmp(line, "SO ", 3) == 0)
+	if (ft_strncmp(line, "SO", 2) == 0)
 		return (parse_texture(line + 2, &texture->so_path, &texture->has_so));
-	if (ft_strncmp(line, "WE ", 3) == 0)
+	if (ft_strncmp(line, "WE", 2) == 0)
 		return (parse_texture(line + 2, &texture->we_path, &texture->has_we));
-	if (ft_strncmp(line, "EA ", 3) == 0)
+	if (ft_strncmp(line, "EA", 2) == 0)
 		return (parse_texture(line + 2, &texture->ea_path, &texture->has_ea));
-	if (ft_strncmp(line, "F ", 2) == 0)
+	if (ft_strncmp(line, "F", 1) == 0)
 		return (parse_color(line + 1, texture->floor_rgb, &texture->has_floor));
-	if (ft_strncmp(line, "C ", 2) == 0)
+	if (ft_strncmp(line, "C", 1) == 0)
 		return (parse_color(line + 1, texture->ceil_rgb, &texture->has_ceil));
 	rgb_to_hex(texture);
 	return (0);

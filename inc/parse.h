@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 18:46:56 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/15 18:31:38 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,45 +45,21 @@ typedef struct s_texture
 	int	**pixels_text;
 } t_texture;
 
-int parser(int ac, char **av, t_cub *cub);
-int check_extension(const char *file, char *extension);
-int parse_input(const char *file, t_cub *cub);
-int parse_config(t_cub *cub, int fd);
-int validate_config(t_cub *cub);
-int parse_config_line(char *line, t_texture *texture);
-int parse_texture(char *line, char **path, bool *has_flag);
-
-int parse_map(t_cub *cub, int fd);
-void init_cub(t_cub *cub);
-
-int parse_color(const char *str, int rgb[3], bool *has_flag);
-void rgb_to_hex(t_texture *texture);
-
-bool is_map_line(const char *line);
-int map_on_bottom(const char *file);
-
-int	verify_rgb(const char *rgb);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-int parse_file(int fd);
-int ft_is_map_line(char *line);
-int ft_is_space(char c);
+int		parser(int ac, char **av, t_cub *cub);
+int		check_extension(const char *file, char *extension);
+int		parse_input(const char *file, t_cub *cub);
+int		parse_config(t_cub *cub, int fd);
+int		validate_config(t_cub *cub);
+int		parse_config_line(char *line, t_texture *texture);
+int		parse_texture(char *line, char **path, bool *has_flag);
+int		parse_map(t_cub *cub, int fd);
+void	init_cub(t_cub *cub);
+int		parse_color(const char *str, int rgb[3], bool *has_flag);
+void	rgb_to_hex(t_texture *texture);
+int		ft_is_map_line(char *line);
+int		map_on_bottom(const char *file);
+int		ft_is_empty_line(char *line);
+int		parse_file(int fd);
+int		ft_is_space(char c);
 
 #endif
