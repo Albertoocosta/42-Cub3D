@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_array.c                                   :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/18 10:29:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 16:37:30 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/09/14 19:37:04 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/09/14 19:44:34 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3D.h"
 
-void	ft_print_array(char **array)
+int	parse_file(int fd)
 {
-	int	i;
+	char	*line;
+	bool	map_started;
 
-	i = 0;
-	printf("---------------------\n\n");
-	while (array[i])
+	line = get_next_line(fd);
+	while (line)
 	{
-		printf("╠Array[%d]= %s\n", i, array[i]);
-		i++;
+		if (ft_is_empty_line(line))
+		{
+			free(line);
+			continue ;
+		}
+		if (ft_is_map_line(line))
+			map_started = true;
+		else
+		{
+			if (map_started)
+			{
+				free(line);
+				return (printf("Error!\nMap must be the last element.\n"), 1);
+			}
+		}
+		free(line);
+		line = get_next_line(fd);
 	}
-	printf("\n---------------------\n\n");
+	return (0);
 }
