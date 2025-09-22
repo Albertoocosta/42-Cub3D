@@ -33,6 +33,7 @@ test_map() {
 	local expected_exit_code="$2"
 	local test_type="$3"
 	
+	echo -e "${BLUE}══════════════════════════════════════════════════════════════════════"
 	echo -e "${BLUE}Testing: $map_file${NC}"
 	
 	# Run cub3D with timeout
@@ -84,6 +85,7 @@ find_and_test_maps() {
 	done < <(find "$search_dir" -name "*.cub" -print0 2>/dev/null)
 	
 	# Print summary
+	echo -e "${BLUE}══════════════════════════════════════════════════════════════════════"
 	echo -e "${YELLOW}=== $test_type Summary ===${NC}"
 	echo -e "Total: $total"
 	echo -e "${GREEN}Passed: $passed${NC}"
