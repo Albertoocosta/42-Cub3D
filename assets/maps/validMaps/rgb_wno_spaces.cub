@@ -3,10 +3,10 @@ SO ./assets/textures/validTextures/south.xpm
 WE ./assets/textures/validTextures/west.xpm
 EA ./assets/textures/validTextures/east.xpm
 
-C 35,19,222
-F 115,6,40
+F 164,169,20
+C 153,204,255
 
-11111
-10001
-100E1
-11111
+111111111
+11001111111
+100000W11
+111111111
