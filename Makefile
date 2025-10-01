@@ -1,5 +1,6 @@
 MAKEFLAGS			+= -s
 NAME				= cub3D
+TEST_NAME 			= cub3D_test
 LIBFT				= ./inc/libft/libft.a
 INC					= inc/
 SRC_DIR				= src/
@@ -12,7 +13,9 @@ SANITIZE_FALGS		= -fsanitize=address -fsanitize=leak -fsanitize=undefined -fno-o
 CFLAGS				= -Wall -Werror -Wextra -g3 -I$(INC)
 RM					= rm -rf
 SRCS				= $(shell find $(SRC_DIR) -type f -name "*.c")
+TEST_SRCS			= $(shell find $(SRC_DIR) -type f -name "*.c")
 OBJS				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
+TEST_OBJS			= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(TEST_SRCS))
 
 #===================================================================================| Colors |
 
@@ -30,6 +33,13 @@ all:				$(NAME)
 
 $(NAME): 			$(OBJS) $(LIBFT) $(MLX)
 					@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+
+test: 				$(LIBFT) $(MLX) $(TEST_OBJS)
+					@echo "$(YELLOW)Linking $(TEST_NAME)...$(NC)"
+					@$(CC) $(CFLAGS) $(TEST_OBJS) $(MLX) $(LIBFT) $(MLXFLAGS) -o $(TEST_NAME)
+					@echo "$(GREEN)$(TEST_NAME) created successfully!$(NC)"
+					@echo "$(GREEN)Run ./$(TEST_NAME) to test with manual map$(NC)"
+
 
 $(MLX):
 					@cd $(MLX_DIR) && make >/dev/null 2>&1 || make

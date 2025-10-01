@@ -6,7 +6,7 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:00 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/14 17:58:32 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/01 00:47:43 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void render_frame(t_cub *cub)
 	mlx_put_image_to_window(cub->mlx.mlx_ptr, cub->mlx.win_ptr,
 							cub->mlx.img_ptr, 0, 0);
 	mlx_destroy_image(cub->mlx.mlx_ptr, cub->mlx.img_ptr);
+	cub->mlx.img_ptr = NULL;
 }
 
 void rendering_ray(t_cub *cub)
@@ -57,5 +58,6 @@ int rendering(t_cub *cub)
 	if (cub->player.moved == 0)
 		return (0);
 	rendering_ray(cub);
+	cub->player.moved = 0;
 	return (0);
 }

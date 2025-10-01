@@ -6,7 +6,7 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:16:57 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/14 18:00:23 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/01 02:02:07 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@ void	init_texture_pixel(t_cub *cub)
 	int	i;
 
 	if (cub->texture.pixels_text)
-		printf("function free\n"); //free_tab(cub->pixels_text);
+		free_tab_int(cub->texture.pixels_text, HEIGHT);
 	cub->texture.pixels_text = ft_calloc(HEIGHT + 1, sizeof * cub->texture.pixels_text);
 	if (!cub->texture.pixels_text)
-		printf("correct exit"); //clean_exit(cub, msg_error(NULL, ERR_MALLOC, 1));
+		clean_exit(cub, err_msg(NULL, "Malloc error", 1));
 	i = 0;
 	while (i < HEIGHT)
 	{
 		cub->texture.pixels_text[i] = ft_calloc(WIDTH + 1, 
 			sizeof * cub->texture.pixels_text);
 		if (!cub->texture.pixels_text[i])
-		printf("correct exit"); //clean_exit(cub, msg_error(NULL, ERR_MALLOC, 1));
+			clean_exit(cub, err_msg(NULL, "Malloc error", 1));
 		i++;
 	}
 }
+
 void	get_texture_index(t_cub *cub, t_ray *ray)
 {
 	if (ray->side == 0)

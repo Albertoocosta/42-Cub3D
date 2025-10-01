@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 01:33:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 14:49:37 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/01 01:26:52 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void init_texture(t_texture *texture)
 	texture->index = 0;
 	texture->texture_x = 0;
 	texture->texture_y = 0;
-	//texture->pixels_text = NULL; Por ser um int **, não sei se precisa de inicialização, uma vez que os arrays do rgb também não precisaram.
+	texture->pixels_text = NULL;
 }
 
 static void init_map(t_map *map)
