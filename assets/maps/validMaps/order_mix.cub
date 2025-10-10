@@ -1,18 +1,15 @@
 NO ./assets/textures/validTextures/north.xpm
+
 C 123,211,234
+
+
 SO ./assets/textures/validTextures/south.xpm
 
-
 WE ./assets/textures/validTextures/west.xpm
+
 F 101,183,65
 
-
-
-
 EA ./assets/textures/validTextures/east.xpm
-
-
-
 
 1111111111
 1000000001

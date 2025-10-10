@@ -2,10 +2,10 @@
 F 0,120,0
 
 
+
 NO ./assets/textures/validTextures/north.xpm
 SO ./assets/textures/validTextures/south.xpm
 C 0,0,120
-
 WE ./assets/textures/validTextures/west.xpm
 EA ./assets/textures/validTextures/east.xpm
 
