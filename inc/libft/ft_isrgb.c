@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:19:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/14 18:49:01 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/10 15:01:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int nbr_of_blocks(const char *str)
 	{
 		if (str[i] == '\n' && str[i + 1] == '\0')
 			break;
-		while (str[i] && (str[i] == ' ' || str[i] == ','))
+		while (str[i] && (ft_iswhitespace(str[i]) || str[i] == ','))
 			i++;
 		if (str[i] == '\n' && str[i + 1] == '\0')
 			break;
