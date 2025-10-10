@@ -1,7 +1,7 @@
-WE ./textures/west.xpm
-NO ./textures/north.xpm
-SO ./textures/south.xpm
-EA ./textures/east.xpm
+NO ./assets/textures/validTextures/north.xpm
+SO ./assets/textures/validTextures/south.xpm
+WE ./assets/textures/validTextures/west.xpm
+EA ./assets/textures/validTextures/east.xpm
 C 0,0,118
 F 0,97,32
 
