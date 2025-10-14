@@ -6,7 +6,7 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:16:57 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/14 16:56:39 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/14 17:55:56 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ void	load_textures(t_cub *cub)
 	if (!cub->texture.texture_grid)
 		clean_exit(cub, err_msg(NULL, "Malloc error", 1));
 	allocate_texture_grid(cub);
-	load_texture_image(cub, NO, cub->texture.no_path);
-	load_texture_image(cub, SO, cub->texture.so_path);
-	load_texture_image(cub, WE, cub->texture.we_path);
-	load_texture_image(cub, EA, cub->texture.ea_path);
+	load_texture_image(cub, SO, cub->texture.no_path);
+	load_texture_image(cub, NO, cub->texture.so_path);
+	load_texture_image(cub, EA, cub->texture.we_path);
+	load_texture_image(cub, WE, cub->texture.ea_path);
 }
 
 void	init_texture_pixel(t_cub *cub)
