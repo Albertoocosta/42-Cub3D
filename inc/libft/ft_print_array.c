@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 10:29:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/18 10:32:50 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/14 16:37:30 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	ft_print_array(char **array)
 	int	i;
 
 	i = 0;
-	ft_printf("---------------------\n\n");
+	printf("---------------------\n\n");
 	while (array[i])
 	{
-		ft_printf("╠Array[%d]= %s\n", i, array[i]);
+		printf("╠Array[%d]= %s\n", i, array[i]);
 		i++;
 	}
-	ft_printf("\n---------------------\n\n");
+	printf("\n---------------------\n\n");
 }
