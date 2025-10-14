@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:52:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/12 19:57:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/09/21 10:20:25 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void fill_ray(int x, t_ray *ray, t_player *player)
 {
 	ray->camera_x = 2 * x / (double)WIDTH - 1;
 	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
-	ray->dir_x = player->dir_y + player->plane_y * ray->camera_x;
+	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
 	ray->deltadist_x = fabs(1 / ray->dir_x);
@@ -66,7 +66,8 @@ void run_dda(t_cub *cub, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_y < 0.25 || ray->map_x < 0.25 || ray->map_y > cub->map.map_h - 0.25 || ray->map_x > cub->map.map_w - 1.25)
+		if (ray->map_y < 0.25 || ray->map_x < 0.25
+			|| ray->map_y > HEIGHT - 0.25 || ray->map_x > WIDTH - 1.25)
 			break;
 		else if (cub->map.map[ray->map_y][ray->map_x] > '0')
 			hit = 1;
@@ -102,10 +103,12 @@ int raycasting(t_player *player, t_cub *cub)
 	ray = cub->ray;
 	while (x < WIDTH)
 	{
+		init_ray(&ray);
 		fill_ray(x, &ray, player);
 		set_dda(&ray, player);
 		run_dda(cub, &ray);
 		line_height_calc(&ray, player);
+		update_pixel(cub, &cub->texture, &ray, x);
 		x++;
 	}
 	return (0);

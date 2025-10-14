@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/15 18:31:38 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:53:38 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,28 @@ typedef struct s_map
 
 typedef struct s_texture
 {
-	char *no_path;
-	char *so_path;
-	char *we_path;
-	char *ea_path;
-	bool has_no;
-	bool has_so;
-	bool has_we;
-	bool has_ea;
-	bool has_floor;
-	bool has_ceil;
-	int floor_rgb[3];
-	int ceil_rgb[3];
-	int floor_hex;
-	int ceil_hex;
-	int size;
-	int index;
-	int texture_x;
-	int texture_y;
-	int	**pixels_text;
+	char 	*no_path;
+	char 	*so_path;
+	char 	*we_path;
+	char 	*ea_path;
+	bool	has_no;
+	bool	has_so;
+	bool	has_we;
+	bool 	has_ea;
+	bool 	has_floor;
+	bool 	has_ceil;
+	double 	step;
+	double	pos;
+	int 	floor_rgb[3];
+	int 	ceil_rgb[3];
+	int 	floor_hex;
+	int 	ceil_hex;
+	int 	size;
+	int 	index;
+	int 	texture_x;
+	int 	texture_y;
+	int		**pixels_text;
+	int		**texture_grid;
 } t_texture;
 
 int		parser(int ac, char **av, t_cub *cub);
