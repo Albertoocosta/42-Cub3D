@@ -6,7 +6,7 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:53:47 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/01 02:02:29 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:49:57 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	rendering_ray(t_cub *cub);
 int		rendering(t_cub *cub);
 void 	init_texture_pixel(t_cub *cub);
 void	update_pixel(t_cub *cub, t_texture *tex, t_ray *ray, int x);
+void	load_textures(t_cub *cub);
+void	load_texture_image(t_cub *cub, int index, char *path);
 
 // set_mlx.c
 int		set_mlx(t_cub *cub);
@@ -40,6 +42,7 @@ int		move_player(t_cub *cub);
 void	init_ray(t_ray *ray);
 int		key_release_handler(int key, t_cub *cub);
 int		key_press_handler(int key, t_cub *cub);
+void	initial_player_direction(t_cub *cub);
 
 // free
 

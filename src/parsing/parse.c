@@ -6,7 +6,7 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/14 14:52:00 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:56:39 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	parser(int ac, char **av, t_cub *cub)
 	init_cub(cub);
 	if (parse_input(av[1], cub)
 		|| validate_config(cub)
-		|| map_on_bottom(av[1]))
+		|| map_on_bottom(av[1])
+		|| parse_map(av[1], cub))
 		return (1);
+	initial_player_direction(cub);
 	return (0);
 }
 
@@ -37,30 +39,40 @@ int	parse_input(const char *file, t_cub *cub)
 	return (0);
 }
 
-int	validate_config(t_cub *cub)
+static int	validate_texture_file(char *path, char *name)
 {
 	int	fd;
 
-	fd = 0;
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("Erro!\nInvalid or missing %s texture file.", name);
+		return (1);
+	}
+	close(fd);
+	return (0);
+}
+
+static int	check_all_configs(t_cub *cub)
+{
 	if (!cub->texture.has_no || !cub->texture.has_so
 		|| !cub->texture.has_we || !cub->texture.has_ea
 		|| !cub->texture.has_ceil || !cub->texture.has_floor)
 		return (printf("Erro!\nMissing configuration."), 1);
-	fd = open(cub->texture.no_path, O_RDONLY);
-	if (fd < 0)
-		return (printf("Erro!\nInvalid or missing North texture file."), 1);
-	close(fd);
-	fd = open(cub->texture.so_path, O_RDONLY);
-	if (fd < 0)
-		return (printf("Erro!\nInvalid or missing South texture file."), 1);
-	close(fd);
-	fd = open(cub->texture.we_path, O_RDONLY);
-	if (fd < 0)
-		return (printf("Erro!\nInvalid or missing West texture file."), 1);
-	close(fd);
-	fd = open(cub->texture.ea_path, O_RDONLY);
-	if (fd < 0)
-		return (printf("Erro!\nInvalid or missing East texture file."), 1);
-	close(fd);
+	return (0);
+}
+
+int	validate_config(t_cub *cub)
+{
+	if (check_all_configs(cub))
+		return (1);
+	if (validate_texture_file(cub->texture.no_path, "North"))
+		return (1);
+	if (validate_texture_file(cub->texture.so_path, "South"))
+		return (1);
+	if (validate_texture_file(cub->texture.we_path, "West"))
+		return (1);
+	if (validate_texture_file(cub->texture.ea_path, "East"))
+		return (1);
 	return (0);
 }
