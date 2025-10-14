@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   set_mlx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:34:50 by alberto           #+#    #+#             */
 /*   Updated: 2025/10/14 16:56:39 by cda-fons         ###   ########.fr       */
