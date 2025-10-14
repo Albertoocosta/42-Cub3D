@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:28:48 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/15 18:36:25 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:56:57 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	parse_color(const char *str, int rgb[3], bool *has_flag)
 	while (i < 3)
 	{
 		if (ft_atoi(char_rgb[i]) >= 0 && ft_atoi(char_rgb[i]) <= 255)
-			rgb[i + 1] = ft_atoi(char_rgb[i]);
+			rgb[i] = ft_atoi(char_rgb[i]);
 		else
 		{
 			free_splits(char_rgb);

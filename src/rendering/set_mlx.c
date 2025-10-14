@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_mlx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:34:50 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/14 15:05:35 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:59:11 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ int	set_mlx(t_cub *cub)
 												&cub->mlx.bits_per_pixel, &cub->mlx.size_line, &cub->mlx.endian);
 	if (cub->mlx.img_addr == NULL)
 		return (ft_putstr_fd("Mlx error\n", 2), 1);
+	mlx_hook(cub->mlx.win_ptr, KeyPress, KeyPressMask, key_press_handler, cub);
+	mlx_hook(cub->mlx.win_ptr, KeyRelease, KeyReleaseMask, key_release_handler, cub);
+	mlx_hook(cub->mlx.win_ptr, DestroyNotify, StructureNotifyMask, exit_cub3d, cub);
 	return (0);
 }
