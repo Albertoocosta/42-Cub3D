@@ -6,16 +6,16 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:20:00 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/14 15:29:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:43:24 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/**
- * Creates a small debug map for testing purposes
- * This function allocates and initializes a simple 5x5 test map
- */
+/*
+ ! Creates a small debug map for testing purposes
+ ! This function allocates and initializes a simple 5x5 test map
+*/
 void create_debug_map(t_cub *cub)
 {
 	int i;
@@ -113,9 +113,9 @@ void create_debug_map(t_cub *cub)
 			cub->texture.ceil_rgb[2], cub->texture.ceil_hex);
 }
 
-/**
- * Prints the debug map to console for verification
- */
+/*
+ ! Prints the debug map to console for verification
+*/
 void print_debug_map(t_cub *cub)
 {
 	int i;
@@ -133,3 +133,126 @@ void print_debug_map(t_cub *cub)
 	}
 	printf("==================\n\n");
 }
+
+
+Funcao set MLX
+int set_mlx(t_cub *cub)
+{
+	cub->mlx.mlx_ptr = mlx_init();
+	if (cub->mlx.mlx_ptr == NULL)
+		return (ft_putstr_fd("Mlx error\n", 2), 1);
+	cub->mlx.win_ptr = mlx_new_window(cub->mlx.mlx_ptr, WIDTH, HEIGHT,
+									WIN_TITLE);
+	if (cub->mlx.win_ptr == NULL)
+		return (ft_putstr_fd("Mlx error\n", 2), 1);
+	cub->mlx.img_ptr = mlx_new_image(cub->mlx.mlx_ptr, WIDTH, HEIGHT);
+	if (cub->mlx.img_ptr == NULL)
+		return (ft_putstr_fd("Mlx error\n", 2), 1);
+	cub->mlx.img_addr = (int *)mlx_get_data_addr(cub->mlx.img_ptr,
+												&cub->mlx.bits_per_pixel, &cub->mlx.size_line, &cub->mlx.endian);
+	if (cub->mlx.img_addr == NULL)
+		return (ft_putstr_fd("Mlx error\n", 2), 1);
+
+	// ! Added to fix ESC and X closing window (Maight be for debug)
+	mlx_hook(cub->mlx.win_ptr, KeyPress, KeyPressMask, key_press_handler, cub);
+	mlx_hook(cub->mlx.win_ptr, KeyRelease, KeyReleaseMask, key_release_handler, cub);
+	mlx_hook(cub->mlx.win_ptr, DestroyNotify, StructureNotifyMask, exit_cub3d, cub);
+
+	return (0);
+}
+
+
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_textures.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/14 16:30:00 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/10/14 16:27:40 by rde-fari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3D.h"
+
+static int load_single_texture(t_cub *cub, char *path, int index)
+{
+	void *img;
+	int *data;
+	int width;
+	int height;
+	int i;
+
+	img = mlx_xpm_file_to_image(cub->mlx.mlx_ptr, path, &width, &height);
+	if (!img)
+	{
+		printf("Error: Failed to load texture: %s\n", path);
+		return (1);
+	}
+
+	cub->texture.size = width; // Assume square textures
+	data = (int *)mlx_get_data_addr(img, &cub->mlx.bits_per_pixel,
+									&cub->mlx.size_line, &cub->mlx.endian);
+
+	if (!data)
+	{
+		mlx_destroy_image(cub->mlx.mlx_ptr, img);
+		printf("Error: Failed to get texture data: %s\n", path);
+		return (1);
+	}
+
+	// Allocate memory for texture data
+	cub->texture.texture_grid[index] = malloc(sizeof(int) * width * height);
+	if (!cub->texture.texture_grid[index])
+	{
+		mlx_destroy_image(cub->mlx.mlx_ptr, img);
+		printf("Error: Failed to allocate memory for texture data\n");
+		return (1);
+	}
+
+	// Copy texture data
+	i = 0;
+	while (i < width * height)
+	{
+		cub->texture.texture_grid[index][i] = data[i];
+		i++;
+	}
+
+	mlx_destroy_image(cub->mlx.mlx_ptr, img);
+	return (0);
+}
+
+int load_textures(t_cub *cub)
+{
+	// Allocate memory for texture grid array
+	cub->texture.texture_grid = malloc(sizeof(int *) * 4);
+	if (!cub->texture.texture_grid)
+	{
+		printf("Error: Failed to allocate memory for texture grid\n");
+		return (1);
+	}
+
+	// Initialize all pointers to NULL
+	cub->texture.texture_grid[NO] = NULL;
+	cub->texture.texture_grid[SO] = NULL;
+	cub->texture.texture_grid[WE] = NULL;
+	cub->texture.texture_grid[EA] = NULL;
+
+	// Load all four textures
+	if (load_single_texture(cub, cub->texture.no_path, NO) ||
+		load_single_texture(cub, cub->texture.so_path, SO) ||
+		load_single_texture(cub, cub->texture.we_path, WE) ||
+		load_single_texture(cub, cub->texture.ea_path, EA))
+	{
+		printf("Error: Failed to load one or more textures\n");
+		return (1);
+	}
+
+	printf("All textures loaded successfully! Texture size: %d\n", cub->texture.size);
+	return (0);
+}
+
+
+
