@@ -6,7 +6,7 @@
 /*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/14 14:53:38 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:56:39 by cda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int		parse_config(t_cub *cub, int fd);
 int		validate_config(t_cub *cub);
 int		parse_config_line(char *line, t_texture *texture);
 int		parse_texture(char *line, char **path, bool *has_flag);
-int		parse_map(t_cub *cub, int fd);
+int		parse_map(const char *file, t_cub *cub);
+int		read_map_lines(int fd, char ***map_lines, int *line_count);
 void	init_cub(t_cub *cub);
 int		parse_color(const char *str, int rgb[3], bool *has_flag);
 void	rgb_to_hex(t_texture *texture);
