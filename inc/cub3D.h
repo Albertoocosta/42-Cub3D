@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/09/28 17:23:35 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:07:13 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_map t_map;
 #define ROTSPEED 0.015
 #define WIDTH 800
 #define HEIGHT 600
-#define WIN_TITLE "Fucking Hellcife CUB3D"
+#define WIN_TITLE "Leu = mamou"
 
 enum orientation
 {

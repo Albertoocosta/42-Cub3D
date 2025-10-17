@@ -1,7 +1,7 @@
-NO ./sprites/north_wall.xpm
-SO ./sprites/wall.xpm
-WE ./sprites/wall.xpm
-EA ./sprites/wall.xpm
+NO ./assets/textures/validTextures/north.xpm
+SO ./assets/textures/validTextures/south.xpm
+WE ./assets/textures/validTextures/west.xpm
+EA ./assets/textures/validTextures/east.xpm
 F 125,200,10
 C 140,125,10
 
