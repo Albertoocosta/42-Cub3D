@@ -14,6 +14,12 @@ VALID_DIR="validMaps"
 INVALID_DIR="invalidMaps"
 TIMEOUT=5 # seconds timeout for each test
 
+# Global variables for tracking results
+VALID_PASSED=0
+VALID_TOTAL=0
+INVALID_PASSED=0
+INVALID_TOTAL=0
+
 # Check if cub3D executable exists
 if [ ! -f "$CUB3D_EXEC" ]; then
 	echo -e "${RED}Error: $CUB3D_EXEC not found!${NC}"
@@ -33,7 +39,7 @@ test_map() {
 	local expected_exit_code="$2"
 	local test_type="$3"
 	
-	echo -e "${BLUE}══════════════════════════════════════════════════════════════════════"
+	#echo -e "${BLUE}══════════════════════════════════════════════════════════════════════"
 	echo -e "${BLUE}Testing: $map_file${NC}"
 	
 	# Run cub3D with timeout
@@ -67,7 +73,7 @@ find_and_test_maps() {
 	local failed=0
 	local timeout=0
 	
-	echo -e "\n${YELLOW}=== Testing $test_type maps ===${NC}"
+	echo -e "\n${YELLOW}━━━━━━━━━━━━━━━━━━━━┫ Testing $test_type maps ┣━━━━━━━━━━━━━━━━━━━━${NC}"
 	
 	# Find all .cub files recursively
 	while IFS= read -r -d '' map_file; do
@@ -84,15 +90,24 @@ find_and_test_maps() {
 		fi
 	done < <(find "$search_dir" -name "*.cub" -print0 2>/dev/null)
 	
-	# Print summary
-	echo -e "${BLUE}══════════════════════════════════════════════════════════════════════"
-	echo -e "${YELLOW}=== $test_type Summary ===${NC}"
-	echo -e "Total: $total"
-	echo -e "${GREEN}Passed: $passed${NC}"
-	echo -e "${RED}Failed: $failed${NC}"
-	if [ $timeout -gt 0 ]; then
-		echo -e "${YELLOW}Timeout: $timeout${NC}"
+	# Store results in global variables
+	if [ "$test_type" = "valid" ]; then
+		VALID_PASSED=$passed
+		VALID_TOTAL=$total
+	elif [ "$test_type" = "invalid" ]; then
+		INVALID_PASSED=$passed
+		INVALID_TOTAL=$total
 	fi
+	
+	# Print summary
+	# echo -e "${BLUE}══════════════════════════════════════════════════════════════════════"
+	# echo -e "${YELLOW}=== $test_type Summary ===${NC}"
+	# echo -e "Total: $total"
+	# echo -e "${GREEN}Passed: $passed${NC}"
+	# echo -e "${RED}Failed: $failed${NC}"
+	# if [ $timeout -gt 0 ]; then
+	# 	echo -e "${YELLOW}Timeout: $timeout${NC}"
+	# fi
 	
 	return $failed
 }
@@ -117,12 +132,28 @@ run_tests() {
 		echo -e "${YELLOW}Warning: $INVALID_DIR directory not found${NC}"
 	fi
 	
-	# Final summary
-	echo -e "\n${YELLOW}=== FINAL SUMMARY ===${NC}"
+	# Final summary with detailed counts
+	echo -e "\n${YELLOW}━━━━━━━━┫ Final Result ${NC}"
+	
+	# Valid maps summary
+	if [ $VALID_TOTAL -gt 0 ]; then
+		echo -e "        ┃ Valid maps: ${GREEN}$VALID_PASSED${NC}/${BLUE}$VALID_TOTAL${NC} passed"
+	else
+		echo -e "Valid maps: ${YELLOW}No tests found${NC}"
+	fi
+	
+	# Invalid maps summary
+	if [ $INVALID_TOTAL -gt 0 ]; then
+		echo -e "        ┃ Invalid maps: ${GREEN}$INVALID_PASSED${NC}/${BLUE}$INVALID_TOTAL${NC} passed"
+	else
+		echo -e "Invalid maps: ${YELLOW}No tests found${NC}"
+	fi
+	
+	# Overall result
 	if [ $total_failed -eq 0 ]; then
 		echo -e "${GREEN}🎉 All tests passed!${NC}"
 	else
-		echo -e "${RED}❌ $total_failed test(s) failed${NC}"
+		echo -e "${RED}        ┃ ❌ $total_failed test(s) failed${NC}"
 	fi
 	
 	return $total_failed
