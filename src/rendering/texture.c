@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:16:57 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/14 17:55:56 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:39:48 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	load_texture_image(t_cub *cub, int index, char *path)
 			&cub->texture.size, &cub->texture.size);
 	if (!img)
 	{
-		printf("Error loading texture: %s\n", path);
+		printf("Error!\nUnable to load texture: %s\n", path);
 		clean_exit(cub, 1);
 	}
 	data = (int *)mlx_get_data_addr(img, &bpp, &size_line, &endian);

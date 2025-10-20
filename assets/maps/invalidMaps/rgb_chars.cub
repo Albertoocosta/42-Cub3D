@@ -1,7 +1,7 @@
-O textures/ice.xpm
-SO textures/lava.xpm
-WE textures/bricks.xpm
-EA textures/leaves.xpm
+NO ./assets/textures/validTextures/north.xpm
+SO ./assets/textures/validTextures/south.xpm
+WE ./assets/textures/validTextures/west.xpm
+EA ./assets/textures/validTextures/east.xpm
 
 F 101,a,65
 C b,211,234

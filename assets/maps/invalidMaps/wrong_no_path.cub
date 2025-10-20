@@ -1,7 +1,7 @@
-NO ../../textures/ops/validTextures/noth.xpm
-SO ../../textures/validTextures/south.xpm
-EA ../../textures/validTextures/east.xpm
-WE ../../textures/validTextures/west.xpm
+NO ./assets/textures/validTextures/north.xpm
+SO ./assets/textures/validTextures/south.xpm
+WE ./assets/textures/validTextures/west.xpm
+EA ./assets/textures/validTextures/east.xpm
 
 C 255,255,255
 

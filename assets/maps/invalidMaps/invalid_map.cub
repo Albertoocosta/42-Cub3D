@@ -1,12 +1,12 @@
+NO ./assets/textures/validTextures/north.xpm
+SO ./assets/textures/validTextures/south.xpm
+WE ./assets/textures/validTextures/west.xpm
 
 
 
-WE ./sprites/wall.xpm
 C 140,125,100
 F   125,200,100
 
-NO               ./sprites/wall.xpm
-EA ./sprites/wall.xpm
 
 
 
@@ -23,4 +23,7 @@ EA ./sprites/wall.xpm
 1N000001001        1111
 11111111111
 
-SO 	 ./sprites/wall.xpm
+
+
+
+EA ./assets/textures/validTextures/east.xpm

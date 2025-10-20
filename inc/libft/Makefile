@@ -20,7 +20,7 @@ SRC= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 	ft_strncpy.c ft_isspace.c ft_strcpy.c ft_strcat.c ft_realloc.c \
 	ft_strndup.c ft_print_array.c ft_atol.c ft_atod.c ft_charjoin.c\
 	ft_cstrcmp.c ft_array_size.c ft_file_size.c ft_isrgb.c ft_iswhitespace.c \
-	
+	free_int_array.c \
 
 all: $(NAME)
 

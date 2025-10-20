@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/14 16:56:39 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:12:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	main(int ac, char **av)
 	cub.player.moved = 1;
 	mlx_loop_hook(cub.mlx.mlx_ptr, rendering, &cub);
 	mlx_loop(cub.mlx.mlx_ptr);
+	clean_exit(&cub, 0);
 	return (0);
 }
