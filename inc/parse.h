@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/14 16:56:39 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/20 16:02:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int		map_on_bottom(const char *file);
 int		ft_is_empty_line(char *line);
 int		parse_file(int fd);
 int		ft_is_space(char c);
+void	free_structs(t_cub *cub);
 
 #endif

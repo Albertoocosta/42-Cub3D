@@ -1,31 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/20 17:11:17 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/10/20 15:50:53 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/10/20 15:52:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	main(int ac, char **av)
-{
-	t_cub	cub;
-
-	if (parser(ac, av, &cub))
-		return (1);
-	if (set_mlx(&cub))
-		return (1);
-	cub.texture.size = 64;
-	load_textures(&cub);
-	cub.player.moved = 1;
-	mlx_loop_hook(cub.mlx.mlx_ptr, rendering, &cub);
-	mlx_loop(cub.mlx.mlx_ptr);
-	printf("All clean and running!\n");
-	clean_exit(&cub, 0);
-	return (0);
-}

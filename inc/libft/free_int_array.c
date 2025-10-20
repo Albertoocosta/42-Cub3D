@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_int_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/20 17:11:17 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/10/20 16:37:05 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/10/20 16:44:30 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	free_int_array(int **array, int size)
 {
-	t_cub	cub;
+	int		i;
 
-	if (parser(ac, av, &cub))
-		return (1);
-	if (set_mlx(&cub))
-		return (1);
-	cub.texture.size = 64;
-	load_textures(&cub);
-	cub.player.moved = 1;
-	mlx_loop_hook(cub.mlx.mlx_ptr, rendering, &cub);
-	mlx_loop(cub.mlx.mlx_ptr);
-	printf("All clean and running!\n");
-	clean_exit(&cub, 0);
-	return (0);
+	if (!array)
+		return ;
+	i = 0;
+	while (i < size)
+	{
+		if (array[i])
+			free(array[i]);
+		i++;
+	}
+	free(array);
 }

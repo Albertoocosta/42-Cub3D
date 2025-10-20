@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:55:11 by cda-fons          #+#    #+#             */
-/*   Updated: 2025/10/01 01:41:37 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/20 15:54:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ void	free_tab(void **tab)
 
 void free_tab_int(int **tab, int size)
 {
-    int i;
-    
-    if (!tab)
-        return;
-    i = 0;
-    while (i < size)
-    {
-        if (tab[i])
-            free(tab[i]);
-        i++;
-    }
-    free(tab);
+	int i;
+	
+	if (!tab)
+		return;
+	i = 0;
+	while (i < size)
+	{
+		if (tab[i])
+			free(tab[i]);
+		i++;
+	}
+	free(tab);
 }
 
 int	free_data(t_cub *cub)
@@ -55,6 +55,7 @@ int	free_data(t_cub *cub)
 	//free_map(cub);
 	return (1);
 }
+
 int	err_msg(char *detail, char *str, int code)
 {
 	ft_putstr_fd("cub3D: Error", 2);
