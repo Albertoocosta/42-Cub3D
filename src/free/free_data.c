@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:55:11 by cda-fons          #+#    #+#             */
-/*   Updated: 2025/10/20 15:54:33 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:13:45 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int	free_data(t_cub *cub)
 		free_tab((void **)cub->texture.texture_grid);
 	if (cub->texture.pixels_text)
 		free_tab((void **)cub->texture.pixels_text);
-	//free_texinfo(&data->texinfo);
-	//free_map(cub);
 	return (1);
 }
 
