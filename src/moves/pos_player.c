@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pos_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:10:51 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/01 02:01:06 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/20 18:41:19 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool wall_collision(t_cub *cub, double x, double y)
 {
 	if (y < 0 || y >= cub->map.map_h || x < 0 || x >= cub->map.map_w)
-        return (false);
+		return (false);
 	if (cub->map.map[(int)y][(int)x] == '0')
 		return (true);
 	return (false);
