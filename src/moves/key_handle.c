@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   key_handle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:18:23 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/01 01:41:08 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:08:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int key_press_handler(int key, t_cub *cub)
+int	key_press_handler(int key, t_cub *cub)
 {
 	if (key == XK_Escape)
 		exit_cub3d(cub);
@@ -31,7 +31,7 @@ int key_press_handler(int key, t_cub *cub)
 	return (0);
 }
 
-int key_release_handler(int key, t_cub *cub)
+int	key_release_handler(int key, t_cub *cub)
 {
 	if (key == XK_Escape)
 		exit_cub3d(cub);

@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 01:37:02 by cda-fons          #+#    #+#             */
-/*   Updated: 2025/10/20 18:21:38 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:03:14 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void clean_exit(t_cub *cub, int code)
+void	clean_exit(t_cub *cub, int code)
 {
 	if (!cub)
 		exit(code);
@@ -37,7 +37,7 @@ void clean_exit(t_cub *cub, int code)
 	exit(code);
 }
 
-int exit_cub3d(t_cub *cub)
+int	exit_cub3d(t_cub *cub)
 {
 	clean_exit(cub, 0);
 	return (0);
