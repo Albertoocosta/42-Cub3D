@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:37:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/15 19:46:34 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/21 19:20:31 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	parse_file(int fd)
 		{
 			free(line);
 			line = get_next_line(fd);
-			continue;
+			continue ;
 		}
 		if (ft_is_map_line(line))
 			map_started = true;
-		else if (map_started) /// Verifica apenas chars q nao sao do mapa!
+		else if (map_started)
 		{
 			free(line);
 			return (printf("Error!\nMap must be the last element.\n"), 1);

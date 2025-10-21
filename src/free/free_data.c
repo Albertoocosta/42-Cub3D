@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:55:11 by cda-fons          #+#    #+#             */
-/*   Updated: 2025/10/20 17:13:45 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:04:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	free_tab(void **tab)
 	}
 }
 
-void free_tab_int(int **tab, int size)
+void	free_tab_int(int **tab, int size)
 {
-	int i;
-	
+	int	i;
+
 	if (!tab)
-		return;
+		return ;
 	i = 0;
 	while (i < size)
 	{
@@ -48,9 +48,9 @@ void free_tab_int(int **tab, int size)
 int	free_data(t_cub *cub)
 {
 	if (cub->texture.texture_grid)
-		free_tab((void **)cub->texture.texture_grid);
+		free_tab_int(cub->texture.texture_grid, 4);
 	if (cub->texture.pixels_text)
-		free_tab((void **)cub->texture.pixels_text);
+		free_tab_int(cub->texture.pixels_text, HEIGHT);
 	return (1);
 }
 
