@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:28:48 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/20 15:52:44 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/21 19:18:13 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,8 @@ int	parse_texture(char *line, char **path, bool *has_flag)
 	trimmed[len] = '\0';
 	*path = trimmed;
 	if (!check_extension(*path, ".xpm"))
-	return (printf("Erro!\nTexture must be a '.xpm' file."), 1);
+		return (printf("Erro!\nTexture must be a '.xpm' file."), 1);
 	*has_flag = true;
-	// free(trimmed);
 	return (0);
 }
 

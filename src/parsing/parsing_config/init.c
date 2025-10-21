@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 01:33:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/01 01:26:52 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/21 19:17:17 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void init_player_variables(t_player *player);
-static void init_texture(t_texture *texture);
-static void init_map(t_map *map);
+static void	init_player_variables(t_player *player);
+static void	init_texture(t_texture *texture);
+static void	init_map(t_map *map);
 
-void init_cub(t_cub *cub)
+void	init_cub(t_cub *cub)
 {
 	init_player_variables(&cub->player);
 	init_texture(&cub->texture);
 	init_map(&cub->map);
 }
 
-static void init_player_variables(t_player *player)
+static void	init_player_variables(t_player *player)
 {
 	player->pos_x = 0;
 	player->pos_y = 0;
@@ -38,7 +38,7 @@ static void init_player_variables(t_player *player)
 	player->moved = 0;
 }
 
-static void init_texture(t_texture *texture)
+static void	init_texture(t_texture *texture)
 {
 	texture->no_path = NULL;
 	texture->so_path = NULL;
@@ -59,14 +59,14 @@ static void init_texture(t_texture *texture)
 	texture->pixels_text = NULL;
 }
 
-static void init_map(t_map *map)
+static void	init_map(t_map *map)
 {
 	map->map = NULL;
 	map->map_w = 0;
 	map->map_h = 0;
 }
 
-void init_ray(t_ray *ray)
+void	init_ray(t_ray *ray)
 {
 	ray->camera_x = 0;
 	ray->dir_x = 0;
