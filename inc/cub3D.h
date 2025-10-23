@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/21 17:53:23 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:16:04 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@
 # include <X11/keysym.h>
 # include "./Minilibx/mlx.h"
 # include "./Minilibx/mlx_int.h"
-# include "parse.h"
-# include "raycasting.h"
 
 // Libft
 # include "./libft/libft.h"
@@ -44,6 +42,8 @@ typedef struct s_mlx		t_mlx;
 typedef struct s_cub		t_cub;
 typedef struct s_map		t_map;
 
+# include "parse.h"
+# include "raycasting.h"
 // Project
 
 # define MOVESPEED 0.0125
@@ -51,6 +51,7 @@ typedef struct s_map		t_map;
 # define WIDTH 800
 # define HEIGHT 600
 # define WIN_TITLE "Leu = mamou"
+
 
 enum	e_orientation
 {
@@ -109,6 +110,39 @@ typedef struct s_mlx
 	int			size_line;
 	int			endian;
 }	t_mlx;
+
+typedef struct s_map
+{
+	char	**map;
+	int		map_w;
+	int		map_h;
+}	t_map;
+
+typedef struct s_texture
+{
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	bool	has_no;
+	bool	has_so;
+	bool	has_we;
+	bool	has_ea;
+	bool	has_floor;
+	bool	has_ceil;
+	double	step;
+	double	pos;
+	int		floor_rgb[3];
+	int		ceil_rgb[3];
+	int		floor_hex;
+	int		ceil_hex;
+	int		size;
+	int		index;
+	int		texture_x;
+	int		texture_y;
+	int		**pixels_text;
+	int		**texture_grid;
+}	t_texture;
 
 typedef struct s_cub
 {

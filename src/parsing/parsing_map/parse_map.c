@@ -6,13 +6,15 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 17:00:00 by cda-fons          #+#    #+#             */
-/*   Updated: 2025/10/21 19:25:35 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:15:24 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	set_player_position(t_cub *cub, int x, int y, char dir)
+//TODO: (?) Unused Function
+
+void	set_player_position(t_cub *cub, int x, int y, char dir)
 {
 	cub->player.pos_x = (double)x + 0.5;
 	cub->player.pos_y = (double)y + 0.5;
@@ -20,7 +22,7 @@ static void	set_player_position(t_cub *cub, int x, int y, char dir)
 	cub->map.map[y][x] = '0';
 }
 
-static char	**expand_map_array(char **map_lines, int line_count)
+char	**expand_map_array(char **map_lines, int line_count)
 {
 	char	**temp;
 	int		i;
@@ -39,7 +41,7 @@ static char	**expand_map_array(char **map_lines, int line_count)
 	return (temp);
 }
 
-static int	add_map_line(char ***map_lines, int *line_count, char *line)
+int	add_map_line(char ***map_lines, int *line_count, char *line)
 {
 	char	**temp;
 
@@ -73,7 +75,8 @@ int	read_map_lines(int fd, char ***map_lines, int *line_count)
 	return (0);
 }
 
-static void	calculate_map_dimensions(t_cub *cub, char **map_lines, int count)
+//TODO: (?) Unused Function
+void	calculate_map_dimensions(t_cub *cub, char **map_lines, int count)
 {
 	int	i;
 
