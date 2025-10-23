@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:28:48 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/23 15:45:27 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 19:29:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ int	parse_config(t_cub *cub, int fd)
 	while (line)
 	{
 		if (parse_config_line(line, &cub->texture))
-		{
-			free(line);
-			return (1);
-		}
+			return (free(line), 1);
 		free(line);
 		line = get_next_line(fd);
 	}

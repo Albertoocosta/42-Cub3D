@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:37:04 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/23 15:45:51 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 19:04:07 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	parse_file(int fd)
 		else if (map_started)
 		{
 			free(line);
-			return (error_msg("Map must be the last element of the file."), 1);
+			return (error_msg("Map must be the last element."), 1);
 		}
 		free(line);
 		line = get_next_line(fd);

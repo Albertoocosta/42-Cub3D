@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/23 16:02:04 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 18:56:31 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	parse_input(const char *file, t_cub *cub)
 	if (fd == -1)
 		return (error_msg("Unable to open map file."), 1);
 	if (parse_config(cub, fd))
-		return (1);
+		return (close(fd), 1);
 	close(fd);
 	return (0);
 }
