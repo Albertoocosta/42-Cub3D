@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:17:40 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/23 18:18:26 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 19:40:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	t_cub	cub;
 
 	if (parser(ac, av, &cub) || set_mlx(&cub))
-		return (clean_exit(&cub, 0), 1);
+		clean_exit(&cub, 1);
 	cub.texture.size = 64;
 	load_textures(&cub);
 	cub.player.moved = 1;
