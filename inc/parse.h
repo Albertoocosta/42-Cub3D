@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/23 15:15:40 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:37:58 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int		ft_is_space(char c);
 void	free_structs(t_cub *cub);
 void	calculate_map_dimensions(t_cub *cub, char **map_lines, int count);
 void	set_player_position(t_cub *cub, int x, int y, char dir);
+void	error_msg(char *str);
 
 #endif

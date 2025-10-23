@@ -6,13 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 17:00:00 by cda-fons          #+#    #+#             */
-/*   Updated: 2025/10/23 15:15:24 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:59:31 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-//TODO: (?) Unused Function
 
 void	set_player_position(t_cub *cub, int x, int y, char dir)
 {
@@ -75,7 +73,6 @@ int	read_map_lines(int fd, char ***map_lines, int *line_count)
 	return (0);
 }
 
-//TODO: (?) Unused Function
 void	calculate_map_dimensions(t_cub *cub, char **map_lines, int count)
 {
 	int	i;

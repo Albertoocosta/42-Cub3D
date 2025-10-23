@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cda-fons <cda-fons@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/14 16:56:39 by cda-fons         ###   ########.fr       */
+/*   Updated: 2025/10/23 16:02:04 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	parser(int ac, char **av, t_cub *cub)
 {
 	if (ac != 2 || !check_extension(av[1], ".cub"))
-		return (printf("Error\nInvalid program usage.\n"), 1);
+		return (error_msg("Invalid program usage."), 1);
 	init_cub(cub);
 	if (parse_input(av[1], cub)
 		|| validate_config(cub)
@@ -32,23 +32,20 @@ int	parse_input(const char *file, t_cub *cub)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (printf("Erro!\nUnable to open map file."), 1);
+		return (error_msg("Unable to open map file."), 1);
 	if (parse_config(cub, fd))
 		return (1);
 	close(fd);
 	return (0);
 }
 
-static int	validate_texture_file(char *path, char *name)
+static int	validate_texture_file(char *path)
 {
 	int	fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-	{
-		printf("Erro!\nInvalid or missing %s texture file.", name);
-		return (1);
-	}
+		return (error_msg("Invalid or missing texture file."), 1);
 	close(fd);
 	return (0);
 }
@@ -58,7 +55,7 @@ static int	check_all_configs(t_cub *cub)
 	if (!cub->texture.has_no || !cub->texture.has_so
 		|| !cub->texture.has_we || !cub->texture.has_ea
 		|| !cub->texture.has_ceil || !cub->texture.has_floor)
-		return (printf("Erro!\nMissing configuration."), 1);
+		return (error_msg("Missing configuration."), 1);
 	return (0);
 }
 
@@ -66,13 +63,13 @@ int	validate_config(t_cub *cub)
 {
 	if (check_all_configs(cub))
 		return (1);
-	if (validate_texture_file(cub->texture.no_path, "North"))
+	if (validate_texture_file(cub->texture.no_path))
 		return (1);
-	if (validate_texture_file(cub->texture.so_path, "South"))
+	if (validate_texture_file(cub->texture.so_path))
 		return (1);
-	if (validate_texture_file(cub->texture.we_path, "West"))
+	if (validate_texture_file(cub->texture.we_path))
 		return (1);
-	if (validate_texture_file(cub->texture.ea_path, "East"))
+	if (validate_texture_file(cub->texture.ea_path))
 		return (1);
 	return (0);
 }

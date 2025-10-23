@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:28:48 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/21 19:18:13 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:45:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	parse_texture(char *line, char **path, bool *has_flag)
 	while (*line == ' ' || *line == '\t')
 		line++;
 	if (*has_flag)
-		return (printf("Erro!\nDuplicated texture.\n"), 1);
+		return (error_msg("Duplicated texture."), 1);
 	free(*path);
 	len = ft_strlen(line);
 	while (len > 0 && (line[len - 1] == ' ' || line[len - 1] == '\t'
@@ -68,12 +68,12 @@ int	parse_texture(char *line, char **path, bool *has_flag)
 		len--;
 	trimmed = malloc(len + 1);
 	if (!trimmed)
-		return (printf("Erro!\nFailed to allocate memory for texture.\n"), 1);
+		return (error_msg("Failed to allocate memory for the texture."), 1);
 	ft_strncpy(trimmed, line, len);
 	trimmed[len] = '\0';
 	*path = trimmed;
 	if (!check_extension(*path, ".xpm"))
-		return (printf("Erro!\nTexture must be a '.xpm' file."), 1);
+		return (error_msg("Texture must be a '.xpm' file."), 1);
 	*has_flag = true;
 	return (0);
 }
@@ -84,11 +84,11 @@ int	parse_color(const char *str, int rgb[3], bool *has_flag)
 	int		i;
 
 	if (*has_flag)
-		return (printf("Erro!\nDuplicated RGB.\n"), 1);
+		return (error_msg("Duplicated RGB."), 1);
 	while (*str == ' ' || *str == '\t')
 		str++;
 	if (!ft_isrgb(str))
-		return (printf("Erro!\nInvalid RGB format.\n"), 1);
+		return (error_msg("Invalid RGB format."), 1);
 	char_rgb = ft_split(str, ',');
 	i = 0;
 	while (i < 3)
@@ -98,11 +98,16 @@ int	parse_color(const char *str, int rgb[3], bool *has_flag)
 		else
 		{
 			free_splits(char_rgb);
-			return (printf("Erro!\nInvalid RGB color.\n"), 1);
+			return (error_msg("Invalid RGB color."), 1);
 		}
 		i++;
 	}
 	*has_flag = true;
 	free_splits(char_rgb);
 	return (0);
+}
+
+void	error_msg(char *str)
+{
+	printf("Error\n%s\n", str);
 }

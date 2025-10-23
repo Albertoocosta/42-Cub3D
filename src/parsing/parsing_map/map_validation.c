@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:50:53 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/21 19:25:04 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:47:29 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	find_player(t_cub *cub)
 		i++;
 	}
 	if (player_count != 1)
-		return (printf("Error\nMap must have exactly one player\n"), 1);
+		return (error_msg("Map must have exactly one player."), 1);
 	return (0);
 }
 
@@ -48,12 +48,12 @@ int	parse_map(const char *file, t_cub *cub)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (printf("Error\nCannot open map file\n"), 1);
+		return (error_msg("Cannot open map file."), 1);
 	if (read_map_lines(fd, &map_lines, &line_count))
-		return (close(fd), printf("Error\nFailed to read map\n"), 1);
+		return (close(fd), error_msg("Failed to read map."), 1);
 	close(fd);
 	if (line_count == 0)
-		return (printf("Error\nNo map found\n"), 1);
+		return (error_msg("No map found."), 1);
 	calculate_map_dimensions(cub, map_lines, line_count);
 	return (find_player(cub));
 }
