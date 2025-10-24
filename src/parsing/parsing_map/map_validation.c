@@ -6,17 +6,17 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:50:53 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/24 17:55:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 19:06:40 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int find_player(t_cub *cub)
+static int	find_player(t_cub *cub)
 {
-	int i;
-	int j;
-	int player_count;
+	int	i;
+	int	j;
+	int	player_count;
 
 	player_count = 0;
 	i = 0;
@@ -25,7 +25,8 @@ static int find_player(t_cub *cub)
 		j = 0;
 		while (cub->map.map[i][j])
 		{
-			if (cub->map.map[i][j] == 'N' || cub->map.map[i][j] == 'S' || cub->map.map[i][j] == 'E' || cub->map.map[i][j] == 'W')
+			if (cub->map.map[i][j] == 'N' || cub->map.map[i][j] == 'S'
+				|| cub->map.map[i][j] == 'E' || cub->map.map[i][j] == 'W')
 			{
 				set_player_position(cub, j, i, cub->map.map[i][j]);
 				player_count++;
@@ -39,29 +40,30 @@ static int find_player(t_cub *cub)
 	return (0);
 }
 
-static int is_valid_map_char(char c)
+static int	is_valid_map_char(char c)
 {
-	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == ' ');
+	return (c == '0' || c == '1' || c == 'N' || c == 'S'
+		|| c == 'E' || c == 'W' || c == ' ');
 }
 
-static void flood_fill(char **map_copy, int x, int y, int width, int height, int *invalid)
+static void	flood_fill(char **map_copy, int x, int y, int width, int height, int *invalid)
 {
 	if (y < 0 || y >= height || x < 0)
 	{
 		*invalid = 1;
-		return;
+		return ;
 	}
 	if (x >= (int)ft_strlen(map_copy[y]))
 	{
 		*invalid = 1;
-		return;
+		return ;
 	}
 	if (map_copy[y][x] == '1' || map_copy[y][x] == 'X')
-		return;
+		return ;
 	if (map_copy[y][x] == ' ')
 	{
 		*invalid = 1;
-		return;
+		return ;
 	}
 	map_copy[y][x] = 'X';
 	flood_fill(map_copy, x + 1, y, width, height, invalid);
@@ -70,12 +72,13 @@ static void flood_fill(char **map_copy, int x, int y, int width, int height, int
 	flood_fill(map_copy, x, y - 1, width, height, invalid);
 }
 
-int flood_fill_validation(t_cub *cub)
+int	flood_fill_validation(t_cub *cub)
 {
-	char **map_copy;
-	int i;
-	int invalid = 0;
+	char	**map_copy;
+	int		i;
+	int		invalid;
 
+	invalid = 0;
 	map_copy = malloc(sizeof(char *) * cub->map.map_h);
 	if (!map_copy)
 		return (error_msg("Memory allocation failed."), 1);
@@ -93,7 +96,7 @@ int flood_fill_validation(t_cub *cub)
 		i++;
 	}
 	flood_fill(map_copy, (int)cub->player.pos_x, (int)cub->player.pos_y,
-			   cub->map.map_w, cub->map.map_h, &invalid);
+		cub->map.map_w, cub->map.map_h, &invalid);
 	i = 0;
 	while (i < cub->map.map_h)
 	{
@@ -106,9 +109,10 @@ int flood_fill_validation(t_cub *cub)
 	return (0);
 }
 
-int validate_map_boundaries(t_cub *cub)
+int	validate_map_boundaries(t_cub *cub)
 {
-	int i, j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < cub->map.map_h)
@@ -125,19 +129,21 @@ int validate_map_boundaries(t_cub *cub)
 	return (0);
 }
 
-int check_map_continuity(char **map_lines, int line_count)
+int	check_map_continuity(char **map_lines, int line_count)
 {
-	int i;
-	int found_map = 0;
-	int found_gap = 0;
+	int	i;
+	int	found_map;
+	int	found_gap;
 
+	found_gap = 0;
+	found_map = 0;
 	i = 0;
 	while (i < line_count)
 	{
 		if (ft_is_map_line(map_lines[i]))
 		{
 			if (found_gap && found_map)
-				return (error_msg("Map cannot be separated by empty lines."), 1);
+				return (error_msg("Map cannot be separated by empty line."), 1);
 			found_map = 1;
 		}
 		else if (found_map && ft_is_empty_line(map_lines[i]))
@@ -149,11 +155,11 @@ int check_map_continuity(char **map_lines, int line_count)
 	return (0);
 }
 
-int parse_map(const char *file, t_cub *cub)
+int	parse_map(const char *file, t_cub *cub)
 {
-	int fd;
-	char **map_lines;
-	int line_count;
+	int		fd;
+	char	**map_lines;
+	int		line_count;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
