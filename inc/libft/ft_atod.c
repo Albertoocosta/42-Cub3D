@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 22:07:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 12:42:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:09:52 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void ft_skip_space_sign(char **str, int *sign)
+static void	ft_skip_space_sign(char **str, int *sign)
 {
 	while (**str == ' ' || (**str >= 9 && **str <= 13))
 		(*str)++;
@@ -24,10 +24,10 @@ static void ft_skip_space_sign(char **str, int *sign)
 	}
 }
 
-static void ft_parse_number(char *str, double *r, double *f)
+static void	ft_parse_number(char *str, double *r, double *f)
 {
-	double div;
-	bool dec;
+	double	div;
+	bool	dec;
 
 	div = 10.0;
 	dec = false;
@@ -46,11 +46,11 @@ static void ft_parse_number(char *str, double *r, double *f)
 	}
 }
 
-double ft_atod(char *str)
+double	ft_atod(char *str)
 {
-	double result;
-	double frac;
-	int sign;
+	double	result;
+	double	frac;
+	int		sign;
 
 	result = 0.0;
 	frac = 0.0;

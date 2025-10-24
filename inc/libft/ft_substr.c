@@ -6,16 +6,16 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:20:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 12:42:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:25:56 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t i;
-	char *substr;
+	size_t	i;
+	char	*substr;
 
 	if (!s || start >= ft_strlen(s) || len == 0)
 		return (ft_strdup(""));

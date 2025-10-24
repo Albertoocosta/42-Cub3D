@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:37:53 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/10 13:56:38 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:12:41 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isspace(int c)
+int	ft_isspace(int c)
 {
 	if (c == ' '
 		|| c == '\t'

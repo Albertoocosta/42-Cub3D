@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 21:49:12 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/12 22:05:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:09:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ int	ft_file_size(const char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		total_size++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	if (line)
 		free(line);

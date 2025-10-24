@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 17:14:55 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 12:42:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:16:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_matrix_finder(char *str, int c)
+int	ft_matrix_finder(char *str, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
