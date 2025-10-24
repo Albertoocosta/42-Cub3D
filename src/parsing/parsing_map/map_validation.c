@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:50:53 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/24 17:39:22 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 17:55:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,9 +162,15 @@ int parse_map(const char *file, t_cub *cub)
 		return (close(fd), error_msg("Failed to read map."), 1);
 	close(fd);
 	if (line_count == 0)
+	{
+		free_map_lines(map_lines, line_count);
 		return (error_msg("No map found."), 1);
+	}
 	if (check_map_continuity(map_lines, line_count))
+	{
+		free_map_lines(map_lines, line_count);
 		return (1);
+	}
 	calculate_map_dimensions(cub, map_lines, line_count);
 	if (find_player(cub))
 		return (1);
