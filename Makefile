@@ -9,7 +9,7 @@ MLX					= $(MLX_DIR)/libmlx.a
 OBJ_DIR				= obj/
 CC					= cc
 SANITIZE_FALGS		= -fsanitize=address -fsanitize=leak -fsanitize=undefined -fno-omit-frame-pointer
-CFLAGS				= -Wall -Werror -Wextra -g3 -I$(INC)
+CFLAGS				= -O3 -Wall -Werror -Wextra -g3 -I$(INC)
 RM					= rm -rf
 SRCS				= $(shell find $(SRC_DIR) -type f -name "*.c")
 OBJS				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
