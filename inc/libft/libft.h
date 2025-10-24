@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 20:41:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/23 19:04:56 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 15:40:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,8 @@ char *ft_strjoin_gnl(char *str1, char *str2);
 void *ft_calloc_gnl(size_t nmemb, size_t size);
 char *ft_read_from_file(char *s_buffer, int fd);
 char *ft_strcpy_nl(char *src, char *dest, int nl_stop);
+void	cleanup_gnl(void);
+
 
 //---------End If---------//
 #endif
