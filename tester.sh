@@ -34,6 +34,35 @@ if [ ! -d "$MAPS_DIR" ]; then
 	exit 1
 fi
 
+# Function to automatically press ESC on any window that opens
+auto_esc_daemon() {
+	local timeout_duration="$1"
+	local start_time=$(date +%s)
+	
+	while true; do
+		local current_time=$(date +%s)
+		local elapsed=$((current_time - start_time))
+		
+		# Stop if timeout exceeded
+		if [ $elapsed -ge $timeout_duration ]; then
+			break
+		fi
+		
+		# Check for any window with "cub3D" in title and send ESC
+		if command -v xdotool >/dev/null 2>&1; then
+			local windows=$(xdotool search --name "cub3D" 2>/dev/null || true)
+			if [ -n "$windows" ]; then
+				for window in $windows; do
+					xdotool windowactivate "$window" 2>/dev/null || true
+					xdotool key --window "$window" Escape 2>/dev/null || true
+				done
+			fi
+		fi
+		
+		sleep 0.1  # Check every 100ms
+	done
+}
+
 # Function to test a single map file
 test_map() {
 	local map_file="$1"
@@ -45,11 +74,18 @@ test_map() {
 	# Create temporary file for valgrind output
 	local temp_valgrind_output=$(mktemp)
 	
+	# Start the auto-ESC daemon in background
+	auto_esc_daemon $TIMEOUT &
+	local daemon_pid=$!
+	
 	# Run cub3D with valgrind and timeout
 	timeout $TIMEOUT valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes \
 		--log-file="$temp_valgrind_output" \
 		$CUB3D_EXEC "$map_file" > /dev/null 2>&1
 	local exit_code=$?
+	
+	# Kill the auto-ESC daemon
+	kill $daemon_pid 2>/dev/null || true
 	
 	# Handle timeout
 	if [ $exit_code -eq 124 ]; then

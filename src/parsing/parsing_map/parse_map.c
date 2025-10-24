@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 17:00:00 by cda-fons          #+#    #+#             */
-/*   Updated: 2025/10/23 19:04:29 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 16:39:56 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	set_player_position(t_cub *cub, int x, int y, char dir)
+void set_player_position(t_cub *cub, int x, int y, char dir)
 {
 	cub->player.pos_x = (double)x + 0.5;
 	cub->player.pos_y = (double)y + 0.5;
@@ -20,10 +20,10 @@ void	set_player_position(t_cub *cub, int x, int y, char dir)
 	cub->map.map[y][x] = '0';
 }
 
-char	**expand_map_array(char **map_lines, int line_count)
+char **expand_map_array(char **map_lines, int line_count)
 {
-	char	**temp;
-	int		i;
+	char **temp;
+	int i;
 
 	temp = malloc(sizeof(char *) * (line_count + 2));
 	if (!temp)
@@ -39,30 +39,61 @@ char	**expand_map_array(char **map_lines, int line_count)
 	return (temp);
 }
 
-int	add_map_line(char ***map_lines, int *line_count, char *line)
+static char *trim_newline(char *line)
 {
-	char	**temp;
+	char *trimmed;
+	int len;
+
+	if (!line)
+		return (NULL);
+	len = ft_strlen(line);
+	if (len > 0 && line[len - 1] == '\n')
+		len--;
+	trimmed = malloc(len + 1);
+	if (!trimmed)
+		return (NULL);
+	ft_memcpy(trimmed, line, len);
+	trimmed[len] = '\0';
+	return (trimmed);
+}
+
+int add_map_line(char ***map_lines, int *line_count, char *line)
+{
+	char **temp;
 
 	temp = expand_map_array(*map_lines, *line_count);
 	if (!temp)
 		return (1);
-	temp[*line_count] = ft_strdup(line);
+	temp[*line_count] = trim_newline(line);
+	if (!temp[*line_count])
+		return (1);
 	*map_lines = temp;
 	(*line_count)++;
 	return (0);
 }
 
-int	read_map_lines(int fd, char ***map_lines, int *line_count)
+int read_map_lines(int fd, char ***map_lines, int *line_count)
 {
-	char	*line;
+	char *line;
+	int map_started = 0;
 
 	*map_lines = NULL;
 	*line_count = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (ft_is_map_line(line)
-			|| (*line_count > 0 && !ft_is_empty_line(line)))
+		if (ft_is_map_line(line))
+		{
+			map_started = 1;
+			if (add_map_line(map_lines, line_count, line))
+				return (free(line), 1);
+		}
+		else if (map_started && !ft_is_empty_line(line))
+		{
+			if (add_map_line(map_lines, line_count, line))
+				return (free(line), 1);
+		}
+		else if (map_started && ft_is_empty_line(line))
 		{
 			if (add_map_line(map_lines, line_count, line))
 				return (free(line), 1);
@@ -73,9 +104,9 @@ int	read_map_lines(int fd, char ***map_lines, int *line_count)
 	return (0);
 }
 
-void	calculate_map_dimensions(t_cub *cub, char **map_lines, int count)
+void calculate_map_dimensions(t_cub *cub, char **map_lines, int count)
 {
-	int	i;
+	int i;
 
 	cub->map.map = map_lines;
 	cub->map.map_h = count;
