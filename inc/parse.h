@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 19:58:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/24 16:33:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 17:19:14 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void error_msg(char *str);
 int validate_map_boundaries(t_cub *cub);
 int flood_fill_validation(t_cub *cub);
 int check_map_continuity(char **map_lines, int line_count);
+void free_map_lines(char **map_lines, int line_count);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 15:50:53 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/24 16:39:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 17:39:22 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,12 @@ static int is_valid_map_char(char c)
 
 static void flood_fill(char **map_copy, int x, int y, int width, int height, int *invalid)
 {
-	if (y < 0 || y >= height || x < 0 || x >= width)
+	if (y < 0 || y >= height || x < 0)
+	{
+		*invalid = 1;
+		return;
+	}
+	if (x >= (int)ft_strlen(map_copy[y]))
 	{
 		*invalid = 1;
 		return;
