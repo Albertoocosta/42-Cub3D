@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 01:33:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/21 19:17:17 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 18:18:54 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	init_map(t_map *map);
 
 void	init_cub(t_cub *cub)
 {
+	cub->mlx.mlx_ptr = NULL;
 	init_player_variables(&cub->player);
 	init_texture(&cub->texture);
 	init_map(&cub->map);
@@ -57,6 +58,7 @@ static void	init_texture(t_texture *texture)
 	texture->texture_x = 0;
 	texture->texture_y = 0;
 	texture->pixels_text = NULL;
+	texture->texture_grid = NULL;
 }
 
 static void	init_map(t_map *map)

@@ -6,17 +6,15 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 18:19:00 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/10 12:42:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/24 18:27:26 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 65 && c <= 90)
-	{
 		c = c + 32;
-	}
 	return (c);
 }

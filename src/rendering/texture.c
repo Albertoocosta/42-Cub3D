@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 00:16:57 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/21 19:11:22 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/23 15:56:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	load_texture_image(t_cub *cub, int index, char *path)
 			&cub->texture.size, &cub->texture.size);
 	if (!img)
 	{
-		printf("Error!\nUnable to load texture: %s\n", path);
+		error_msg("Unable to load texture.");
 		clean_exit(cub, 1);
 	}
 	data = (int *)mlx_get_data_addr(img, &bpp, &size_line, &endian);
@@ -54,7 +54,10 @@ static void	allocate_texture_grid(t_cub *cub)
 		cub->texture.texture_grid[i] = ft_calloc(cub->texture.size
 				* cub->texture.size, sizeof(int));
 		if (!cub->texture.texture_grid[i])
-			clean_exit(cub, err_msg(NULL, "Malloc error", 1));
+		{
+			error_msg("Malloc error.");
+			clean_exit(cub, 1);
+		}
 		i++;
 	}
 }
@@ -63,7 +66,10 @@ void	load_textures(t_cub *cub)
 {
 	cub->texture.texture_grid = ft_calloc(4, sizeof(int *));
 	if (!cub->texture.texture_grid)
-		clean_exit(cub, err_msg(NULL, "Malloc error", 1));
+	{
+		error_msg("Malloc error.");
+		clean_exit(cub, 1);
+	}
 	allocate_texture_grid(cub);
 	load_texture_image(cub, SO, cub->texture.no_path);
 	load_texture_image(cub, NO, cub->texture.so_path);
@@ -80,14 +86,20 @@ void	init_texture_pixel(t_cub *cub)
 	cub->texture.pixels_text = ft_calloc(HEIGHT + 1,
 			sizeof * cub->texture.pixels_text);
 	if (!cub->texture.pixels_text)
-		clean_exit(cub, err_msg(NULL, "Malloc error", 1));
+	{
+		error_msg("Malloc error.");
+		clean_exit(cub, 1);
+	}
 	i = 0;
 	while (i < HEIGHT)
 	{
 		cub->texture.pixels_text[i] = ft_calloc(WIDTH + 1,
 				sizeof * cub->texture.pixels_text);
 		if (!cub->texture.pixels_text[i])
-			clean_exit(cub, err_msg(NULL, "Malloc error", 1));
+		{
+			error_msg("Malloc error.");
+			clean_exit(cub, 1);
+		}
 		i++;
 	}
 }
