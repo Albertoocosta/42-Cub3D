@@ -220,7 +220,7 @@ run_tests() {
 	
 	# Overall result
 	if [ $total_failed -eq 0 ]; then
-		echo -e "${GREEN}🎉 All tests passed!${NC}"
+		echo -e "${GREEN}🎉 | All tests passed!${NC}"
 	else
 		echo -e "${RED}        ┃ ❌ $total_failed test(s) failed${NC}"
 	fi
@@ -259,7 +259,7 @@ exit_code=$?
 if [ -s "$VALGRIND_LOG" ] && [ $(wc -l < "$VALGRIND_LOG") -gt 4 ]; then
 	echo -e "\n${YELLOW}Memory issues were detected. Check $VALGRIND_LOG for details.${NC}"
 else
-	echo -e "\n${GREEN}No memory issues detected! 🎉${NC}"
+	echo -e "\n${GREEN}🎉 | No memory leaks detected!${NC}"
 fi
 
 exit $exit_code

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/24 18:53:47 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/27 16:42:55 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,12 @@ typedef struct s_cub
 	t_map		map;
 }	t_cub;
 
+typedef struct s_flood
+{
+	int			x;
+	int			y;
+}				t_flood;
+
 int		parser(int ac, char **av, t_cub *cub);
 int		check_extension(const char *file, char *extension);
 int		parse_input(const char *file, t_cub *cub);
@@ -167,6 +173,12 @@ int		validate_map_boundaries(t_cub *cub);
 int		flood_fill_validation(t_cub *cub);
 int		check_map_continuity(char **map_lines, int line_count);
 void	free_map_lines(char **map_lines, int line_count);
+int		add_map_line(char ***map_lines, int *line_count, char *line);
+int		is_valid_map_char(char c);
+int		find_player(t_cub *cub);
+void	flood_fill(t_cub *cub, char **map_copy, t_flood pos, int *invalid);
+
+//Raycasting
 void	fill_ray(int x, t_ray *ray, t_player *player);
 void	set_dda(t_ray *ray, t_player *player);
 void	run_dda(t_cub *cub, t_ray *ray);
