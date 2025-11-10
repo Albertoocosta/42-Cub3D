@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 17:11:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/10/24 15:25:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/11/10 17:49:46 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	parser(int ac, char **av, t_cub *cub)
 {
+	init_cub(cub);
 	if (ac != 2 || !check_extension(av[1], ".cub"))
 		return (error_msg("Invalid program usage."), 1);
-	init_cub(cub);
 	if (parse_input(av[1], cub)
 		|| validate_config(cub)
 		|| map_on_bottom(av[1])

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/10/27 16:42:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/11/07 15:54:55 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define ROTSPEED 0.015
 # define WIDTH 800
 # define HEIGHT 600
-# define WIN_TITLE "Read = suck"
+# define WIN_TITLE "Cub3D"
 
 enum	e_orientation
 {
