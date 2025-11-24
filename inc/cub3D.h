@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 11:21:24 by alberto           #+#    #+#             */
-/*   Updated: 2025/11/07 15:54:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:41:26 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,5 +205,9 @@ void	clean_exit(t_cub *data, int code);
 int		exit_cub3d(t_cub *cub);
 void	free_tab(void **tab);
 void	free_tab_int(int **tab, int size);
+
+//map_chars
+int		check_map(char *line);
+int		is_config_line(char *line);
 
 #endif

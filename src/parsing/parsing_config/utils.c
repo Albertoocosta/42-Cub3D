@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 15:16:44 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/09/15 19:41:38 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:09:53 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_is_map_line(char *line)
 	i = 0;
 	while (line[i] && ft_is_space(line[i]))
 		i++;
-	if (line[i] == '\0' || line[i] == '\n')
+	if (line[i] == '\0' || line[i] == '\n' || line[i] == ' ')
 		return (0);
 	while (line[i] && line[i] != '\n')
 	{
